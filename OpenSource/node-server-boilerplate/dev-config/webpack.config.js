@@ -1,11 +1,11 @@
 /**
  * Created by apple on 16/7/27.
  */
-var webpack = require('webpack');
-var path = require('path');
-var fs = require('fs');
+const webpack = require('webpack');
+const path = require('path');
+const fs = require('fs');
 
-var nodeModules = {};
+const nodeModules = {};
 
 //遍历所有的NodeModules以防止意外引入
 fs.readdirSync('node_modules')
@@ -26,19 +26,17 @@ module.exports = {
   },
   externals: nodeModules,
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel"
+        use: ["babel-loader"]
       }
     ]
   },
   plugins: [
     //忽略所有的CSS与LESS文件
     new webpack.IgnorePlugin(/\.(css|less)$/),
-    new webpack.BannerPlugin('require("source-map-support").install();',
-      {raw: true, entryOnly: false})
   ],
   devtool: 'sourcemap'
 };

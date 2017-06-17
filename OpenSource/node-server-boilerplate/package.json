@@ -21,13 +21,19 @@
     "Express",
     "Koa"
   ],
+  "eslintConfig": {
+    "extends": "./dev-config/eslint.js"
+  },
   "babel": {
     "presets": [
+      "flow",
       "latest",
-      "stage-3"
+      "stage-3",
+      "jest"
     ],
     "plugins": [
       "transform-runtime",
+      "transform-decorators-legacy",
       "transform-class-properties"
     ]
   },
@@ -38,28 +44,35 @@
   },
   "homepage": "https://github.com/wxyyxc1992/Web-Frontend-Introduction-And-Best-Practices",
   "devDependencies": {
-    "babel-core": "^6.14.0",
-    "babel-eslint": "^6.1.2",
-    "babel-loader": "^6.2.0",
-    "babel-plugin-async-to-promises": "^1.0.5",
-    "babel-plugin-transform-class-properties": "^6.10.2",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-polyfill": "^6.9.1",
-    "babel-preset-latest": "^6.14.0",
-    "babel-preset-stage-3": "^6.3.13",
-    "bundle-loader": "^0.5.4",
-    "eslint": "^3.5.0",
-    "eslint-loader": "^1.4.1",
-    "eslint-plugin-babel": "^3.3.0",
-    "nodejs-dashboard": "^0.1.0",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-jest": "^20.0.3",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "bundle-loader": "^0.5.5",
+    "eslint": "^4.0.0",
+    "eslint-loader": "^1.8.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-jest": "^20.0.3",
+    "nodejs-dashboard": "^0.4.1",
     "nodemon": "^1.11.0",
-    "npm-run-all": "^3.1.0",
-    "webpack": "^1.13.2"
+    "npm-run-all": "^4.0.2",
+    "webpack": "^2.6.1"
   },
   "dependencies": {
-    "koa": "^1.2.4",
-    "koa-router": "^5.4.0",
+    "koa": "^2.2.0",
+    "koa-router": "^7.2.0",
     "koa-router-static": "^1.2.0",
-    "winston": "^2.2.0"
+    "koa-send": "^4.1.0",
+    "minimist": "^1.2.0",
+    "path-to-regexp": "^1.7.0",
+    "swagger-decorator": "0.0.2",
+    "winston": "^2.3.1"
   }
 }

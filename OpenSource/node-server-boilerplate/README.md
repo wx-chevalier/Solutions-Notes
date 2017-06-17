@@ -1,36 +1,242 @@
 # Node Server Boilerplate
 
-目前主要基于Koa+Webpack+Babel+Swagger.
+目前主要基于 Koa+Webpack+Babel+Swagger，将项目 git clone 到本地后，即可运行：
 
-## Install
+```$xslt
+# 安装依赖
+yarn install
 
-> PS:因为笔者不想开太多的Github Repository,所以把一些小的开源项目以NPM包的方式进行发布,请大家谅解。
-
-
-```
-npm i node-server-boilerplate
-mv node_modules/node-server-boilerplate node-server-boilerplate
-mv node_modules node-server-boilerplate
-cd node-server-boilerplate
-npm link
+# 启动服务器
 npm start
 ```
 
 - 查看根路径
-
+```$xslt
 http://localhost:8080/
+```
 
 - 查看用户信息(路径参数)
-
-http://localhost:8080/user/2
+```$xslt
+    # 这里使用了根路径 /api
+    http://localhost:8080/api/user/2
+```
 
 - 查看任意其他路径(权限控制下会自动跳转回根路径)
 
-http://localhost:8080/aaa
+```$xslt
+    http://localhost:8080/not-found
+```
 
-- 查看Swagger Docs(静态资源处理)
+- 查看静态资源处理
+```$xslt
+    http://localhost:8080/static/
+```
 
-http://localhost:8080/static/docs/
+- 查看 Swagger
+```$xslt
+    # 查看 Swagger 接口文档
+    http://localhost:8080/swagger/
+    # 查看 JSON 数据
+    http://localhost:8080/swagger/api.json
+```
+
+
+# swagger-decorator：注解方式为 Koa2 应用自动生成 Swagger 文档
+
+理想的项目开发流程。如果要让开发人员在更改接口的同时花费额外精力维护一份开发文档，可能对于我司这样的小公司而言存在着很大的代价与风险。
+
+Single Source of Truth
+
+笔者是习惯使用 Flow 进行静态类型检测，[JavaScript 编程样式指南](https://parg.co/bvM)
+
+```$xslt
+$ yarn add swagger-decorator
+
+# 依赖于 Babel 的 transform-decorators-legacy 转换插件来使用 Decorator
+$ yarn add transform-decorators-legacy -D
+```
+
+
+```javascript
+import { wrappingKoaRouter } from "swagger-decorator";
+
+...
+
+const Router = require("koa-router");
+
+const router = new Router();
+
+wrappingKoaRouter(router, "localhost:8080", "/api", {
+  title: "Node Server Boilerplate",
+  info: "0.0.1",
+  description: "Koa2, koa-router,Webpack"
+});
+
+//定义默认的根路由
+router.get("/", async function(ctx, next) {
+  ctx.body = { msg: "Node Server Boilerplate" };
+});
+
+//定义用户处理路由
+router.scan(UserController);
+
+```
+
+
+```javascript
+/**
+ * Description 将 router 对象的方法进行封装
+ * @param router 路由对象
+ * @param host API 域名
+ * @param basePath API 基本路径
+ * @param info 其他的 Swagger 基本信息
+ */
+export function wrappingKoaRouter(
+  router: Object,
+  host: string = "localhost",
+  basePath: string = "",
+  info: Object = {}
+) {}
+```
+
+```javascript
+
+/**
+* Description 扫描某个类中的所有静态方法，按照其注解将其添加到
+* @param staticClass
+*/
+router.scan = function(staticClass: Function) {
+    let methods = Object.getOwnPropertyNames(staticClass);
+    
+    // 移除前三个属性 constructor、name
+    methods.shift();
+    methods.shift();
+    methods.shift();
+    
+    for (let method of methods) {
+      router.all(staticClass[method]);
+    }
+};
+
+```
+
+
+```javascript
+import {
+  apiDescription,
+  apiRequestMapping,
+  apiResponse,
+  bodyParameter,
+  pathParameter,
+  queryParameter
+} from "swagger-decorator";
+import User from "../entity/User";
+
+/**
+ * Description 用户相关控制器
+ */
+export default class UserController {
+  @apiRequestMapping("get", "/users")
+  @apiDescription("get all users list")
+  @apiResponse(200, "get users successfully", [User])
+  static async getUsers(ctx, next): [User] {
+    ctx.body = [new User()];
+  }
+
+  @apiRequestMapping("get", "/user/:id")
+  @apiDescription("get user object by id, only access self or friends")
+  @pathParameter({
+    name: "id",
+    description: "user id",
+    type: "integer"
+  })
+  @queryParameter({
+    name: "tags",
+    description: "user tags, for filtering users",
+    required: false,
+    type: "array",
+    items: ["string"]
+  })
+  @apiResponse(200, "get user successfully", User)
+  static async getUserByID(ctx, next): User {
+    const user_id: string = ctx.params.id;
+
+    //获取用户信息
+    let userModel = new UserModel(this);
+
+    //抓取用户信息
+    let user_info = await userModel.getUserInfoByID(user_id);
+
+    //设置返回数据
+    ctx.body = {
+      user_id,
+      user_info,
+      user_token: UserService.generateUserToken()
+    };
+
+    //等待以后是否有响应体
+    await next();
+  }
+
+  @apiRequestMapping("post", "/user")
+  @apiDescription("create new user")
+  @bodyParameter({
+    name: "user",
+    description: "the new user object, must include user name",
+    required: true,
+    schema: User
+  })
+  @apiResponse(200, "create new user successfully", {
+    status_code: "200"
+  })
+  static async postUser(): number {}
+}
+
+```
+
+```javascript
+// @flow
+
+import { entityProperty } from "swagger-decorator";
+/**
+ * Description 用户实体类
+ */
+export default class User {
+  // 编号
+  @entityProperty({
+    type: "integer",
+    description: "user id, auto-generated",
+    required: false
+  })
+  id: string = 0;
+
+  // 姓名
+  @entityProperty({
+    type: "string",
+    description: "user name, 3~12 characters",
+    required: true
+  })
+  name: string = "name";
+
+  // 朋友列表
+  friends: [number] = [1];
+
+  // 属性
+  properties: {
+    address: string
+  } = {
+    address: "address"
+  };
+}
+
+```
+
+swagger-decorator 会自动根据其默认值来推测类型
+
+![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/6/1/WX20170617-172651.png)
+
+![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/6/1/WX20170617-172707.png)
+
 
 # Application Features
 

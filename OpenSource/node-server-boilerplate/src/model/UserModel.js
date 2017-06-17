@@ -2,13 +2,13 @@
  * Created by apple on 16/10/9.
  */
 
-import Model from './model';
+import Model from "./Model";
+import { db } from "./db/db";
 
 /**
  * @function 用户模型层
  */
 export default class UserModel extends Model {
-
   /**
    * @function 默认构造函数
    * @param context
@@ -22,16 +22,10 @@ export default class UserModel extends Model {
    * @param id
    */
   getUserInfoByID(id) {
-
-    return new Promise((resolve, reject)=> {
-
-      this.context.db.select((userInfo)=> {
+    return new Promise((resolve, reject) => {
+      db.select(userInfo => {
         resolve(userInfo);
-      })
-
-    })
-
+      });
+    });
   }
-
-
 }

@@ -1,6 +1,4 @@
-/**
- * Created by apple on 16/10/9.
- */
+// @flow
 
 /**
  * @function Service层,用于对Model层进行组装或者执行一些逻辑操作
