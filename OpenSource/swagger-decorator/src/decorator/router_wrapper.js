@@ -1,7 +1,11 @@
 // @flow
 const path = require("path");
 
-import {buildSwaggerJSON, innerAPIObject, swaggerJSON} from "../swagger/swagger";
+import {
+  buildSwaggerJSON,
+  innerAPIObject,
+  swaggerJSON
+} from "../swagger/swagger";
 import { swaggerHTML } from "../swagger/swagger.html";
 
 const methods = [
@@ -14,7 +18,6 @@ const methods = [
   "del",
   "all"
 ];
-
 
 /**
  * Description 将 router 对象的方法进行封装
@@ -75,6 +78,12 @@ export function wrappingKoaRouter(
       if (pathOrFunction && typeof pathOrFunction === "string") {
         originMethod.call(router, pathOrFunction, func);
       } else {
+
+        // 这里对于
+        if (!pathOrFunction.method || pathOrFunction.path) {
+          return;
+        }
+
         router[pathOrFunction.method].call(
           router,
           // 注意，这里仅自定义注解才添加前缀

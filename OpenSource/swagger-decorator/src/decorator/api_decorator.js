@@ -21,7 +21,7 @@ export function apiRequestMapping(method: string, path: string) {
     // 设置请求路径
     descriptor.value.path = path;
 
-    innerAPIObject[apiKey] || (innerAPIObject[apiKey] = {});
+    _initializeInnerAPIObject(target, key, descriptor);
 
     innerAPIObject[apiKey].requestMapping = {
       method,
@@ -45,7 +45,7 @@ export function apiDescription(
   return function(target, key, descriptor) {
     let apiKey = `${target.name}-${key}`;
 
-    innerAPIObject[apiKey] || (innerAPIObject[apiKey] = {});
+    _initializeInnerAPIObject(target, key, descriptor);
 
     innerAPIObject[apiKey].description = {
       description,
@@ -75,7 +75,7 @@ export function pathParameter({
   return function(target, key, descriptor) {
     let apiKey = `${target.name}-${key}`;
 
-    innerAPIObject[apiKey] || (innerAPIObject[apiKey] = {});
+    _initializeInnerAPIObject(target, key, descriptor);
 
     innerAPIObject[apiKey].pathParameter ||
       (innerAPIObject[apiKey].pathParameter = []);
@@ -117,7 +117,7 @@ export function queryParameter({
   return function(target, key, descriptor) {
     let apiKey = `${target.name}-${key}`;
 
-    innerAPIObject[apiKey] || (innerAPIObject[apiKey] = {});
+    _initializeInnerAPIObject(target, key, descriptor);
 
     innerAPIObject[apiKey].queryParameter ||
       (innerAPIObject[apiKey].queryParameter = []);
@@ -157,7 +157,7 @@ export function bodyParameter({
   return function(target, key, descriptor) {
     let apiKey = `${target.name}-${key}`;
 
-    innerAPIObject[apiKey] || (innerAPIObject[apiKey] = {});
+    _initializeInnerAPIObject(target, key, descriptor);
 
     innerAPIObject[apiKey].bodyParameter ||
       (innerAPIObject[apiKey].bodyParameter = []);
@@ -192,7 +192,7 @@ export function apiResponse(
   return function(target, key, descriptor) {
     let apiKey = `${target.name}-${key}`;
 
-    innerAPIObject[apiKey] || (innerAPIObject[apiKey] = {});
+    _initializeInnerAPIObject(target, key, descriptor);
 
     innerAPIObject[apiKey].responses || (innerAPIObject[apiKey].responses = []);
 
@@ -207,6 +207,19 @@ export function apiResponse(
 
     return descriptor;
   };
+}
+
+function _initializeInnerAPIObject(target, key, descriptor) {
+  let apiKey = `${target.name}-${key}`;
+
+  if (!innerAPIObject[apiKey]) {
+    innerAPIObject[apiKey] = {};
+    innerAPIObject[apiKey].instance = {
+      target,
+      key,
+      descriptor
+    };
+  }
 }
 
 /**

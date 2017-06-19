@@ -1,9 +1,10 @@
 {
   "name": "swagger-decorator",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Decorator for Koa2 and koa-router, Auto-Generate Swagger Docs",
   "main": "dist/index.js",
   "scripts": {
+    "start":"./node_modules/.bin/nodemon --exec 'babel-node' './demo/app.js' --watch './src' --watch './demo'",
     "prepublish": "npm run build",
     "build": "node_modules/babel-cli/bin/babel.js src --out-dir dist",
     "test": "jest"
@@ -50,7 +51,10 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-jest": "^20.0.3",
     "babel-preset-latest": "^6.24.1",
-    "babel-preset-stage-3": "^6.24.1"
+    "babel-preset-stage-3": "^6.24.1",
+    "koa": "^2.2.0",
+    "koa-router": "^7.2.1",
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
     "path-to-regexp": "^1.7.0"

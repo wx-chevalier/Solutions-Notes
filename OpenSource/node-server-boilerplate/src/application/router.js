@@ -2,20 +2,21 @@
  * Created by apple on 16/10/9.
  */
 
-import UserController from "./controller/UserController";
-import { serveStatic } from "./controller/StaticController";
+import UserController from "../business/controller/UserController";
+import { serveStatic } from "../business/controller/StaticController";
 import { wrappingKoaRouter } from "swagger-decorator";
 const Router = require("koa-router");
 
 const router = new Router();
 
+// 封装原有的 koa-router 对象
 wrappingKoaRouter(router, "localhost:8080", "/api", {
   title: "Node Server Boilerplate",
-  info: "0.0.1",
+  version: "0.0.1",
   description: "Koa2, koa-router,Webpack"
 });
 
-//定义默认的根路由
+// 定义默认的根路由
 router.get("/", async function(ctx, next) {
   ctx.body = { msg: "Node Server Boilerplate" };
 });

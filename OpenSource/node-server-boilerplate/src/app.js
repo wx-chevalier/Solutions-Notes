@@ -1,8 +1,8 @@
 // @flow
 
 const Koa = require("koa");
-import router from "./router";
-import { auth, header, logger } from "./middleware/middleware";
+import router from "./application/router";
+import { auth, header, logger } from "./application/middleware/middleware";
 const argv = require("minimist")(process.argv.slice(2));
 
 const app = new Koa();

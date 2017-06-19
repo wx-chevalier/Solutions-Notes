@@ -4062,9 +4062,9 @@ supports-color@^3.1.0:
   dependencies:
     has-flag "^1.0.0"
 
-swagger-decorator@0.0.2:
-  version "0.0.2"
-  resolved "http://registry.npm.taobao.org/swagger-decorator/download/swagger-decorator-0.0.2.tgz#d25f8e167b1daf7daa36dac06e0f3eb3c50902de"
+swagger-decorator@0.0.4:
+  version "0.0.4"
+  resolved "http://registry.npm.taobao.org/swagger-decorator/download/swagger-decorator-0.0.4.tgz#e91e5fa5d184770b8902dfa597b9310c8e1f22a9"
   dependencies:
     path-to-regexp "^1.7.0"
 
