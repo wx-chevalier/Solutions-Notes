@@ -7,8 +7,8 @@ import {
   bodyParameter,
   pathParameter,
   queryParameter
-} from "../src/decorator/api_decorator";
-import User from "./User";
+} from "../../src/decorator/api_decorator";
+import User from "../entity/User";
 
 export default class UserControllerDoc {
   @apiResponse(200, "get users successfully", [User])

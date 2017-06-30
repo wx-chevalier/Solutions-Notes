@@ -2,6 +2,7 @@
 > [Koa2 Boilerplate](https://parg.co/bvx)
 
 # swagger-decorator
+> - [OpenAPI Specification](http://swagger.io/specification/)
 
 - use yarn or npm to install:
 ```shell
@@ -134,6 +135,24 @@ export default class User {
 /swagger/api.json
 ```
 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/6/1/WX20170617-172707.png)
+
+# DataType
+
+| Common Name | [`type`](http://swagger.io/specification/#dataTypeType) | [`format`](http://swagger.io/specification/#dataTypeFormat) | Comments                                 |
+| ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| integer     | `integer`                                | `int32`                                  | signed 32 bits                           |
+| long        | `integer`                                | `int64`                                  | signed 64 bits                           |
+| float       | `number`                                 | `float`                                  |                                          |
+| double      | `number`                                 | `double`                                 |                                          |
+| string      | `string`                                 |                                          |                                          |
+| byte        | `string`                                 | `byte`                                   | base64 encoded characters                |
+| binary      | `string`                                 | `binary`                                 | any sequence of octets                   |
+| boolean     | `boolean`                                |                                          |                                          |
+| date        | `string`                                 | `date`                                   | As defined by `full-date` - [RFC3339](http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14) |
+| dateTime    | `string`                                 | `date-time`                              | As defined by `date-time` - [RFC3339](http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14) |
+| password    | `string`                                 | `password`                               | Used to hint UIs the input needs to be obscured. |
+
+
 
 # RoadMap
 

@@ -4,7 +4,7 @@ import {
   innerEntityObject,
   swaggerJSON
 } from "../swagger/swagger";
-import { inferenceType } from "./type";
+import { inferenceEntityProperties, inferenceType } from "../entity/type";
 
 /**
  * Description 设置请求路径
@@ -226,7 +226,7 @@ function _initializeInnerAPIObject(target, key, descriptor) {
  * Description 构建实例定义
  * @private
  */
-function _buildDefinitions(schema: any) {
+export function _buildDefinitions(schema: any) {
   swaggerJSON["definitions"] || (swaggerJSON["definitions"] = {});
 
   // 如果非类对象，直接返回
@@ -234,33 +234,60 @@ function _buildDefinitions(schema: any) {
     return;
   }
 
+  // 类型名
   let entityName = schema.name;
-
-  let entityInstance = new schema();
 
   // 如果已经构建过，则直接返回
   if (swaggerJSON["definitions"][entityName]) {
     return;
   }
 
-  let properties = Object.getOwnPropertyNames(entityInstance);
+  let properties = inferenceEntityProperties(schema, innerEntityObject);
 
-  // 遍历所有没有使用注解的属性
-  for (let property of properties) {
-    if (!(property in innerEntityObject[entityName].properties)) {
-      // 这里进行类型推测
+  // 重构 properties
+  for (let propertyName of Object.keys(properties)) {
+    let property = properties[propertyName];
 
-      innerEntityObject[entityName].properties[property] = {
-        description: property,
-        type: inferenceType(entityInstance[property])
-      };
+    // 截止到这里 type 在还是存放的原始用户输入的数据
+    if (Array.isArray(property.type)) {
+      let originType = property.type;
+
+      property.type = "array";
+
+      let realType = originType[0];
+
+      property.items = typeof realType === "function"
+        ? {
+            $ref: `#/definitions/${originType[0].name}`
+          }
+        : {
+            type: `${originType[0]}`
+          };
     }
+
+    // 如果为函数类型
+    if (typeof property.type === "function") {
+      let originType = property.type;
+
+      property.type = "object";
+      property["$ref"] = `#/definitions/${originType.name}`;
+    }
+
+    // 重定义默认属性
+    property["default"] = property.defaultValue;
+
+    // 移除不必要的属性
+    delete property["primaryKey"];
+    delete property["allowNull"];
+    delete property["defaultValue"];
   }
 
+  // 设置原属性的定义
   swaggerJSON["definitions"][entityName] = Object.assign(
     {},
     innerEntityObject[entityName],
     {
+      properties,
       type: "object"
     }
   );

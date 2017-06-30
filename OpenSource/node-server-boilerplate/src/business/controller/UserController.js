@@ -3,13 +3,13 @@
  */
 import UserModel from "../model/UserModel";
 import UserService from "../service/UserService";
-import {
-  apiDescription,
-  apiRequestMapping
-} from "swagger-decorator";
+import { apiDescription, apiRequestMapping } from "swagger-decorator";
 import User from "../../shared/entity/User";
 import UserControllerDoc from "./doc/UserControllerDoc";
 
+/**
+ * Description 用户信息相关的控制器
+ */
 export default class UserController extends UserControllerDoc {
   @apiRequestMapping("get", "/users")
   @apiDescription("get all users list")

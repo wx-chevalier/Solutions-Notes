@@ -2,8 +2,8 @@
  * Created by apple on 16/10/9.
  */
 
-import UserController from "./UserController";
-import {wrappingKoaRouter} from "../src/decorator/router_wrapper";
+import UserController from "./controller/UserController";
+import {wrappingKoaRouter} from "../src/transform/router";
 const Router = require("koa-router");
 
 const router = new Router();

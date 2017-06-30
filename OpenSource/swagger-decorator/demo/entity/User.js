@@ -1,6 +1,7 @@
 // @flow
 
-import { entityProperty } from "../src/decorator/entity_decorators";
+import { entityProperty } from "../../src/decorator/entity_decorators";
+import UserProperty from "./UserProperty";
 /**
  * Description 用户实体类
  */
@@ -22,12 +23,20 @@ export default class User {
   name: string = "name";
 
   // 朋友列表
-  friends: [number] = [1];
+  @entityProperty({
+    type: ["self"],
+    description: "user friends, which is instance of self",
+    required: false
+  })
+  friends: [User];
 
   // 属性
+  @entityProperty({
+    type: UserProperty,
+    description: "user property",
+    required: false
+  })
   properties: {
     address: string
-  } = {
-    address: "address"
-  };
+  } = new UserProperty();
 }

@@ -11,9 +11,10 @@ import {
 import {
   entityProperty as _entityProperty
 } from "./decorator/entity_decorators";
+import { wrappingKoaRouter as _wrappingKoaRouter } from "./transform/router";
 import {
-  wrappingKoaRouter as _wrappingKoaRouter
-} from "./decorator/router_wrapper";
+  generateSequelizeModel as _generateSequelizeModel
+} from "./transform/sequelize";
 
 export const apiRequestMapping = _apiRequestMapping;
 export const apiDescription = _apiDescription;
@@ -25,3 +26,5 @@ export const apiResponse = _apiResponse;
 export const entityProperty = _entityProperty;
 
 export const wrappingKoaRouter = _wrappingKoaRouter;
+
+export const generateSequelizeModel = _generateSequelizeModel;

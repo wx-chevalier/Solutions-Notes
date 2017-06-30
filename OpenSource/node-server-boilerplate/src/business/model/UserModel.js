@@ -1,6 +1,4 @@
-/**
- * Created by apple on 16/10/9.
- */
+// @flow
 
 import Model from "./Model";
 import { db } from "./db/db";
