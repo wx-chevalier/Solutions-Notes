@@ -1,9 +1,7 @@
 // @flow
 const pathToRegexp = require("path-to-regexp");
-
-export const innerAPIObject = {};
-
-export const innerEntityObject = {};
+import { innerAPIObject } from "../singleton";
+import { swaggerJSON } from "./template/swagger.json";
 
 // 标志是否编译完毕
 let hasBuilt = false;
@@ -46,11 +44,10 @@ export function buildSwaggerJSON() {
 
     apiDoc.parameters = [];
 
+    // 构建路径参数
     let pathParameter =
       value.pathParameter || innerAPIObject[parentKey].pathParameter;
 
-
-    // 构建路径参数
     if (pathParameter) {
       for (let param of pathParameter) {
         apiDoc.parameters.push({
@@ -60,10 +57,10 @@ export function buildSwaggerJSON() {
       }
     }
 
+    // 构建查询参数
     let queryParameter =
       value.queryParameter || innerAPIObject[parentKey].queryParameter;
 
-    // 构建查询参数
     if (queryParameter) {
       for (let param of queryParameter) {
         apiDoc.parameters.push({
@@ -78,10 +75,10 @@ export function buildSwaggerJSON() {
       }
     }
 
+    // 构建请求体参数
     let bodyParameter =
       value.bodyParameter || innerAPIObject[parentKey].bodyParameter;
 
-    // 构建请求体参数
     if (bodyParameter) {
       for (let param of bodyParameter) {
         apiDoc.parameters.push({
@@ -160,35 +157,3 @@ export function _convertParameterInPath(path: String) {
     return convertedPath;
   }
 }
-
-// 初始化 SwaggerJSON 配置
-export const swaggerJSON = JSON.parse(
-  `
-    {
-      "swagger": "2.0",
-      "info": {
-        "version": "1.0.0",
-        "title": "Swagger Petstore",
-        "description": "A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification",
-        "termsOfService": "http://swagger.io/terms/",
-        "contact": {
-          "name": "Swagger API Team"
-        },
-        "license": {
-          "name": "MIT"
-        }
-      },
-      "host": "petstore.swagger.io",
-      "basePath": "/api",
-      "schemes": [
-        "http"
-      ],
-      "consumes": [
-        "application/json"
-      ],
-      "produces": [
-        "application/json"
-      ]
-    }
-    `
-);

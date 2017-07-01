@@ -1,0 +1,33 @@
+// @flow
+
+// 初始化 SwaggerJSON 配置
+export const swaggerJSON = JSON.parse(
+  `
+    {
+      "swagger": "2.0",
+      "info": {
+        "version": "1.0.0",
+        "title": "Swagger Petstore",
+        "description": "A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+          "name": "Swagger API Team"
+        },
+        "license": {
+          "name": "MIT"
+        }
+      },
+      "host": "petstore.swagger.io",
+      "basePath": "/api",
+      "schemes": [
+        "http"
+      ],
+      "consumes": [
+        "application/json"
+      ],
+      "produces": [
+        "application/json"
+      ]
+    }
+    `
+);

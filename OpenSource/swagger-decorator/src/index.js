@@ -7,14 +7,19 @@ import {
   pathParameter as _pathParameter,
   queryParameter as _queryParameter,
   apiResponse as _apiResponse
-} from "./decorator/api_decorator";
-import {
-  entityProperty as _entityProperty
-} from "./decorator/entity_decorators";
-import { wrappingKoaRouter as _wrappingKoaRouter } from "./transform/router";
+} from "./swagger/decorator";
+import { entityProperty as _entityProperty } from "./entity/decorator";
+import { wrappingKoaRouter as _wrappingKoaRouter } from "./transform/koa_router";
 import {
   generateSequelizeModel as _generateSequelizeModel
 } from "./transform/sequelize";
+import {
+  innerAPIObject as _innerAPIObject,
+  innerEntityObject as _innerEntityObject
+} from "./singleton";
+
+export const innerAPIObject = _innerAPIObject;
+export const innerEntityObject = _innerEntityObject;
 
 export const apiRequestMapping = _apiRequestMapping;
 export const apiDescription = _apiDescription;

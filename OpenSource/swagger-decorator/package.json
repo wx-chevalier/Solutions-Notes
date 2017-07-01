@@ -19,40 +19,35 @@
     "Koa2",
     "Swagger"
   ],
-  "babel": {
-    "presets": [
-      "latest",
-      "stage-3",
-      "flow",
-      "jest"
-    ],
-    "plugins": [
-      "transform-runtime",
-      "transform-decorators-legacy",
-      "transform-class-properties"
-    ]
-  },
   "author": "wxyyxc1992",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wxyyxc1992/Web-Frontend-Introduction-And-Best-Practices/issues"
   },
   "homepage": "https://github.com/wxyyxc1992/Web-Frontend-Introduction-And-Best-Practices",
+  "babel": {
+    "extends": ".babelrc"
+  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-jest": "^20.0.3",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "chai": "^4.0.2",
+    "debug": "^2.6.8",
     "koa": "^2.2.0",
+    "koa-body": "^2.3.0",
     "koa-router": "^7.2.1",
     "nodemon": "^1.11.0"
   },

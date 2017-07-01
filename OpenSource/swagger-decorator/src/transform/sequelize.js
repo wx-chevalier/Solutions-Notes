@@ -2,14 +2,14 @@
 const debug = require("debug")("sequelize");
 const Sequelize = require("sequelize");
 
-import { innerEntityObject } from "../swagger/swagger";
 import { inferenceEntityProperties } from "../entity/type";
+import { innerEntityObject } from "../singleton";
 
 /**
  * Description 构造 Sequelize 模型
- * @param EntityClass
- * @param manuelDefinition
- * @param mappingCamelCaseToUnderScore
+ * @param EntityClass 实体类
+ * @param manuelDefinition 其他自定义的模型定义
+ * @param mappingCamelCaseToUnderScore: 是否需要将 CamelCase 映射到 UnderScore
  */
 export function generateSequelizeModel(
   EntityClass,
@@ -25,10 +25,12 @@ export function generateSequelizeModel(
 
   // 获取当前目标对象的属性
 
-  let sequelizeDefinition = {};
+  let sequelizeDefinition: {
+    [string]: any
+  } = {};
 
-  for (let property in properties) {
-    let sequelizeProperty;
+  for (let property in Object.keys(properties)) {
+    let sequelizeProperty: string;
 
     // 判断是否需要进行格式转换
     if (mappingCamelCaseToUnderScore) {
@@ -39,6 +41,7 @@ export function generateSequelizeModel(
       sequelizeProperty = property;
     }
 
+    // 为当前属性生成相关联的 Sequelize 说明
     sequelizeDefinition[sequelizeProperty] = Object.assign(
       {},
       {

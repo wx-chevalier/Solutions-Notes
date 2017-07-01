@@ -1,10 +1,6 @@
 // @flow
-import {
-  innerAPIObject,
-  innerEntityObject,
-  swaggerJSON
-} from "../swagger/swagger";
-import { inferenceEntityProperties, inferenceType } from "../entity/type";
+import { innerAPIObject } from "../singleton";
+import { buildDefinitions } from "./definitions";
 
 /**
  * Description 设置请求路径
@@ -93,7 +89,7 @@ export function pathParameter({
 }
 
 /**
- * Description
+ * Description 查询参数相关注释
  * @param name
  * @param description
  * @param required
@@ -171,7 +167,7 @@ export function bodyParameter({
     });
 
     // 根据传入的 Schema 构建定义
-    _buildDefinitions(schema);
+    buildDefinitions(schema);
 
     return descriptor;
   };
@@ -203,12 +199,19 @@ export function apiResponse(
     });
 
     // 根据传入的 Schema 构建定义
-    _buildDefinitions(schema);
+    buildDefinitions(schema);
 
     return descriptor;
   };
 }
 
+/**
+ * Description 初始化内部存放 API 信息的对象
+ * @param target
+ * @param key
+ * @param descriptor
+ * @private
+ */
 function _initializeInnerAPIObject(target, key, descriptor) {
   let apiKey = `${target.name}-${key}`;
 
@@ -220,75 +223,4 @@ function _initializeInnerAPIObject(target, key, descriptor) {
       descriptor
     };
   }
-}
-
-/**
- * Description 构建实例定义
- * @private
- */
-export function _buildDefinitions(schema: any) {
-  swaggerJSON["definitions"] || (swaggerJSON["definitions"] = {});
-
-  // 如果非类对象，直接返回
-  if (!schema || !(typeof schema === "function")) {
-    return;
-  }
-
-  // 类型名
-  let entityName = schema.name;
-
-  // 如果已经构建过，则直接返回
-  if (swaggerJSON["definitions"][entityName]) {
-    return;
-  }
-
-  let properties = inferenceEntityProperties(schema, innerEntityObject);
-
-  // 重构 properties
-  for (let propertyName of Object.keys(properties)) {
-    let property = properties[propertyName];
-
-    // 截止到这里 type 在还是存放的原始用户输入的数据
-    if (Array.isArray(property.type)) {
-      let originType = property.type;
-
-      property.type = "array";
-
-      let realType = originType[0];
-
-      property.items = typeof realType === "function"
-        ? {
-            $ref: `#/definitions/${originType[0].name}`
-          }
-        : {
-            type: `${originType[0]}`
-          };
-    }
-
-    // 如果为函数类型
-    if (typeof property.type === "function") {
-      let originType = property.type;
-
-      property.type = "object";
-      property["$ref"] = `#/definitions/${originType.name}`;
-    }
-
-    // 重定义默认属性
-    property["default"] = property.defaultValue;
-
-    // 移除不必要的属性
-    delete property["primaryKey"];
-    delete property["allowNull"];
-    delete property["defaultValue"];
-  }
-
-  // 设置原属性的定义
-  swaggerJSON["definitions"][entityName] = Object.assign(
-    {},
-    innerEntityObject[entityName],
-    {
-      properties,
-      type: "object"
-    }
-  );
 }

@@ -7,7 +7,7 @@ import {
   bodyParameter,
   pathParameter,
   queryParameter
-} from "../../src/decorator/api_decorator";
+} from "../../src/swagger/decorator";
 import User from "../entity/User";
 
 export default class UserControllerDoc {

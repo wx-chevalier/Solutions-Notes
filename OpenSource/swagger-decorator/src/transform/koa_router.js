@@ -1,12 +1,10 @@
 // @flow
 const path = require("path");
+const debug = require("debug")("koa_router");
 
-import {
-  buildSwaggerJSON,
-  innerAPIObject,
-  swaggerJSON
-} from "../swagger/swagger";
-import { swaggerHTML } from "../swagger/swagger.html";
+import { buildSwaggerJSON } from "../swagger/paths";
+import { swaggerJSON } from "../swagger/template/swagger.json";
+import { swaggerHTML } from "../swagger/template/swagger.html";
 
 const methods = [
   "get",
@@ -66,24 +64,34 @@ export function wrappingKoaRouter(
     methods.shift();
     methods.shift();
 
+    // 遍历该类中的所有方法
     for (let method of methods) {
+      // 添加权限校验
+      router.use(
+        basePath + staticClass[method].path,
+        validate(staticClass[method])
+      );
+
+      // 使用该类中的所有方法
       router.all(staticClass[method]);
     }
   };
 
+  // Hook router 中的方法
   methods.forEach((method: string) => {
     const originMethod = router[method];
 
     router[method] = function(pathOrFunction: string, func: Function) {
+      // 如果 pathOrFunction 为字符串，则表示为正常调用
       if (pathOrFunction && typeof pathOrFunction === "string") {
         originMethod.call(router, pathOrFunction, func);
       } else {
-
-        // 这里对于
-        if (!pathOrFunction.method || pathOrFunction.path) {
+        // 这里对于路径函数进行判断
+        if (!pathOrFunction.method || !pathOrFunction.path) {
           return;
         }
 
+        // 这里执行对于路由对象的注册
         router[pathOrFunction.method].call(
           router,
           // 注意，这里仅自定义注解才添加前缀
@@ -93,4 +101,23 @@ export function wrappingKoaRouter(
       }
     };
   });
+}
+
+/**
+ * Description 从请求路径、请求体中剥离出参数并且进行校验
+ * - params 路径参数 ctx.params
+ * - query 查询参数 ctx.query
+ * - body ctx.request.body 使用 koa-body 中间件（https://github.com/dlau/koa-body）
+ * @param decoratedFunction 传入的经过注解的函数
+ */
+function validate(decoratedFunction: Function): Function {
+  return async (ctx, next) => {
+    debug(ctx.query);
+    debug(ctx.params);
+    debug(ctx.request.body);
+
+    // 进行路径参数校验
+
+    await next();
+  };
 }

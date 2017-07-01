@@ -1,5 +1,5 @@
 // @flow
-import {entityProperty} from "../../src/decorator/entity_decorators";
+import {entityProperty} from "../../src/entity/decorator";
 export default class UserProperty {
   // 属性
   @entityProperty({
