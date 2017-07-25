@@ -1,13 +1,22 @@
-/**
- * Created by apple on 16/10/9.
- */
+// @flow
 
 import UserController from "../business/controller/UserController";
 import { serveStatic } from "../business/controller/StaticController";
 import { wrappingKoaRouter } from "swagger-decorator";
+import { graphqlKoa, graphiqlKoa } from 'apollo-server-koa';
+import {graphqlSchema} from "../business/graphql/schema";
+const koaBody = require('koa-body');
+
 const Router = require("koa-router");
 
 const router = new Router();
+
+// koaBody is needed just for POST.
+router.post('/graphql', koaBody(), graphqlKoa({ schema: graphqlSchema }));
+router.get('/graphql', graphqlKoa({ schema: graphqlSchema }));
+
+router.post('/graphiql', graphiqlKoa({ endpointURL: '/graphql' }));
+router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql' }));
 
 // 封装原有的 koa-router 对象
 wrappingKoaRouter(router, "localhost:8080", "/api", {

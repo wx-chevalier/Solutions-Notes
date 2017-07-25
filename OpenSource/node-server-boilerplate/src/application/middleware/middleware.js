@@ -11,7 +11,7 @@ export function header(app) {
     const start = new Date();
     await next();
     const ms = new Date() - start;
-    ctx.set("X-Response-Time", ms + "ms");
+    ctx.set('X-Response-Time', ms + 'ms');
   });
 }
 
@@ -30,16 +30,17 @@ export function auth(
     const url = ctx.request.url;
 
     //判断是否为根路径或者静态资源路径
-    if (
-      url === "/" ||
-      url.indexOf("swagger") > -1 ||
-      url.indexOf("static") > -1 ||
-      url.indexOf("user") > -1
-    ) {
-      await next();
-    } else {
-      ctx.redirect("/");
-    }
+    // Todo 这里暂时移除了自定义的
+    // if (
+    //   url === "/" ||
+    //   url.indexOf("swagger") > -1 ||
+    //   url.indexOf("static") > -1 ||
+    //   url.indexOf("user") > -1
+    // ) {
+    await next();
+    // } else {
+    //   ctx.redirect("/");
+    // }
   });
 }
 
@@ -52,6 +53,6 @@ export function logger(app) {
     const start = new Date();
     await next();
     const ms = new Date() - start;
-    console.log("%s %s - %s", ctx.method, ctx.url, ms);
+    console.log('%s %s - %s', ctx.method, ctx.url, ms);
   });
 }

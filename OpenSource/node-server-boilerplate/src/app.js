@@ -1,11 +1,16 @@
 // @flow
 
 const Koa = require("koa");
-import router from "./application/router";
-import { auth, header, logger } from "./application/middleware/middleware";
+const cors = require('kcors');
 const argv = require("minimist")(process.argv.slice(2));
 
+import router from "./application/router";
+import { auth, header, logger } from "./application/middleware/middleware";
+
 const app = new Koa();
+
+// 添加 CORS 支持
+app.use(cors());
 
 //设置请求与响应的通用头
 header(app);

@@ -1,6 +1,5 @@
-/**
- * Created by apple on 16/7/27.
- */
+'use strict';
+
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');

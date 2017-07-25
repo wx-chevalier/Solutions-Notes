@@ -20,7 +20,7 @@
     "Koa"
   ],
   "eslintConfig": {
-    "extends": "./dev-config/eslint.js"
+    "extends": "./dev-config/.eslintrc.js"
   },
   "babel": {
     "presets": [
@@ -62,13 +62,21 @@
     "webpack": "^3.0.0"
   },
   "dependencies": {
+    "apollo-server-koa": "^1.0.4",
+    "graphql": "^0.10.5",
+    "graphql-tools": "^1.1.0",
+    "kcors": "^2.2.1",
     "koa": "^2.3.0",
+    "koa-body": "^2.3.0",
     "koa-router": "^7.2.1",
     "koa-router-static": "^1.2.0",
     "koa-send": "^4.1.0",
+    "lodash": "^4.17.4",
     "minimist": "^1.2.0",
+    "mysql2": "^1.3.5",
     "path-to-regexp": "^1.7.0",
-    "swagger-decorator": "0.0.4",
+    "sequelize": "^4.2.1",
+    "swagger-decorator": "^0.0.22",
     "winston": "^2.3.1"
   }
 }
