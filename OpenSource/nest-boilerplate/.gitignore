@@ -18,4 +18,5 @@ npm-debug.log
 /.nyc_output
 
 # dist
-/dist
+dist
+src/service/github/private.ts
