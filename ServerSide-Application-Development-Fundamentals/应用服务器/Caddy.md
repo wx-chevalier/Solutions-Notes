@@ -1,7 +1,3 @@
-
-> [清新脱俗的 Web 服务器 Caddy](https://zhuanlan.zhihu.com/p/25850060) 从属于笔者的[服务端应用程序开发与系统架构](http://6me.us/7X1nDJ)，我司之前一直使用 Nginx，不过其配置包括一些特性支持相较于 Caddy 略显复杂，可以参考笔者的  [Nginx 基本配置备忘](https://zhuanlan.zhihu.com/p/24524057)。
-
-
 # 清新脱俗的 Web 服务器 Caddy
 
 
@@ -345,11 +341,11 @@ jwt {
 该中间件会拒绝所有 `role: member` 的访问，除了用户名为 `someone` 的用户。而另一个 `role: admin` 或者 `role: foo` 的用户则可以正常访问。我们可以通过三种方式来提交令牌：
 
 
-| Method               | Format                        |
+| Method               | Format                        |
 | -------------------- | ----------------------------- |
 | Authorization Header | Authorization: Bearer *token* |
-| Cookie               | "jwt_token": *token*          |
-| URL Query Parameter  | /protected?token=*token*      |
+| Cookie               | "jwt_token": *token*          |
+| URL Query Parameter  | /protected?token=*token*      |
 
 
 ## 跨域请求
