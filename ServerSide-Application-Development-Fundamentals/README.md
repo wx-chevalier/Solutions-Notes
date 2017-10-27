@@ -24,9 +24,6 @@
 
 # 目录
 
-
-# 目录
-
 - [GraphQL](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/ServerSide-Application-Development-Fundamentals/GraphQL/Index.md) 
     - [介绍与对比](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/blob/master/ServerSide-Application-Development-Fundamentals/GraphQL/%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%AF%B9%E6%AF%94.md):  
 - [HTTP](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/ServerSide-Application-Development-Fundamentals/HTTP/Index.md) 
