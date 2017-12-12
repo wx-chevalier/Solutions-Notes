@@ -454,5 +454,5 @@ txManager.commit(status);
 # Distributed Transaction
 
 > 
-- [分布式事务笔记 ](http://www.yangguo.info/2016/05/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AC%94%E8%AE%B0/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io) 
+- [分布式事务笔记 ](http://www.yangguo.info/2016/05/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AC%94%E8%AE%B0/) 
 

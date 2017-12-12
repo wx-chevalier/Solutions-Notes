@@ -1,5 +1,5 @@
 ﻿.wiz-todo, .wiz-todo-img {width: 16px; height: 16px; cursor: default; padding: 0 10px 0 2px; vertical-align: -10%;-webkit-user-select: none;} .wiz-todo-label { display: inline-block; padding-top: 7px; padding-bottom: 6px; line-height: 1.5;} .wiz-todo-label-checked { /*text-decoration: line-through;*/ color: #666;} .wiz-todo-label-unchecked {text-decoration: initial;} .wiz-todo-completed-info {padding-left: 44px; display: inline-block; } .wiz-todo-avatar { width:20px; height: 20px; vertical-align: -20%; margin-right:10px; border-radius: 2px;} .wiz-todo-account, .wiz-todo-dt { color: #666; }
-[TOC]
+ 
 # Introduction
 
 ## Reference
@@ -11,7 +11,7 @@
 - [another-tutorial-about-java-web](https://github.com/someus/another-tutorial-about-java-web) 
 ### Practice & Resources
 
-- [推荐几个自己写的范例项目](http://wosyingjun.iteye.com/blog/2312553?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io):基于Spring MVC的最佳实践
+- [推荐几个自己写的范例项目](http://wosyingjun.iteye.com/blog/2312553):基于Spring MVC的最佳实践
 # Quick Start
 
 ## Spring Boot

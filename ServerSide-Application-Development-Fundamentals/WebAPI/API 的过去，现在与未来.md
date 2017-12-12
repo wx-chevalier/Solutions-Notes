@@ -6,6 +6,8 @@
 
 随着微服务架构的流行，貌似我们已经聊了很多关于现在的 API 的设计与规范，不过能够畅想的未来的 API 又是怎样的模式呢？首先，我们需要回顾下 API 的过去与现在。
 
+在过去的几十年里，Web 开发经历了剧烈的变革 The best practice for web development has changed significantly over the last few years. While just a few years ago most websites used to be rendered on the server and have only relatively little client-side logic, the opposite is true of new apps today. Single-page applications and clients that implement complex logic are the new reality. In a Ruby app, your model, your view, and your controller all live on the server. Getting data from your models to your view is not an issue, because almost all the data is right there on the server, where the page is rendered. In modern javascript apps, that is no longer the case: Your controllers and your views now live mostly on the client, but most of the data is still on the server. With all but the most custom RESTful APIs, fetching data from the server is both costly and complicated: the latency is high, and chances are you will either fetch more data than you need or make more roundtrips you would like — or both! That’s where GraphQL and Falcor come to the rescue.
+
 # 过去
 
 ## 土耳其机器人：The Turk

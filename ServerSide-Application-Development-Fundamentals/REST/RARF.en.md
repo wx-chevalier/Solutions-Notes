@@ -1,6 +1,6 @@
 ## Reactive Abstract Resource Flow
 
-[TOC]
+ 
 
 # Introduction
 
