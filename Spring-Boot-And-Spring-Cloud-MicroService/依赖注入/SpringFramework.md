@@ -9,7 +9,7 @@
 
 - [Spring MVC 4.2.4.RELEASE 中文文档 ](https://www.gitbook.com/book/linesh/spring-mvc-documentation-linesh-translation/details)
 
-- [Spring知识点提炼](http://www.importnew.com/19933.html?utm_source=tuicool&utm_medium=referral)
+- [Spring知识点提炼](http://www.importnew.com/19933.html)
 
 # Bean
 

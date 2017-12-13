@@ -4,5 +4,5 @@
 # Scheduled Tasks
 
 
-- [Spring Boot中使用@Scheduled创建定时任务](http://blog.didispace.com/springbootscheduled/?utm_source=tuicool&utm_medium=referral)
+- [Spring Boot中使用@Scheduled创建定时任务](http://blog.didispace.com/springbootscheduled/)
 
