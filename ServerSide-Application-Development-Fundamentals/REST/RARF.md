@@ -136,9 +136,9 @@ RESTful 中也有`all is resource`的概念，但是 RESTful 强调的是像超�
 
 在讲资源的定义之前，首先看看关系型数据库中经典的设计范式：
 
-> * 第一范式 ( 确保每列保持原子性 )
-> * 第二范式 (2NF) 属性完全依赖于主键 ( 消除部分子函数依赖 )
-> * 第三范式 (3NF) 属性不依赖于其它非主属性[消除传递依赖]
+>第一范式 ( 确保每列保持原子性 )
+>第二范式 (2NF) 属性完全依赖于主键 ( 消除部分子函数依赖 )
+>第三范式 (3NF) 属性不依赖于其它非主属性[消除传递依赖]
 
 对于从具体的业务逻辑抽象出相互分割并且关联的资源是 RARF 的基础，在笔者构思 RARF 的基本原则时，一开始是想走强制严格化道路，即严格命名，具体而言：
 
@@ -229,9 +229,9 @@ DeferredSQLExecutor(DeferredSQLForQueryGoods,DeferredSQLForQueryGoodsProvider)
 
 缩了那么多，最后，我还是陈述下我在设计 RARF 一些莫名其妙的东西时候的愿景吧，其实看到现在机智的同学，应该能够感觉到，这个 RARF 和 MicroService 在很多设计理念上还是很类似的，这里先盗用下 MicroService 的 Benefits：
 
-> * Microservices do not require teams to rewrite the whole application if they want to add new features.
-> * Smaller codebases make maintenance easier and faster. This saves a lot of development effort and time, therefore increases overall productivity.
-> * The parts of an application can be scaled separately and are easier to deploy.
+>Microservices do not require teams to rewrite the whole application if they want to add new features.
+>Smaller codebases make maintenance easier and faster. This saves a lot of development effort and time, therefore increases overall productivity.
+>The parts of an application can be scaled separately and are easier to deploy.
 
 那么改造一下，RARF 的愿景就是：
 

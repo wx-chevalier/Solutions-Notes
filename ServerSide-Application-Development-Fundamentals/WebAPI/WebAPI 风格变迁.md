@@ -56,7 +56,7 @@ CAP 理论是分布式系统构建中的基础理论之一，其中的 C(Consist
 
 ## Backends For Frontends: 一切为了前端
 
-> * [Pattern: Backends For Frontends](http://samnewman.io/patterns/architectural/bff/)
+>[Pattern: Backends For Frontends](http://samnewman.io/patterns/architectural/bff/)
 
 ### General-Purpose API Backend: 统一的后端接口
 
@@ -175,9 +175,9 @@ RESTful 中也有`all is resource`的概念，但是 RESTful 强调的是像超�
 
 缩了那么多，最后，我还是陈述下我在设计 RARF 一些莫名其妙的东西时候的愿景吧，其实看到现在机智的同学，应该能够感觉到，这个 RARF 和 MicroService 在很多设计理念上还是很类似的，这里先盗用下 MicroService 的 Benefits：
 
-> * Microservices do not require teams to rewrite the whole application if they want to add new features.
-> * Smaller codebases make maintenance easier and faster. This saves a lot of development effort and time, therefore increases overall productivity.
-> * The parts of an application can be scaled separately and are easier to deploy.
+>Microservices do not require teams to rewrite the whole application if they want to add new features.
+>Smaller codebases make maintenance easier and faster. This saves a lot of development effort and time, therefore increases overall productivity.
+>The parts of an application can be scaled separately and are easier to deploy.
 
 那么改造一下，RARF 的愿景就是：
 
