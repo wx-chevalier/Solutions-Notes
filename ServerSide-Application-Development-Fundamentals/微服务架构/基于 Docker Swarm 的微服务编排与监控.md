@@ -111,7 +111,7 @@ OK
 
 使用 [faas](https://github.com/alexellis/faas) 工具
 
-```
+```sh
 # 抓取代码库
 git clone https://github.com/alexellis/faas
 
