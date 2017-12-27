@@ -1,6 +1,3 @@
-
-
-
 ![](https://cdn-images-1.medium.com/max/2000/1*xhBXGvGwX3Y-wv20rQIrng.jpeg)
 
 # DevOps 与 SRE 实战
@@ -12,7 +9,6 @@ DevOps 是一种使持续交付成为可能的理念，关注于所有人共同�
 ## 参考
 
 ## 版权
-
 
 ![](https://parg.co/bDY) ![](https://parg.co/bDm)
 

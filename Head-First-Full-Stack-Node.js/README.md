@@ -1,21 +1,12 @@
-
-
-
 # 深入浅出 Node.js 全栈架构
+
 `Copyright © 2017 王下邀月熊`
 
-
 # 前言
-
-
-
-
-
 
 ## 参考
 
 ## 版权
-
 
 ![](https://parg.co/bDY) ![](https://parg.co/bDm)
 
