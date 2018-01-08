@@ -4,8 +4,6 @@
 
 # HTTP
 
-## Reference
-
 # HTTP
 
 HTTP （ HyperTextTransferProtocol ）是超文本传输协议的缩写，它用于传送 WWW 方式的数据，关于 HTTP 协议的详细内容请参考 RFC2616。HTTP 协议采用了请求 / 响应模型。客户端向服务器发送一个请求，请求头包含请求的方法、URI 、协议版本、以及包含请求修饰符、客户 信息和内容的类似于 MIME 的消息结构。服务器以一个状态行作为响应，相应的内容包括消息协议的版本，成功或者错误编码加上包含服务器信息、实体元信息以及可能的实体内容。 HTTP 是一种无状态性的协议。这是因为此种协议不要求浏览器在每次请求中标明它自己的身份，并且浏览器以及服务器之间并没有保持一个持久性的连接用于多个页面之间的访问。当一个用户访问一个站点的时候，用户的浏览器发送一个 HTTP 请求到服务器，服务器返回给浏览器一个 HTTP 响应。其实很简单的一个概念，客户端一个请求，服务器端一个回复，这就是整个基于 HTTP 协议的通讯过程。
@@ -33,7 +31,7 @@ Host: example.org
 
 Apache 的用户常用 DocumentRoot 这个命令来设置这个文档根路径。如果请求的 url 是 HTTP://example.org/path/to/script.php, 那么请求的路径就是 /path/to/script.php。假如 document root 被定义为 usr/lcoal/apache/htdocs 的话 , 整个请求的资源路径就是 /usr/local/apache/htdocs/path/to/script.php。
 
-第二行描述的是 HTTP 头部的语法。在这个例子中的头部是 Host, 它标识了浏览器希望获取资源的域名主机。还有很多其它的请求头部可以包含在 HTTP 请求中，比如 user-Agent 头部，在 php 可以通过 $_SERVER['HTTP_USER_AGENT']获取请求中所携带的这个头部信息。
+第二行描述的是 HTTP 头部的语法。在这个例子中的头部是 Host, 它标识了浏览器希望获取资源的域名主机。还有很多其它的请求头部可以包含在 HTTP 请求中，比如 user-Agent 头部，在 php 可以通过 $\_SERVER['HTTP_USER_AGENT']获取请求中所携带的这个头部信息。
 
 # HTTP 前世今生
 
@@ -213,7 +211,7 @@ Accept-Encoding: gzip, deflate
 
 # HTTP Lint
 
->[Lint for HTTP:HTTPolice](HTTP://www.tuicool.com/articles/yuaeyuj)
+> [Lint for HTTP:HTTPolice](HTTP://www.tuicool.com/articles/yuaeyuj)
 
 HTTPolice 是一个简单的基于命令行的对于 HTTP 请求格式规范进行检测的工具，可以直接使用`pip`命令进行安装 :
 
