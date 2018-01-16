@@ -92,7 +92,7 @@ Content-Type: application/json;charset=utf-8
 {"title":"test","sub":[1,2,3]}
 ```
 
-这种方案，可以方便的提交复杂的结构化数据，特别适合 RESTful 的接口。各大抓包工具如 Chrome 自带的开发者工具、Firebug 、 Fiddler，都会以树形结构展示 JSON 数据，非常友好。但也有些服务端语言还没有支持这种方式，例如 php 就无法通过 $_POST 对象从上面的请求中获得内容。这时候，需要自己动手处理下：在请求头中 Content-Type 为 application/json 时，从 `php://input` 里获得原始输入流，再 `json_decode` 成对象。一些 php 框架已经开始这么做了。
+这种方案，可以方便的提交复杂的结构化数据，特别适合 RESTful 的接口。各大抓包工具如 Chrome 自带的开发者工具、Firebug 、 Fiddler，都会以树形结构展示 JSON 数据，非常友好。但也有些服务端语言还没有支持这种方式，例如 php 就无法通过 $\_POST 对象从上面的请求中获得内容。这时候，需要自己动手处理下：在请求头中 Content-Type 为 application/json 时，从 `php://input` 里获得原始输入流，再 `json_decode` 成对象。一些 php 框架已经开始这么做了。
 
 当然 AngularJS 也可以配置为使用 x-www-form-urlencoded 方式提交数据。如有需要，可以参考[这篇文章](http://victorblog.com/2012/12/20/make-angularjs-http-service-behave-like-jquery-ajax/)。
 
@@ -123,7 +123,7 @@ XML-RPC 协议简单、功能够用，各种语言的实现都有。它的使用
 
 > POST http://www.example.com HTTP/1.1 Content-Type: application/x-www-form-urlencoded;charset=utf-8 title=test&sub%5B%5D=1&sub%5B%5D=2&sub%5B%5D=3
 
-首先，Content-Type 被指定为 application/x-www-form-urlencoded；这里的格式要求就是 URL 中 Query String 的格式要求：多个键值对之间用 & 连接，键与值之前用 = 连接，且只能用 ASCII 字符，非 ASCII 字符需使用 UrlEncode 编码。大部分服务端语言都对这种方式有很好的支持。例如 PHP 中，$_POST['title'] 可以获取到 title 的值，$_POST['sub'] 可以得到 sub 数组。 ![](http://upload-images.jianshu.io/upload_images/1724103-18847d9a34c50bdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+首先，Content-Type 被指定为 application/x-www-form-urlencoded；这里的格式要求就是 URL 中 Query String 的格式要求：多个键值对之间用 & 连接，键与值之前用 = 连接，且只能用 ASCII 字符，非 ASCII 字符需使用 UrlEncode 编码。大部分服务端语言都对这种方式有很好的支持。例如 PHP 中，$\_POST['title'] 可以获取到 title 的值，$\_POST['sub'] 可以得到 sub 数组。 ![](http://upload-images.jianshu.io/upload_images/1724103-18847d9a34c50bdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 文件分割
 
@@ -161,7 +161,7 @@ But if you have to send non-ASCII text or large binary data, the form-data is fo
 
 网页中的表单使用 POST 方法提交时，数据内容的类型是 application/x-www-form-urlencoded，这种类型会：
 
-1. 字符 "a"-"z"，"A"-"Z" ， "0"-"9"，"." ， "-"，"\*" ，和 "_" 都不会被编码 ;
+1. 字符 "a"-"z"，"A"-"Z" ， "0"-"9"，"." ， "-"，"\*" ，和 "\_" 都不会被编码 ;
 
 2. 将空格转换为加号 (+)
 

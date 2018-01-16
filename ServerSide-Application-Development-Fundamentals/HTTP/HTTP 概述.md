@@ -2,7 +2,7 @@
 
 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/12/3/http.jpg)
 
-# HTTP
+# HTTP 概述: HTTP/1.1 与 HTTP/2
 
 # HTTP
 
