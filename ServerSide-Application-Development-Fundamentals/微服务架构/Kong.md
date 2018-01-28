@@ -42,10 +42,10 @@ $ curl -i http://localhost:8001/
 
 # 使用 Konga 作为界面化管理
 # Admin login: admin | password: adminadminadmin
-$ docker run -p 1337:1337
-             --link kong:kong
-             --name konga
-             -e "NODE_ENV=production" \ // or "development" | defaults to 'development'
+$ docker run -p 1337:1337 \
+             --link kong:kong \
+             --name konga \
+             -e "NODE_ENV=production" \
              pantsel/konga
 ```
 
