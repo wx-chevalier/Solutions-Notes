@@ -1,8 +1,8 @@
 [![返回目录](https://parg.co/Udx)](https://parg.co/UdT)
 
-# 基于 Docker Swarm 的（简单）微服务编排与治理
-
 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/8/1/Microservices.png)
+
+# 基于 Docker Swarm 的（简单）微服务编排与治理
 
 本文更多着眼于应用层的微服务架构，对于存储层/虚拟化层则另文讨论目前正在着手进行 K8s  迁移
 
@@ -34,7 +34,7 @@
 
 ## 状态（分布式数据存储）服务
 
-```
+```sh
 #!/bin/bash
 
 
@@ -72,12 +72,8 @@ docker run -it --rm --net $network ruby sh -c "\
 ./redis.sh
 ```
 
-```
+```sh
 docker run -it --rm --net mynet redis:3.2.6 redis-cli -c -h redis -p 6379
-
-
-
-
 
 10.0.0.7:6379> set mykey1 1
 OK
