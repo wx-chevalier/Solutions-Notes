@@ -24,6 +24,10 @@
 * 开发人员尽量避免直接登录服务器
 * 运维配置、脚本同样入库管理
 
+Next Step: Try K8s &Terraform & Rancher
+
+![](https://camo.githubusercontent.com/36bc60e2ccb6ae78a757a5c5a7214a23514b20ff/68747470733a2f2f706172672e636f2f555a73)
+
 # 环境配置
 
 也可以使用 Ansible 等自动化工具进行批量配置
