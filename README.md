@@ -1,4 +1,4 @@
-# 服务端应用程序开发与系统架构
+# 微服务架构与实践
 
 [IT 技术图谱与知识架构-服务端应用程序开发与系统架构](https://parg.co/U0A)中概括的领域相关技术内容
 
@@ -8,15 +8,15 @@
 
 ✨ 系列文章/随笔
 
-* [服务端应用程序开发基础](./ServerSide-Application-Development-Fundamentals)
+* [服务端应用程序开发基础](./Fundamentals)
 
-* [深入浅出 Node.js 全栈架构](./Head-First-Full-Stack-Node.js)
+* [深入浅出 Node.js 全栈架构](./Node)
 
-* [Spring Boot 5 与 Spring Cloud 微服务实践](./Spring-Boot-And-Spring-Cloud-MicroService)
+* [Spring Boot 5 与 Spring Cloud 微服务实践](./Spring)
 
-* [DevOps 与 SRE 实战](./DevOps-And-SRE-In-Action)
+* [DevOps 与 SRE 实战](./DevOps)
 
-* [信息安全与渗透测试必知必会](./Essentials-Of-InfoSecurity-And-PenTest)
+* [信息安全与渗透测试必知必会](./InfoSecurity)
 
 ---
 
