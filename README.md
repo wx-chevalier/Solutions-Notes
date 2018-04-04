@@ -20,6 +20,8 @@
 
 ---
 
+DevOps 是一种使持续交付成为可能的理念，关注于所有人共同协作以改进开发效率方面的衡量（比如生产力），同时增加稳定性并降低平均故障修复时间。
+
 ✨ 开源项目
 
 * [node-server-boilerplate](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/tree/master/OpenSource/node-server-boilerplate): 基于 Koa2 的 Node 服务端应用开发框架模板
