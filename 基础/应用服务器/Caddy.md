@@ -8,7 +8,7 @@
 $ caddy -conf="/path/to/Caddyfile"
 ```
 
-下文我们会详细介绍 Caddyfile 的配置语法，Caddy 的一大特性在于其使用所谓指令（Directives）来描述功能进行配置，相较于 Nginx 或者 Apache 其配置会简化很多。如果我们希望支持多配置文件，可以使用`import`指令：
+下文我们会详细介绍 Caddyfile 的配置语法，Caddy 的一大特性在于其使用所谓指令(Directives)来描述功能进行配置，相较于 Nginx 或者 Apache 其配置会简化很多。如果我们希望支持多配置文件，可以使用`import`指令：
 
 ```
 import config/common.conf

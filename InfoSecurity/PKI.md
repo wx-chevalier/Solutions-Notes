@@ -1,4 +1,4 @@
-PKI （ Public Key Infrastructure ）指的是公钥基础设施。 CA （ Certificate Authority ）指的是认证中心。 PKI 从技术上解决了网络通信安全的种种障碍。 CA 从运营、管理、规范、法律、人员等多个角度来解决了网络信任问题。由此，人们统称为 “ PKI/CA ”。从总体构架来看， PKI/CA 主要由最终用户、认证中心和注册机构来组成。
+PKI ( Public Key Infrastructure )指的是公钥基础设施。 CA ( Certificate Authority )指的是认证中心。 PKI 从技术上解决了网络通信安全的种种障碍。 CA 从运营、管理、规范、法律、人员等多个角度来解决了网络信任问题。由此，人们统称为 “ PKI/CA ”。从总体构架来看， PKI/CA 主要由最终用户、认证中心和注册机构来组成。
 
 KCS 全称是 Public-Key Cryptography Standards ，是由 RSA 实验室与其它安全系统开发商为促进公钥密码的发展而制订的一系列标准，PKCS 目前共发布过 15 个标准。 常用的有： PKCS#7 Cryptographic Message Syntax Standard PKCS#10 Certification Request Standard PKCS#12 Personal Information Exchange Syntax Standard
 

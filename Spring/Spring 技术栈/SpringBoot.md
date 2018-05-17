@@ -388,7 +388,7 @@ public class XClacksOverhead implements Filter {
 ```
 # 日志默认情况下，Spring Boot的日志是输出到控制台的，不写入任何日志文件。
 
-要让Spring Boot输出日志文件，最简单的方式是在application.properties配置文件中配置logging.path键值，如下：（日志文件为spring.log）
+要让Spring Boot输出日志文件，最简单的方式是在application.properties配置文件中配置logging.path键值，如下：(日志文件为spring.log)
 
 logging.path=/var/log
 

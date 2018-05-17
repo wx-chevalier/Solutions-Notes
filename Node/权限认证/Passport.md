@@ -6,9 +6,9 @@
 
 登陆认证，是用户在访问应用或者网站时，通过是先注册的用户名和密码，告诉应用使用者的身份，从而获得访问权限的一种操作。
 
-几乎所有的应用都需要登陆认证！ Passport.js 是 Node.js 中的一个做登录验证的中间件，极其灵活和模块化，并且可与 Express、Sails 等 Web 框架无缝集成。Passport 功能单一，即只能做登录验证，但非常强大，支持本地账号验证和第三方账号登录验证（OAuth 和 OpenID 等），支持大多数 Web 网站和服务。
+几乎所有的应用都需要登陆认证！ Passport.js 是 Node.js 中的一个做登录验证的中间件，极其灵活和模块化，并且可与 Express、Sails 等 Web 框架无缝集成。Passport 功能单一，即只能做登录验证，但非常强大，支持本地账号验证和第三方账号登录验证(OAuth 和 OpenID 等)，支持大多数 Web 网站和服务。
 
-策略（Strategy ）是 passport 中最重要的概念。passport 模块本身不能做认证，所有的认证方法都以策略模式封装为插件，需要某种认证时将其添加到 package.json 即可。策略模式是一种设计模式，它将算法和对象分离开来，通过加载不同的算法来实现不同的行为，适用于相关类的成员相同但行为不同的场景，比如在 passport 中，认证所需的字段都是用户名、邮箱、密码等，但认证方法是不同的。依据策略模式，passport 支持了众多的验证方案，包括 Basic、Digest 、 OAuth（1.0 ，和 2.0 的三种实现）、 JWT 等。
+策略(Strategy )是 passport 中最重要的概念。passport 模块本身不能做认证，所有的认证方法都以策略模式封装为插件，需要某种认证时将其添加到 package.json 即可。策略模式是一种设计模式，它将算法和对象分离开来，通过加载不同的算法来实现不同的行为，适用于相关类的成员相同但行为不同的场景，比如在 passport 中，认证所需的字段都是用户名、邮箱、密码等，但认证方法是不同的。依据策略模式，passport 支持了众多的验证方案，包括 Basic、Digest 、 OAuth(1.0 ，和 2.0 的三种实现)、 JWT 等。
 
 # 策略配置
 
@@ -342,7 +342,7 @@ app.use(passport.session());
 
 注意上面的代码里有个 req.logIn()，它不是 http 模块原生的方法，也不是 express 中的方法，而是 passport 加上的，passport 扩展了 HTTP request，添加了四种方法。
 
-logIn(user, options, callback) ：用 login() 也可以。作用是为登录用户初始化 session。options 可设置 session 为 false，即不初始化 session，默认为 true。 logOut() ：别名为 logout()。作用是登出用户，删除该用户 session。不带参数。 isAuthenticated() ：不带参数。作用是测试该用户是否存在于 session 中（即是否已登录）。若存在返回 true。事实上这个比登录验证要用的更多，毕竟 session 通常会保留一段时间，在此期间判断用户是否已登录用这个方法就行了。 isUnauthenticated() ：不带参数。和上面的作用相反。
+logIn(user, options, callback) ：用 login() 也可以。作用是为登录用户初始化 session。options 可设置 session 为 false，即不初始化 session，默认为 true。 logOut() ：别名为 logout()。作用是登出用户，删除该用户 session。不带参数。 isAuthenticated() ：不带参数。作用是测试该用户是否存在于 session 中(即是否已登录)。若存在返回 true。事实上这个比登录验证要用的更多，毕竟 session 通常会保留一段时间，在此期间判断用户是否已登录用这个方法就行了。 isUnauthenticated() ：不带参数。和上面的作用相反。
 
 验证用户提交的凭证是否正确，是与 session 中储存的对象进行对比，所以涉及到从 session 中存取数据，需要做 session 对象序列化与反序列化。调用代码如下：
 
@@ -437,7 +437,7 @@ app.get('/logout', function(req, res) {
 
 * * 检查该用户是否已绑定 XX 服务
 
-*     - 如果已绑定，返回错误（不允许账户合并）
+*     - 如果已绑定，返回错误(不允许账户合并)
 
 *     - 否则开始验证流程，为该用户绑定XX服务
 

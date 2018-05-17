@@ -93,7 +93,7 @@
         <table tableName="lession" schema="mybatis">
 
             <!-- optional   , only for mybatis3 runtime
-                 自动生成的键值（identity,或者序列值）
+                 自动生成的键值(identity,或者序列值)
                如果指定此元素，MBG将会生成<selectKey>元素，然后将此元素插入到SQL Map的<insert> 元素之中
                sqlStatement 的语句将会返回新的值
                如果是一个自增主键的话，你可以使用预定义的语句,或者添加自定义的SQL语句. 预定义的值如下:

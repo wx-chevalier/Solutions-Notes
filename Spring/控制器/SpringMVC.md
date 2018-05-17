@@ -350,7 +350,7 @@ public String method5(){
 
 Spring MVC在完成路径映射之后，需要进行请求参数的提取，即参数绑定常用的注解，主要可以分为以下四大类型：
 
-A、处理requet uri 部分（这里指uri template中variable，不含queryString部分）的注解：   @PathVariable;
+A、处理requet uri 部分(这里指uri template中variable，不含queryString部分)的注解：   @PathVariable;
 
 B、处理request header部分的注解：   @RequestHeader, @CookieValue;
 
@@ -422,9 +422,9 @@ public void displayHeaderInfo(@CookieValue("JSESSIONID") String cookie)  {
 
 ### @RequestParam
 
-A） 常用来处理简单类型的绑定，通过Request.getParameter() 获取的String可直接转换为简单类型的情况（ String--> 简单类型的转换操作由ConversionService配置的转换器来完成）；因为使用request.getParameter()方式获取参数，所以可以处理get 方式中queryString的值，也可以处理post方式中 body data的值；
+A) 常用来处理简单类型的绑定，通过Request.getParameter() 获取的String可直接转换为简单类型的情况( String--> 简单类型的转换操作由ConversionService配置的转换器来完成)；因为使用request.getParameter()方式获取参数，所以可以处理get 方式中queryString的值，也可以处理post方式中 body data的值；
 
-B）用来处理Content-Type: 为 `application/x-www-form-urlencoded`编码的内容，提交方式GET、POST；
+B)用来处理Content-Type: 为 `application/x-www-form-urlencoded`编码的内容，提交方式GET、POST；
 
 C) 该注解有两个属性： value、required； value用来指定要传入值的id名称，required用来指示参数是否必须绑定；
 
@@ -486,11 +486,11 @@ public class EditPetForm {
 
 用于参数上时： 用来通过名称对应，把相应名称的值绑定到注解的参数bean上；要绑定的值来源于：
 
-A） @SessionAttributes 启用的attribute 对象上；
+A) @SessionAttributes 启用的attribute 对象上；
 
-B） @ModelAttribute 用于方法上时指定的model对象；
+B) @ModelAttribute 用于方法上时指定的model对象；
 
-C） 上述两种情况都没有时，new一个需要绑定的bean对象，然后把request中按名称对应的方式把值绑定到bean中。
+C) 上述两种情况都没有时，new一个需要绑定的bean对象，然后把request中按名称对应的方式把值绑定到bean中。
 
 用到方法上@ModelAttribute的示例代码：
 
@@ -506,7 +506,7 @@ public Account addAccount(@RequestParam String number) {
 
 ```
 
-这种方式实际的效果就是在调用@RequestMapping的方法之前，为request对象的model里put（“account”， Account）；
+这种方式实际的效果就是在调用@RequestMapping的方法之前，为request对象的model里put(“account”， Account)；
 
 用在参数上的@ModelAttribute示例代码：
 
@@ -747,7 +747,7 @@ diskPersistent=======是否持久化磁盘缓存,当这个属性的值为true时
                      这个文件中存放了已经持久化在磁盘中的cache的index,找到后会把cache加载到内存
                      要想把cache真正持久化到磁盘,写程序时注意执行net.sf.ehcache.Cache.put(Element element)后要调用flush()方法
 diskExpiryThreadIntervalSeconds==磁盘缓存的清理线程运行间隔,默认是120秒
-diskSpoolBufferSizeMB============设置DiskStore（磁盘缓存）的缓存区大小,默认是30MB
+diskSpoolBufferSizeMB============设置DiskStore(磁盘缓存)的缓存区大小,默认是30MB
 memoryStoreEvictionPolicy========内存存储与释放策略,即达到maxElementsInMemory限制时,Ehcache会根据指定策略清理内存
                                  共有三种策略,分别为LRU(最近最少使用)、LFU(最常用的)、FIFO(先进先出)
 -->
@@ -773,11 +773,11 @@ MyBatis是一个半自动化的SQL辅助工具，在MyBatis的生命周期中，
 
 - SqlSessionFactoryBuilder
 
-这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。因此 SqlSessionFactoryBuilder 实例的最佳范围是方法范围（也就是局部方法变量）。你可以重用 SqlSessionFactoryBuilder 来创建多个 SqlSessionFactory 实例，但是最好还是不要让其一直存在以保证所有的 XML 解析资源开放给更重要的事情。
+这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。因此 SqlSessionFactoryBuilder 实例的最佳范围是方法范围(也就是局部方法变量)。你可以重用 SqlSessionFactoryBuilder 来创建多个 SqlSessionFactory 实例，但是最好还是不要让其一直存在以保证所有的 XML 解析资源开放给更重要的事情。
 
 - SqlSessionFactory
 
-SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，没有任何理由对它进行清除或重建。使用 SqlSessionFactory 的最佳实践是在应用运行期间不要重复创建多次，多次重建 SqlSessionFactory 被视为一种代码“坏味道（bad smell）”。因此 SqlSessionFactory 的最佳范围是应用范围。有很多方法可以做到，最简单的就是使用单例模式或者静态单例模式。
+SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，没有任何理由对它进行清除或重建。使用 SqlSessionFactory 的最佳实践是在应用运行期间不要重复创建多次，多次重建 SqlSessionFactory 被视为一种代码“坏味道(bad smell)”。因此 SqlSessionFactory 的最佳范围是应用范围。有很多方法可以做到，最简单的就是使用单例模式或者静态单例模式。
 
 - SqlSession
 
@@ -794,9 +794,9 @@ try {
 
 在你的所有的代码中一致性地使用这种模式来保证所有数据库资源都能被正确地关闭。
 
-- 映射器实例（Mapper Instances）
+- 映射器实例(Mapper Instances)
 
-映射器是创建用来绑定映射语句的接口。映射器接口的实例是从 SqlSession 中获得的。因此从技术层面讲，映射器实例的最大范围是和 SqlSession 相同的，因为它们都是从 SqlSession 里被请求的。尽管如此，映射器实例的最佳范围是方法范围。也就是说，映射器实例应该在调用它们的方法中被请求，用过之后即可废弃。并不需要显式地关闭映射器实例，尽管在整个请求范围（request scope）保持映射器实例也不会有什么问题，但是很快你会发现，像 SqlSession 一样，在这个范围上管理太多的资源的话会难于控制。所以要保持简单，最好把映射器放在方法范围（method scope）内。下面的示例就展示了这个实践：
+映射器是创建用来绑定映射语句的接口。映射器接口的实例是从 SqlSession 中获得的。因此从技术层面讲，映射器实例的最大范围是和 SqlSession 相同的，因为它们都是从 SqlSession 里被请求的。尽管如此，映射器实例的最佳范围是方法范围。也就是说，映射器实例应该在调用它们的方法中被请求，用过之后即可废弃。并不需要显式地关闭映射器实例，尽管在整个请求范围(request scope)保持映射器实例也不会有什么问题，但是很快你会发现，像 SqlSession 一样，在这个范围上管理太多的资源的话会难于控制。所以要保持简单，最好把映射器放在方法范围(method scope)内。下面的示例就展示了这个实践：
 
 ``` 
 SqlSession session = sqlSessionFactory.openSession();
@@ -835,7 +835,7 @@ configuration.addMapper(BlogMapper.class);
 SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 ```
 
-注意该例中，configuration 添加了一个映射器类（mapper class）。映射器类是 Java 类，它们包含 SQL 映射语句的注解从而避免了 XML 文件的依赖。不过，由于 Java 注解的一些限制加之某些 MyBatis 映射的复杂性，XML 映射对于大多数高级映射（比如：嵌套 Join 映射）来说仍然是必须的。有鉴于此，如果存在一个对等的 XML 配置文件的话，MyBatis 会自动查找并加载它（这种情况下， BlogMapper.xml 将会基于类路径和 BlogMapper.class 的类名被加载进来）。具体细节稍后讨论。
+注意该例中，configuration 添加了一个映射器类(mapper class)。映射器类是 Java 类，它们包含 SQL 映射语句的注解从而避免了 XML 文件的依赖。不过，由于 Java 注解的一些限制加之某些 MyBatis 映射的复杂性，XML 映射对于大多数高级映射(比如：嵌套 Join 映射)来说仍然是必须的。有鉴于此，如果存在一个对等的 XML 配置文件的话，MyBatis 会自动查找并加载它(这种情况下， BlogMapper.xml 将会基于类路径和 BlogMapper.class 的类名被加载进来)。具体细节稍后讨论。
 
 既然有了 SqlSessionFactory ，顾名思义，我们就可以从中获得 SqlSession 的实例了。SqlSession 完全包含了面向数据库执行 SQL 命令所需的所有方法。你可以通过 SqlSession 实例来直接执行已映射的 SQL 语句。例如：
 
@@ -848,7 +848,7 @@ try {
 }
 ```
 
-诚然这种方式能够正常工作，并且对于使用旧版本 MyBatis 的用户来说也比较熟悉，不过现在有了一种更直白的方式。使用对于给定语句能够合理描述参数和返回值的接口（比如说BlogMapper.class），你现在不但可以执行更清晰和类型安全的代码，而且还不用担心易错的字符串字面值以及强制类型转换。
+诚然这种方式能够正常工作，并且对于使用旧版本 MyBatis 的用户来说也比较熟悉，不过现在有了一种更直白的方式。使用对于给定语句能够合理描述参数和返回值的接口(比如说BlogMapper.class)，你现在不但可以执行更清晰和类型安全的代码，而且还不用担心易错的字符串字面值以及强制类型转换。
 
 例如：
 
@@ -874,7 +874,7 @@ InputStream inputStream = Resources.getResourceAsStream(resource);
 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 ```
 
-XML 配置文件（configuration XML）中包含了对 MyBatis 系统的核心设置，包含获取数据库连接实例的数据源（DataSource）和决定事务范围和控制方式的事务管理器（TransactionManager）。XML 配置文件的详细内容后面再探讨，这里先给出一个简单的示例：
+XML 配置文件(configuration XML)中包含了对 MyBatis 系统的核心设置，包含获取数据库连接实例的数据源(DataSource)和决定事务范围和控制方式的事务管理器(TransactionManager)。XML 配置文件的详细内容后面再探讨，这里先给出一个简单的示例：
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -918,7 +918,7 @@ XML 配置文件（configuration XML）中包含了对 MyBatis 系统的核�
 
 MyBatis 的真正强大在于它的映射语句，也是它的魔力所在。由于它的异常强大，映射器的 XML 文件就显得相对简单。如果拿它跟具有相同功能的 JDBC 代码进行对比，你会立即发现省掉了将近 95% 的代码。MyBatis 就是针对 SQL 构建的，并且比普通的方法做的更好。
 
-SQL 映射文件有很少的几个顶级元素（按照它们应该被定义的顺序）：
+SQL 映射文件有很少的几个顶级元素(按照它们应该被定义的顺序)：
 
 - cache – 给定命名空间的缓存配置。
 - cache-ref – 其他命名空间缓存配置的引用。
