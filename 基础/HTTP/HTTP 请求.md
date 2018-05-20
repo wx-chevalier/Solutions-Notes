@@ -2,7 +2,7 @@
 
 # HTTP Request
 
-HTTP 的请求报文分为三个部分 请求行、请求头和请求体，格式如图： ![](http://upload-images.jianshu.io/upload_images/1724103-c43900117e983241.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 一个典型的请求消息头域，如下所示：
+HTTP 的请求报文分为三个部分 请求行、请求头和请求体，格式如图: ![](http://upload-images.jianshu.io/upload_images/1724103-c43900117e983241.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 一个典型的请求消息头域，如下所示：
 
 ```
 　　POST/GET http://download.microtool.de:80/somedata.exe
@@ -127,7 +127,7 @@ XML-RPC 协议简单、功能够用，各种语言的实现都有。它的使用
 
 ### 文件分割
 
-第三种请求体的请求体被分成为多个部分，文件上传时会被使用，这种格式最先应该是被用于邮件传输中，每个字段 / 文件都被 boundary(Content-Type 中指定)分成单独的段，每段以 -- 加 boundary 开头，然后是该段的描述头，描述头之后空一行接内容，请求结束的标制为 boundary 后面加 --，结构见下图： ![](http://upload-images.jianshu.io/upload_images/1724103-f764903c4ae2408a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 区分是否被当成文件的关键是 Content-Disposition 是否包含 filename，因为文件有不同的类型，所以还要使用 Content-Type 指示文件的类型，如果不知道是什么类型取值可以为 application/octet-stream 表示该文件是个二进制文件，如果不是文件则 Content-Type 可以省略。我们使用表单上传文件时，必须让 <form> 表单的 `enctyped` 等于 multipart/form-data。直接来看一个请求示例：
+第三种请求体的请求体被分成为多个部分，文件上传时会被使用，这种格式最先应该是被用于邮件传输中，每个字段 / 文件都被 boundary(Content-Type 中指定)分成单独的段，每段以 -- 加 boundary 开头，然后是该段的描述头，描述头之后空一行接内容，请求结束的标制为 boundary 后面加 --，结构见下图: ![](http://upload-images.jianshu.io/upload_images/1724103-f764903c4ae2408a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 区分是否被当成文件的关键是 Content-Disposition 是否包含 filename，因为文件有不同的类型，所以还要使用 Content-Type 指示文件的类型，如果不知道是什么类型取值可以为 application/octet-stream 表示该文件是个二进制文件，如果不是文件则 Content-Type 可以省略。我们使用表单上传文件时，必须让 <form> 表单的 `enctyped` 等于 multipart/form-data。直接来看一个请求示例：
 
 ```
 BASHPOST http://www.example.com HTTP/1.1

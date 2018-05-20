@@ -2,7 +2,7 @@
 
 # 再谈 NPM
 
-随着 JavaScript 项目的成长，如果你不小心处理的话，他们往往会变得难以管理。我们发现自己常常陷入的一些问题： 当在创建新的页面时发现，很难重用或测试之前写的代码。当我们更深处地研究这些问题，我们发现根本原因是无效的依赖管理造成的。比如，脚本 A 依赖脚本 B，并且脚本 B 又依赖脚本 C，当 C 没有被正确引入时，整个依赖链就无法正常工作了。经过对 AMD 的进一步探索，我们已经基本确定，组织严密的 JavaScript 一般都呈现以下五个特点：
+随着 JavaScript 项目的成长，如果你不小心处理的话，他们往往会变得难以管理。我们发现自己常常陷入的一些问题: 当在创建新的页面时发现，很难重用或测试之前写的代码。当我们更深处地研究这些问题，我们发现根本原因是无效的依赖管理造成的。比如，脚本 A 依赖脚本 B，并且脚本 B 又依赖脚本 C，当 C 没有被正确引入时，整个依赖链就无法正常工作了。经过对 AMD 的进一步探索，我们已经基本确定，组织严密的 JavaScript 一般都呈现以下五个特点：
 
 * 始终声明我们的依赖
 * 为第三方代码库添加 shim(垫片)
@@ -75,7 +75,7 @@ node --inspect --debug-brk index.js
 chrome-devtools://devtools/bundled/inspector.html?experiments=true&v8only=true&ws=127.0.0.1:9229/69beb5d3-2b1c-4513-aa4b-78d1eb1865ea
 ```
 
-在 Chrome 中直接打开该链接，即可开始调试： ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/1/3/QQ20170125-0123.png)
+在 Chrome 中直接打开该链接，即可开始调试: ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/1/3/QQ20170125-0123.png)
 
 # 基于 WebSocket 的实时通信
 

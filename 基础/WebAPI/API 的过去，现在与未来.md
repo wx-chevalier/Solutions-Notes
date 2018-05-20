@@ -70,7 +70,7 @@ Deep Blue 出现的三年之后，也就是 2000 年时，Roy Fielding 发布了
 
 # 未来
 
-在过去的数十年中，我们尝试了使用不同的程序与工具来解决上文中提及的数个问题。API Workflow 、 API Style Guide、API Documentation Best Practices ，以及其他企业级的保持同步性、避免大规模变化与避免人为错误的标准都是我们披荆斩棘一路走来的成果。我们使用了 Swagger 这样优秀的文档生成器来尽可能保证文档与代码的一致性，我们规定了复杂的测试流程、雇佣更多的开发者来维护庞杂的 API 系统。某个大公司雇佣专门的团队来辅助 API 文档的编写与更新也是见怪不怪的事情。我把这个过程重新组织下就是：我们雇佣开发者来负责为其他开发者编写可读的 API 文档，从而辅助他们理解某个机器接口，并且编写合适的消费程序来使用这些接口。我的一个朋友是这么说的： Programmers tend to solve programming problems by more programming.
+在过去的数十年中，我们尝试了使用不同的程序与工具来解决上文中提及的数个问题。API Workflow 、 API Style Guide、API Documentation Best Practices ，以及其他企业级的保持同步性、避免大规模变化与避免人为错误的标准都是我们披荆斩棘一路走来的成果。我们使用了 Swagger 这样优秀的文档生成器来尽可能保证文档与代码的一致性，我们规定了复杂的测试流程、雇佣更多的开发者来维护庞杂的 API 系统。某个大公司雇佣专门的团队来辅助 API 文档的编写与更新也是见怪不怪的事情。我把这个过程重新组织下就是：我们雇佣开发者来负责为其他开发者编写可读的 API 文档，从而辅助他们理解某个机器接口，并且编写合适的消费程序来使用这些接口。我的一个朋友是这么说的: Programmers tend to solve programming problems by more programming.
 
 而现在的 API 分享与发现，对于幸运的几个不差钱的公司他们可以花钱进行市场推广与营销，而其他可怜兮兮的小公司只能默默地在 Hacker News 上进行推广。
 
