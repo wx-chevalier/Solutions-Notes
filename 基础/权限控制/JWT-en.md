@@ -15,9 +15,9 @@ As specs from [openid](https://openid.net/specs/draft-jones-json-web-token-07.ht
 }
 ```
 
-* alg: We have two main algorithms(HS256/RS256) to sign our JWT 3rd part (Signature) which we mention in the headers so that the producer and consumer(you will understand this soon in the next section) both should use the same algorithm to verify the token on each end. HS256 indicates that this token is signed using HMAC-SHA256.
+- alg: We have two main algorithms(HS256/RS256) to sign our JWT 3rd part (Signature) which we mention in the headers so that the producer and consumer(you will understand this soon in the next section) both should use the same algorithm to verify the token on each end. HS256 indicates that this token is signed using HMAC-SHA256.
 
-- typ: Define the type of the token which is JWT obviously in our case.
+* typ: Define the type of the token which is JWT obviously in our case.
 
 When we base64UrlEncode the above header data we will get eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 the first part of our JWT token.
 
@@ -64,9 +64,9 @@ signature     = HMAC-SHA256(key, unsignedToken) // As mentioned in header sectio
 
 ![](https://cdn-images-1.medium.com/max/1600/1*44waelPu4JvYALzkvoh8zw.png)
 
-* Producer is the one who gives a service. It will be the provider(Server) of the API(s) which are JWT protected.
+- Producer is the one who gives a service. It will be the provider(Server) of the API(s) which are JWT protected.
 
-* Consumer is the one who uses it. It will be the customer(Server/Mobile App/ Web App/ Client) who will be providing the valid JWT token to consume the API(s) being provided by the Producer.
+- Consumer is the one who uses it. It will be the customer(Server/Mobile App/ Web App/ Client) who will be providing the valid JWT token to consume the API(s) being provided by the Producer.
 
 In server 2 server authentication both the parties need to share the custom contract for specific API based or for all the API(s). This contract can consist of any custom clause that you want to introduce. For example here is the below custom contract that we will be using for our example
 
@@ -77,13 +77,13 @@ i.e: GET call to `/v1/api/getdetails?email=rachitgulati26@gmail.com` should have
 
 ```json
 {
-  email: "rachitgulati26@gmail.com"
+  "email": "rachitgulati26@gmail.com"
 }
 ```
 
 and the request.query is also the same as above.
 
-3. **GET the TOKEN: **The token should be present in the header with name **jwt-token \***(you can choose your custom name or send it in authorization header after all it’s custom contract).**\* **[Also, the best practice is to send it via Authorization Bearer scheme.](https://stackoverflow.com/questions/33265812/best-http-authorization-header-type-for-jwt)
+3.  **GET the TOKEN: **The token should be present in the header with name **jwt-token \***(you can choose your custom name or send it in authorization header after all it’s custom contract).**\* **[Also, the best practice is to send it via Authorization Bearer scheme.](https://stackoverflow.com/questions/33265812/best-http-authorization-header-type-for-jwt)
 
 > The best HTTP header for your client to send an access token (JWT or any other token) is the `Authorization` header with the `Bearer` authentication scheme.
 
