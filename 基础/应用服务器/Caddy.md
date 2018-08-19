@@ -50,7 +50,7 @@ localhost:2020
 gzip
 ```
 
-我们可以使用`bind`指令来指定当前服务器绑定的地址：
+我们可以使用 `bind` 指令来指定当前服务器绑定的地址：
 
 ```
 bind host
@@ -85,11 +85,11 @@ localhost:2020, https://site.com, http://mysite.com {
 
 当 Caddy 检测到站点名符合下列条件时会自动使用 Let's Encrypt 脚本来为站点添加 HTTPS 支持，并且自动监听 80 与 443 端口：
 
-* 主机名不可为空并且没有 localhost 与 IP 地址
-* 端口号未明确指定为 80
-* Scheme 未明确指定为 http
-* TLS 未被关闭
-* 未指明证书
+- 主机名不可为空并且没有 localhost 与 IP 地址
+- 端口号未明确指定为 80
+- Scheme 未明确指定为 http
+- TLS 未被关闭
+- 未指明证书
 
 ## 缓存设置
 
@@ -97,7 +97,7 @@ localhost:2020, https://site.com, http://mysite.com {
 
 ```yml
 expires {
-    match regex duration
+match regex duration
 }
 ```
 
@@ -156,6 +156,7 @@ proxy from to... {
 将所有发往 /api 的请求转发到后端系统：
 
 ```
+# 这里会将完整的路径转发到后端，如果需要过滤掉前缀，则是以 without 指令
 proxy /api localhost:9005
 ```
 
@@ -195,7 +196,20 @@ proxy /stream localhost:8080 {
 
 ```
 proxy / backend:1234 {
+    # 这里取消 /static /robots.txt 方向的请求
     except /static /robots.txt
+}
+```
+
+或者首先进行静态资源解析，然后进行二次跳转：
+
+```
+0.0.0.0
+root /srv/build/
+log / stdout
+rewrite {path} /proxy/{path}
+proxy /proxy backend {
+    without /proxy
 }
 ```
 
@@ -209,39 +223,38 @@ websocket [path] command
 
 我们可以在客户端内构建简单的 WebSocket 客户端请求：
 
-```
-if (window.WebSocket != undefined) {
-  var connection = new WebSocket("ws://localhost:2015/echo");
-  connection.onmessage = wsMessage;
+```js
+if (window.WebSocket != undefined) {
+  var connection = new WebSocket('ws://localhost:2015/echo');
+  connection.onmessage = wsMessage;
 
-  connection.onopen = wsOpen;
+  connection.onopen = wsOpen;
 
-  function wsOpen(event) {
-    connection.send("Hello World");
-  }
-  function wsMessage(event) {
-    console.log(event.data);
-  }
+  function wsOpen(event) {
+    connection.send('Hello World');
+  }
+  function wsMessage(event) {
+    console.log(event.data);
+  }
 }
-function wsMessage(event) {
-  console.log(event.data);
+function wsMessage(event) {
+  console.log(event.data);
 }
 ```
 
 然后在服务端接收该请求并且将客户端输入的内容返回：
 
-```
+```js
 var readline = require('readline');
 var rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  terminal: false
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false
 });
 
-
-rl.on('line', function(line){
-    console.log(line);
-})
+rl.on('line', function(line) {
+  console.log(line);
+});
 ```
 
 最后 Caddy 文件配置如下：
