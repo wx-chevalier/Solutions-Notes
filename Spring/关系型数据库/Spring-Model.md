@@ -1,7 +1,7 @@
 ﻿
 # Spring JDBC
 
-Spring JDBC框架提供了多种访问数据库的方法，其中最著名的就是使用`JdbcTemplate`这个类。这也是主要的用于管理数据库连接与异常处理的类。要使用Spring JDBC的话，首先需要在pom.xml文件中配置依赖项：
+Spring JDBC框架提供了多种访问数据库的方法，其中最著名的就是使用`JdbcTemplate`这个类。这也是主要的用于管理数据库连接与异常处理的类。要使用Spring JDBC的话，首先需要在pom.xml文件中配置依赖项：
 
 ``` xml
 <dependency>
