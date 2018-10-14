@@ -2,21 +2,23 @@
 
 [IT 技术图谱与知识架构-服务端应用程序开发与系统架构](https://parg.co/U0A)中概括的领域相关技术内容
 
+**建议前往 [xCompass](https://wxyyxc1992.github.io/home/#/search) 交互式地检索、查找需要的文章/链接/书籍/课程，或者直接浏览本仓库的目录以了解更多内容。**
+
 本仓库涵盖了笔者在服务端开发过程中总结的笔记、资料与开源项目。
 
 ---
 
 ✨ 系列文章/随笔
 
-* [服务端应用程序开发基础](./基础)
+- [服务端应用程序开发基础](./基础)
 
-* [深入浅出 Node.js 全栈架构](./Node)
+- [深入浅出 Node.js 全栈架构](./Node)
 
-* [Spring Boot 5 与 Spring Cloud 微服务实践](./Spring)
+- [Spring Boot 5 与 Spring Cloud 微服务实践](./Spring)
 
-* [DevOps 与 SRE 实战](./DevOps)
+- [DevOps 与 SRE 实战](./DevOps)
 
-* [信息安全与渗透测试必知必会](./InfoSecurity)
+- [信息安全与渗透测试必知必会](./InfoSecurity)
 
 ---
 
@@ -24,9 +26,9 @@ DevOps 是一种使持续交付成为可能的理念，关注于所有人共同�
 
 ✨ 开源项目
 
-* [node-server-boilerplate](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/tree/master/OpenSource/node-server-boilerplate): 基于 Koa2 的 Node 服务端应用开发框架模板
+- [node-server-boilerplate](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/tree/master/OpenSource/node-server-boilerplate): 基于 Koa2 的 Node 服务端应用开发框架模板
 
-* [swagger-decorator](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/tree/master/OpenSource/swagger-decorator): 基于注解 Koa2 应用的接口文档自动生成
+- [swagger-decorator](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/tree/master/OpenSource/swagger-decorator): 基于注解 Koa2 应用的接口文档自动生成
 
 # 关于
 
