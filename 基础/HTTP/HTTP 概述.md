@@ -6,7 +6,7 @@
 
 # HTTP
 
-HTTP ( HyperTextTransferProtocol )是超文本传输协议的缩写，它用于传送 WWW 方式的数据，关于 HTTP 协议的详细内容请参考 RFC2616。HTTP 协议采用了请求 / 响应模型。客户端向服务器发送一个请求，请求头包含请求的方法、URI 、协议版本、以及包含请求修饰符、客户 信息和内容的类似于 MIME 的消息结构。服务器以一个状态行作为响应，相应的内容包括消息协议的版本，成功或者错误编码加上包含服务器信息、实体元信息以及可能的实体内容。 HTTP 是一种无状态性的协议。这是因为此种协议不要求浏览器在每次请求中标明它自己的身份，并且浏览器以及服务器之间并没有保持一个持久性的连接用于多个页面之间的访问。当一个用户访问一个站点的时候，用户的浏览器发送一个 HTTP 请求到服务器，服务器返回给浏览器一个 HTTP 响应。其实很简单的一个概念，客户端一个请求，服务器端一个回复，这就是整个基于 HTTP 协议的通讯过程。
+HTTP(HyperTextTransferProtocol)是超文本传输协议的缩写，它用于传送 WWW 方式的数据，关于 HTTP 协议的详细内容请参考 RFC2616。HTTP 协议采用了请求 / 响应模型。客户端向服务器发送一个请求，请求头包含请求的方法、URI 、协议版本、以及包含请求修饰符、客户 信息和内容的类似于 MIME 的消息结构。服务器以一个状态行作为响应，相应的内容包括消息协议的版本，成功或者错误编码加上包含服务器信息、实体元信息以及可能的实体内容。 HTTP 是一种无状态性的协议。这是因为此种协议不要求浏览器在每次请求中标明它自己的身份，并且浏览器以及服务器之间并没有保持一个持久性的连接用于多个页面之间的访问。当一个用户访问一个站点的时候，用户的浏览器发送一个 HTTP 请求到服务器，服务器返回给浏览器一个 HTTP 响应。其实很简单的一个概念，客户端一个请求，服务器端一个回复，这就是整个基于 HTTP 协议的通讯过程。
 
 ## URL
 
@@ -180,14 +180,14 @@ Content-Range:bytes-unitSPfirst-byte-pos-last-byte-pos/entity-legth
 
 Content-Type 表明信息类型，缺省值为 " text/plain"。它包含了主要类型(primary type )和次要类型(subtype )两个部分，两者之间用 "/" 分割。主要类型有 9 种，分别是 application、audio 、 example、image 、 message、model 、 multipart、text 、 video。每一种主要类型下面又有许多种次要类型，常见的有：
 
-* text/plain ：纯文本，文件扩展名 .txt
-* text/html：HTML 文本，文件扩展名 .htm 和 .html
-* image/jpeg：jpeg 格式的图片，文件扩展名 .jpg
-* image/gif：GIF 格式的图片，文件扩展名 .gif
-* audio/x-wave：WAVE 格式的音频，文件扩展名 .wav
-* audio/mpeg：MP3 格式的音频，文件扩展名 .mp3
-* video/mpeg：MPEG 格式的视频，文件扩展名 .mpg
-* application/zip：PK-ZIP 格式的压缩文件，文件扩展名 .zip
+- text/plain ：纯文本，文件扩展名 .txt
+- text/html：HTML 文本，文件扩展名 .htm 和 .html
+- image/jpeg：jpeg 格式的图片，文件扩展名 .jpg
+- image/gif：GIF 格式的图片，文件扩展名 .gif
+- audio/x-wave：WAVE 格式的音频，文件扩展名 .wav
+- audio/mpeg：MP3 格式的音频，文件扩展名 .mp3
+- video/mpeg：MPEG 格式的视频，文件扩展名 .mpg
+- application/zip：PK-ZIP 格式的压缩文件，文件扩展名 .zip
 
 ## Content-Length
 

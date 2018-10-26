@@ -34,7 +34,7 @@ HTTP 的请求报文分为三个部分 请求行、请求头和请求体，格�
 | Accept-Ranges       | 可以请求网页实体的一个或者多个子范围字段                                                       | Accept-Ranges: bytes                                    |
 | Authorization       | HTTP 授权的授权证书                                                                            | Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==       |
 | Cache-Control       | 指定请求和响应遵循的缓存机制                                                                   | Cache-Control: no-cache                                 |
-| Connection          | 表示是否需要持久连接。( HTTP 1.1 默认进行持久连接)                                           | Connection: close                                       |
+| Connection          | 表示是否需要持久连接。( HTTP 1.1 默认进行持久连接)                                             | Connection: close                                       |
 | Cookie              | HTTP 请求发送时，会把保存在该请求域名下的所有 cookie 值一起发送给 web 服务器。                 | Cookie: $Version=1; Skin=new;                           |
 | Content-Length      | 请求的内容长度                                                                                 | Content-Length: 348                                     |
 | Content-Type        | 请求的与实体对应的 MIME 信息                                                                   | Content-Type: application/x-www-form-urlencoded         |
@@ -53,12 +53,12 @@ HTTP 的请求报文分为三个部分 请求行、请求头和请求体，格�
 | Range               | 只请求实体的一部分，指定范围                                                                   | Range: bytes=500-999                                    |
 | Referer             | 先前网页的地址，当前请求网页紧随其后 , 即来路                                                  | Referer: http://www.zcmhi.com/archives/71.html          |
 | TE                  | 客户端愿意接受的传输编码，并通知服务器接受接受尾加头信息                                       | TE: trailers,deflate;q=0.5                              |
-| Upgrade             | 向服务器指定某种传输协议以便服务器进行转换(如果支持)                                         | Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11          |
+| Upgrade             | 向服务器指定某种传输协议以便服务器进行转换(如果支持)                                           | Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11          |
 | User-Agent          | User-Agent 的内容包含发出请求的用户信息                                                        | User-Agent: Mozilla/5.0 (Linux; X11)                    |
 | Via                 | 通知中间网关或代理服务器地址，通信协议                                                         | Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)             |
 | Warning             | 关于消息实体的警告信息                                                                         | Warn: 199 Miscellaneous warning                         |
 
-# Request Body: 请求体
+# Request Body | 请求体
 
 ## Types
 
@@ -66,7 +66,9 @@ HTTP 的请求报文分为三个部分 请求行、请求头和请求体，格�
 
 ### 任意类型
 
-移动开发者常见的，请求体是任意类型，服务器不会解析请求体，请求体的处理需要自己解析，如 POST JSON 时候就是这类。 ![](http://upload-images.jianshu.io/upload_images/1724103-ebe4ae9308d92ca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+移动开发者常见的，请求体是任意类型，服务器不会解析请求体，请求体的处理需要自己解析，如 POST JSON 时候就是这类。
+
+![](http://upload-images.jianshu.io/upload_images/1724103-ebe4ae9308d92ca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### application/json
 
@@ -98,7 +100,7 @@ Content-Type: application/json;charset=utf-8
 
 #### text/xml
 
-我的博客之前[提到过 XML-RPC](http://www.imququ.com/post/64.html)(XML Remote Procedure Call )。它是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。典型的 XML-RPC 请求是这样的：
+我的博客之前[提到过 XML-RPC](http://www.imququ.com/post/64.html)(XML Remote Procedure Call)。它是一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。典型的 XML-RPC 请求是这样的：
 
 ```
 HTMLPOST http://www.example.com HTTP/1.1
@@ -127,7 +129,11 @@ XML-RPC 协议简单、功能够用，各种语言的实现都有。它的使用
 
 ### 文件分割
 
-第三种请求体的请求体被分成为多个部分，文件上传时会被使用，这种格式最先应该是被用于邮件传输中，每个字段 / 文件都被 boundary(Content-Type 中指定)分成单独的段，每段以 -- 加 boundary 开头，然后是该段的描述头，描述头之后空一行接内容，请求结束的标制为 boundary 后面加 --，结构见下图: ![](http://upload-images.jianshu.io/upload_images/1724103-f764903c4ae2408a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 区分是否被当成文件的关键是 Content-Disposition 是否包含 filename，因为文件有不同的类型，所以还要使用 Content-Type 指示文件的类型，如果不知道是什么类型取值可以为 application/octet-stream 表示该文件是个二进制文件，如果不是文件则 Content-Type 可以省略。我们使用表单上传文件时，必须让 <form> 表单的 `enctyped` 等于 multipart/form-data。直接来看一个请求示例：
+第三种请求体的请求体被分成为多个部分，文件上传时会被使用，这种格式最先应该是被用于邮件传输中，每个字段/文件都被 boundary(Content-Type 中指定)分成单独的段，每段以 -- 加 boundary 开头，然后是该段的描述头，描述头之后空一行接内容，请求结束的标制为 boundary 后面加 --，结构见下图:
+
+![](http://upload-images.jianshu.io/upload_images/1724103-f764903c4ae2408a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+区分是否被当成文件的关键是 Content-Disposition 是否包含 filename，因为文件有不同的类型，所以还要使用 Content-Type 指示文件的类型，如果不知道是什么类型取值可以为 application/octet-stream 表示该文件是个二进制文件，如果不是文件则 Content-Type 可以省略。我们使用表单上传文件时，必须让 <form> 表单的 `enctyped` 等于 multipart/form-data。直接来看一个请求示例：
 
 ```
 BASHPOST http://www.example.com HTTP/1.1
@@ -153,7 +159,7 @@ PNG ... content of chrome.png ...
 
 随着越来越多的 Web 站点，尤其是 WebApp，全部使用 Ajax 进行数据交互之后，我们完全可以定义新的数据提交方式，给开发带来更多便利。
 
-## Encoding: 编码
+## Encoding | 编码
 
 These are different Form content types defined by W3C. If you want to send simple text/ ASCII data, then x-www-form-urlencoded will work. This is the default.
 
