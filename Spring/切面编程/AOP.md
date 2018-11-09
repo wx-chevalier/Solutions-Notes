@@ -10,26 +10,6 @@ public interface PointcutAdvisor {
    Advice getAdvice();
 }
 
-
-
-
-
-
-
-
-
-
-
-4
-
-
-
-
-
-
-
-
-
 1public interface PointcutAdvisor {
 
 

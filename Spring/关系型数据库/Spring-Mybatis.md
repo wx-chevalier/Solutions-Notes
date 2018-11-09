@@ -1,5 +1,6 @@
-﻿
-```
+﻿# Spring Mybatis
+
+```xml
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
     <property name="url" value="${center.connectionURL}"/>
@@ -46,7 +47,8 @@
     <property name="dataSource" ref="dataSourceEx"/>
 </bean>
 ```
-```
+
+```java
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -143,7 +145,8 @@ public class ApplicationConfig2 {
     }
 }
 ```
-```
+
+```java
 @Bean
 @Primary
 public DataSource dataSource1() {

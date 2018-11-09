@@ -1,7 +1,6 @@
-﻿
-# Spring JDBC
+﻿# Spring JDBC
 
-Spring JDBC框架提供了多种访问数据库的方法，其中最著名的就是使用`JdbcTemplate`这个类。这也是主要的用于管理数据库连接与异常处理的类。要使用Spring JDBC的话，首先需要在pom.xml文件中配置依赖项：
+Spring JDBC 框架提供了多种访问数据库的方法，其中最著名的就是使用`JdbcTemplate`这个类。这也是主要的用于管理数据库连接与异常处理的类。要使用 Spring JDBC 的话，首先需要在 pom.xml 文件中配置依赖项：
 
 ``` xml
 <dependency>
@@ -29,7 +28,7 @@ public Employee findById(int id){
 }
 ```
 
-在query中，最后需要传入一个继承自RowMapper的实现类，有时候方便起见，也可以直接传入一个Entity。如果是采用的RowMapper模式，需要实现如下的映射器类：
+在 query 中，最后需要传入一个继承自 RowMapper 的实现类，有时候方便起见，也可以直接传入一个 Entity。如果是采用的 RowMapper 模式，需要实现如下的映射器类：
 
 ``` java
 package com.javacodegeeks.snippets.enterprise;
@@ -57,8 +56,6 @@ return employee;
 Employee employee = (Employee) jdbcTemplate.queryForObject(sql, new Object[] { id }, new EmployeeRowMapper());
 ```
 
-
-
 ## Insert
 
 ``` java
@@ -70,12 +67,12 @@ String sql = "INSERT INTO EMPLOYEE " +
 jdbcTemplate = new JdbcTemplate(dataSource);
 
 jdbcTemplate.update(sql, new Object[] { employee.getId(),
-employee.getName(), employee.getAge()  
+employee.getName(), employee.getAge()
 });
 }
 ```
 
-有时候需要在插入之后，将插入行自动生成的主键返回，可以使用jdbcTemplate中提供的KeyHolder来实现：
+有时候需要在插入之后，将插入行自动生成的主键返回，可以使用 jdbcTemplate 中提供的 KeyHolder 来实现：
 
 ``` java
 package com.javacreed.examples.spring;
@@ -117,4 +114,3 @@ public class ExampleDao {
   }
 }
 ```
-
