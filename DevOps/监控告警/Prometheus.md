@@ -14,11 +14,11 @@ Prometheus 从根本上存储的所有数据都是时间序列: 具有时间戳�
 
 每条时间序列是由唯一的指标名称和一组标签 (key=value)的形式组成。指标名称 一般是给监测对像起一名字，例如 http*requests_total 这样，它有一些命名规则，可以包字母数字*之类的的。通常是以`应用名称开头_监测对像_数值类型_单位`这样。
 
-* push_total
+- push_total
 
-* userlogin_mysql_duration_seconds
+- userlogin_mysql_duration_seconds
 
-* app_memory_usage_bytes
+- app_memory_usage_bytes
 
 标签 就是对一条时间序列不同维度的识别了，例如 一个 http 请求用的是 POST 还是 GET，它的 endpoint 是什么，这时候就要用标签去标记了。最终形成的标识便是这样了
 
