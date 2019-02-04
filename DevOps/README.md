@@ -23,17 +23,3 @@ DevOps 会涉及到各种模式，包括：持续改进、组织文化、学习�
 - 部署交付时间，反映了我们在自动化方面的水平。
 
 由此可见，组织应遵循 DevOps 的模式和实践方式，以减少交付的时间。他们完全可以从中选取诸如：放大反馈或加强持续学习文化等一个或多个适合自身的 DevOps 方法。
-
-# 前言
-
-## 参考
-
-## 版权
-
-![](https://parg.co/bDY) ![](https://parg.co/bDm)
-
-笔者所有文章遵循 [知识共享 署名-非商业性使用-禁止演绎 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh)，欢迎转载，尊重版权。如果觉得本系列对你有所帮助，欢迎给我家布丁买点狗粮(支付宝扫码)~
-
-![](https://github.com/wxyyxc1992/OSS/blob/master/2017/8/1/Buding.jpg?raw=true)
-
-# 目录

@@ -4,55 +4,58 @@
 
 随着 JavaScript 项目的成长，如果你不小心处理的话，他们往往会变得难以管理。我们发现自己常常陷入的一些问题: 当在创建新的页面时发现，很难重用或测试之前写的代码。当我们更深处地研究这些问题，我们发现根本原因是无效的依赖管理造成的。比如，脚本 A 依赖脚本 B，并且脚本 B 又依赖脚本 C，当 C 没有被正确引入时，整个依赖链就无法正常工作了。经过对 AMD 的进一步探索，我们已经基本确定，组织严密的 JavaScript 一般都呈现以下五个特点：
 
-* 始终声明我们的依赖
-* 为第三方代码库添加 shim(垫片)
-* 定义跟调用应该分离
-* 依赖应该异步加载
-* 模块不应依赖全局变量
+- 始终声明我们的依赖
+- 为第三方代码库添加 shim(垫片)
+- 定义跟调用应该分离
+- 依赖应该异步加载
+- 模块不应依赖全局变量
 
 用 npm link 替代 npm install。npm link [package-name]命令的原理是，去 [prefix]/lib/node_modules/下检索是否已经全局安装了当前的 package，如果是，则直接用软链接的方法在本地路径指向全局 package。如果没检索到，则会先在全局路径下安装该 package，再去建立软链接。npm 获取全局路径的命令是：npm config get prefix。需要注意的是，有 package.json 的路径下，不要类比 npm install，就这么执行 npm link。此时 npm link 会把当前路径作为一个本地 package，在全局路径下创建一个软链接。由此可知，npm link 并不会像 npm install 一样，读取 package.json 中的依赖并自动配置。
 
 # createServer
 
-```
-const http = require("http");
-const url = require("url");
-const path = require("path");
-const fs = require("fs");
+```js
+const http = require('http');
+const url = require('url');
+const path = require('path');
+const fs = require('fs');
 const port = process.argv[2] || 8033;
 
-const server = http.createServer(function (request, response) {
-
+const server = http
+  .createServer(function(request, response) {
     const uri = url.parse(request.url).pathname;
     let filename = path.join(process.cwd(), uri);
 
-    fs.exists(filename, function (exists) {
-        if (!exists) {
-            response.writeHead(404, {"Content-Type": "text/plain"});
-            console.log('node.js: 404 Not Found');
-            response.write("404 Not Found\n");
-            response.end();
-            return;
+    fs.exists(filename, function(exists) {
+      if (!exists) {
+        response.writeHead(404, { 'Content-Type': 'text/plain' });
+        console.log('node.js: 404 Not Found');
+        response.write('404 Not Found\n');
+        response.end();
+        return;
+      }
+
+      if (fs.statSync(filename).isDirectory()) filename += '/index.html';
+
+      fs.readFile(filename, 'binary', function(err, file) {
+        if (err) {
+          response.writeHead(500, { 'Content-Type': 'text/plain' });
+          response.write(err + '\n');
+          response.end();
+          return;
         }
 
-        if (fs.statSync(filename).isDirectory()) filename += '/index.html';
-
-        fs.readFile(filename, "binary", function (err, file) {
-            if (err) {
-                response.writeHead(500, {"Content-Type": "text/plain"});
-                response.write(err + "\n");
-                response.end();
-                return;
-            }
-
-            response.writeHead(200);
-            response.write(file, "binary");
-            response.end();
-        });
+        response.writeHead(200);
+        response.write(file, 'binary');
+        response.end();
+      });
     });
-}).listen(parseInt(port, 10));
+  })
+  .listen(parseInt(port, 10));
 
-console.log("Static file server running at\n  => http://localhost:" + port + "/");
+console.log(
+  'Static file server running at\n  => http://localhost:' + port + '/'
+);
 ```
 
 # 在 Chrome 中调试 NodeJS 应用
@@ -89,63 +92,45 @@ This is where HTTP/2 Server Push capabilities come into the picture as the serve
 
 ![](https://blog-assets.risingstack.com/2017/08/http2-in-nodejs.png)
 
-```
-const http2 = require('http2')
+```js
+const http2 = require('http2');
 
 const server = http2.createSecureServer(
+  { cert, key },
 
-  { cert, key },
+  onRequest
+);
 
-  onRequest
+function push(stream, filePath) {
+  const { file, headers } = getFile(filePath);
 
-)
+  const pushHeaders = { [HTTP2_HEADER_PATH]: filePath };
 
-function push (stream, filePath) {
-
-  const { file, headers } = getFile(filePath)
-
-  const pushHeaders = { [HTTP2_HEADER_PATH]: filePath }
-
-  stream.pushStream(pushHeaders, (pushStream) => {
-
-    pushStream.respondWithFD(file, headers)
-
-  })
-
+  stream.pushStream(pushHeaders, pushStream => {
+    pushStream.respondWithFD(file, headers);
+  });
 }
 
-function onRequest (req, res) {
+function onRequest(req, res) {
+  // Push files with index.html
 
-  // Push files with index.html
+  if (reqPath === '/index.html') {
+    push(res.stream, 'bundle1.js');
 
-  if (reqPath === '/index.html') {
+    push(res.stream, 'bundle2.js');
+  } // Serve file
 
-    push(res.stream, 'bundle1.js')
-
-    push(res.stream, 'bundle2.js')
-
-  }
-
-  // Serve file
-
-  res.stream.respondWithFD(file.fileDescriptor, file.headers)
-
+  res.stream.respondWithFD(file.fileDescriptor, file.headers);
 }
 ```
 
-```
+```html
 <html>
-
 <body>
-
   <h1>HTTP2 Push!</h1>
-
 </body>
-
   <script src="bundle1.js"/></script>
-
   <script src="bundle2.js"/></script>
-
 </html>
 ```
 
