@@ -1,4 +1,4 @@
-# Spring Cloud 概述
+# Spring Cloud
 
 Spring Cloud 来源于 Spring，质量、稳定性、持续性都可以得到保证。
 Spirng Cloud 天然支持 Spring Boot，更加便于业务落地。
@@ -15,4 +15,3 @@ Spring Cloud 是微服务架构的最佳落地方案。
 负载均衡。
 断路器。
 分布式消息传递。
-
