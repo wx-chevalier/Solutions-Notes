@@ -1,31 +1,29 @@
-﻿
- 
-# Introduction
+﻿# Introduction
 
 ## Reference
 
 ### Books
 
+- [another-tutorial-about-java-web](https://github.com/someus/another-tutorial-about-java-web)
 
-
-- [another-tutorial-about-java-web](https://github.com/someus/another-tutorial-about-java-web) 
 ### Practice & Resources
 
-- [推荐几个自己写的范例项目](http://wosyingjun.iteye.com/blog/2312553):基于Spring MVC的最佳实践
-# Quick Start
+- [推荐几个自己写的范例项目](http://wosyingjun.iteye.com/blog/2312553):基于 Spring MVC 的最佳实践
+  # Quick Start
 
 ## Spring Boot
 
-> 
-- [Spring Boot官方文档](http://docs.spring.io/spring-boot/docs/1.3.0.RC1/reference/htmlsingle/#getting-started-introducing-spring-boot)
-> 
-- [Spring Boot性能评测](http://spring.io/blog/2015/12/10/spring-boot-memory-performance)
+>
 
-Spring Boot充分利用了JavaConfig的配置模式以及“约定优于配置”的理念，能够极大的简化基于Spring MVC的Web应用和REST服务开发。Spring Boot可以使得创建独立的产品级别的基于Spring的应用程序变得更加简单，使得能够做到开箱即用。Spring Boot可以用于创建能够直接用`java -jar`命令运行的或者类似于传统的war部署方式的应用程序。同样也提供了所谓的`spring scripts`这样的命令行工具。
+- [Spring Boot 官方文档](http://docs.spring.io/spring-boot/docs/1.3.0.RC1/reference/htmlsingle/#getting-started-introducing-spring-boot)
+  >
+- [Spring Boot 性能评测](http://spring.io/blog/2015/12/10/spring-boot-memory-performance)
+
+Spring Boot 充分利用了 JavaConfig 的配置模式以及“约定优于配置”的理念，能够极大的简化基于 Spring MVC 的 Web 应用和 REST 服务开发。Spring Boot 可以使得创建独立的产品级别的基于 Spring 的应用程序变得更加简单，使得能够做到开箱即用。Spring Boot 可以用于创建能够直接用`java -jar`命令运行的或者类似于传统的 war 部署方式的应用程序。同样也提供了所谓的`spring scripts`这样的命令行工具。
 
 ### Installation
 
-一方面，可以直接从Spring提供的父项目中集成所有相关的依赖，如下方式：
+一方面，可以直接从 Spring 提供的父项目中集成所有相关的依赖，如下方式：
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -88,7 +86,7 @@ Spring Boot充分利用了JavaConfig的配置模式以及“约定优于配置�
 </project>
 ```
 
-当然，很多情况下并不是都适合从`spring-boot-starter-parent`项目中继承POM文件，同样的，可以直接从该项目中继承依赖，即是使用如下方式：
+当然，很多情况下并不是都适合从`spring-boot-starter-parent`项目中继承 POM 文件，同样的，可以直接从该项目中继承依赖，即是使用如下方式：
 
 ``` xml
 <dependencyManagement>
@@ -139,7 +137,7 @@ public class Example {
 }
 ```
 
-很多时候，也可以在配置文件中引入XML的配置文件：
+很多时候，也可以在配置文件中引入 XML 的配置文件：
 
 ``` java
 package sample.integration;
@@ -179,8 +177,6 @@ $ mvn spring-boot:run
 ........ Started Example in 2.222 seconds (JVM running for 6.514)
 ```
 
-
-
 ## Sketch(零基础配置)
 
 ### web.xml
@@ -200,15 +196,11 @@ $ mvn spring-boot:run
 </servlet>
 ```
 
-
-
 # Configuration
 
 ## XML-Based
 
 ## Java-Based
-
-
 
 # Controller
 
@@ -222,7 +214,7 @@ $ mvn spring-boot:run
 
 ### HttpServletResponse
 
-注意，HttpServletResponse无法使用自动注入进行插入，如果需要获取该对象，可以在具体的Controller方法中加入HttpServletResponse这个参数，譬如：
+注意，HttpServletResponse 无法使用自动注入进行插入，如果需要获取该对象，可以在具体的 Controller 方法中加入 HttpServletResponse 这个参数，譬如：
 
 ``` java
 public DeferredResult<String> autologin(
@@ -232,11 +224,11 @@ public DeferredResult<String> autologin(
 )
 ```
 
-这样的话就可以在AOP中获取到response对象。
+这样的话就可以在 AOP 中获取到 response 对象。
 
 ## Request Mapping(请求映射)
 
-### 路径匹配
+###  路径匹配
 
 \1. The container will try to find an exact match of the path of the request to the path of the servlet. A successful match selects the servlet.
 
@@ -246,7 +238,7 @@ public DeferredResult<String> autologin(
 
 \4. If neither of the previous three rules result in a servlet match, the container will attempt to serve content appropriate for the resource requested. If a “default” servlet is defined for the application, it will be used.
 
-@RequestMapping是Spring MVC中最常用的注解之一，`org.springframework.web.bind.annotation.RequestMapping`被用于将某个请求映射到具体的处理类或者方法中
+@RequestMapping 是 Spring MVC 中最常用的注解之一，`org.springframework.web.bind.annotation.RequestMapping`被用于将某个请求映射到具体的处理类或者方法中
 
 - **@RequestMapping with Class**
 
@@ -314,9 +306,7 @@ public String fallbackMethod(){
 }
 ```
 
-
-
-### 请求过滤
+###  请求过滤
 
 - headers
 
@@ -334,33 +324,31 @@ public String method5(){
 }
 ```
 
-
-
 - produces
 
-@RequestMapping(value = "/produces", produces = "application/json")：表示将功能处理方法将生产json格式的数据，此时根据请求头中的Accept进行匹配，如请求头“Accept:application/json”时即可匹配;
+@RequestMapping(value = "/produces", produces = "application/json")：表示将功能处理方法将生产 json 格式的数据，此时根据请求头中的 Accept 进行匹配，如请求头“Accept:application/json”时即可匹配;
 
-@RequestMapping(value = "/produces", produces = "application/xml")：表示将功能处理方法将生产xml格式的数据，此时根据请求头中的Accept进行匹配，如请求头“Accept:application/xml”时即可匹配。
+@RequestMapping(value = "/produces", produces = "application/xml")：表示将功能处理方法将生产 xml 格式的数据，此时根据请求头中的 Accept 进行匹配，如请求头“Accept:application/xml”时即可匹配。
 
-此种方式相对使用@RequestMapping的“headers = "Accept=application/json"”更能表明你的目的。
+此种方式相对使用@RequestMapping 的“headers = "Accept=application/json"”更能表明你的目的。
 
 @RequestMapping(produces={"text/html", "application/json"}) ：将匹配“Accept:text/html”或“Accept:application/json”。
 
 ## Request Params(请求参数)
 
-Spring MVC在完成路径映射之后，需要进行请求参数的提取，即参数绑定常用的注解，主要可以分为以下四大类型：
+Spring MVC 在完成路径映射之后，需要进行请求参数的提取，即参数绑定常用的注解，主要可以分为以下四大类型：
 
-A、处理requet uri 部分(这里指uri template中variable，不含queryString部分)的注解：   @PathVariable;
+A、处理 requet uri  部分(这里指 uri template 中 variable，不含 queryString 部分)的注解：   @PathVariable;
 
-B、处理request header部分的注解：   @RequestHeader, @CookieValue;
+B、处理 request header 部分的注解：   @RequestHeader, @CookieValue;
 
-C、处理request body部分的注解：@RequestParam,  @RequestBody;
+C、处理 request body 部分的注解：@RequestParam,  @RequestBody;
 
-D、处理attribute类型是注解： @SessionAttributes, @ModelAttribute;
+D、处理 attribute 类型是注解： @SessionAttributes, @ModelAttribute;
 
-### @PathVariable 
+### @PathVariable
 
-当使用@RequestMapping URI template 样式映射时， 即 someUrl/{paramId}, 这时的paramId可通过 @Pathvariable注解绑定它传过来的值到方法的参数上。
+当使用@RequestMapping URI template  样式映射时，  即  someUrl/{paramId},  这时的 paramId 可通过  @Pathvariable 注解绑定它传过来的值到方法的参数上。
 
 ``` java
 @Controller
@@ -374,11 +362,11 @@ public class RelativePathUriTemplateController {
 }
 ```
 
-上面代码把URI template 中变量 ownerId的值和petId的值，绑定到方法的参数上。若方法参数名称和需要绑定的uri template中变量名称不一致，需要在@PathVariable("name")指定uri template中的名称。
+上面代码把 URI template  中变量  ownerId 的值和 petId 的值，绑定到方法的参数上。若方法参数名称和需要绑定的 uri template 中变量名称不一致，需要在@PathVariable("name")指定 uri template 中的名称。
 
 ### @RequestHeader&@CookieValue
 
-@RequestHeader 注解，可以把Request请求header部分的值绑定到方法的参数上。这是一个Request 的header部分：
+@RequestHeader  注解，可以把 Request 请求 header 部分的值绑定到方法的参数上。这是一个 Request  的 header 部分：
 
 ``` 
 Host                    localhost:8080
@@ -399,9 +387,9 @@ public void displayHeaderInfo(@RequestHeader("Accept-Encoding") String encod
 }
 ```
 
-上面的代码，把request header部分的 Accept-Encoding的值，绑定到参数encoding上了， Keep-Alive header的值绑定到参数keepAlive上。@CookieValue 可以把Request header中关于cookie的值绑定到方法的参数上。
+上面的代码，把 request header 部分的  Accept-Encoding 的值，绑定到参数 encoding 上了， Keep-Alive header 的值绑定到参数 keepAlive 上。@CookieValue  可以把 Request header 中关于 cookie 的值绑定到方法的参数上。
 
-例如有如下Cookie值：
+例如有如下 Cookie 值：
 
 ``` 
 JSESSIONID=415A4AC178C59DACE0B2C9CA727CDD84
@@ -418,15 +406,15 @@ public void displayHeaderInfo(@CookieValue("JSESSIONID") String cookie)  {
 }
 ```
 
-即把JSESSIONID的值绑定到参数cookie上。
+即把 JSESSIONID 的值绑定到参数 cookie 上。
 
 ### @RequestParam
 
-A) 常用来处理简单类型的绑定，通过Request.getParameter() 获取的String可直接转换为简单类型的情况( String--> 简单类型的转换操作由ConversionService配置的转换器来完成)；因为使用request.getParameter()方式获取参数，所以可以处理get 方式中queryString的值，也可以处理post方式中 body data的值；
+A)  常用来处理简单类型的绑定，通过 Request.getParameter()  获取的 String 可直接转换为简单类型的情况( String-->  简单类型的转换操作由 ConversionService 配置的转换器来完成)；因为使用 request.getParameter()方式获取参数，所以可以处理 get  方式中 queryString 的值，也可以处理 post 方式中  body data 的值；
 
-B)用来处理Content-Type: 为 `application/x-www-form-urlencoded`编码的内容，提交方式GET、POST；
+B)用来处理 Content-Type:  为  `application/x-www-form-urlencoded`编码的内容，提交方式 GET、POST；
 
-C) 该注解有两个属性： value、required； value用来指定要传入值的id名称，required用来指示参数是否必须绑定；
+C)  该注解有两个属性： value、required； value 用来指定要传入值的 id 名称，required 用来指示参数是否必须绑定；
 
 ``` java
 @Controller
@@ -448,11 +436,11 @@ public class EditPetForm {
 
 ### @RequestBody
 
-该注解常用来处理Content-Type: 不是`application/x-www-form-urlencoded`编码的内容，例如application/json, application/xml等；
+该注解常用来处理 Content-Type:  不是`application/x-www-form-urlencoded`编码的内容，例如 application/json, application/xml 等；
 
-它是通过使用HandlerAdapter 配置的`HttpMessageConverters`来解析post data body，然后绑定到相应的bean上的。
+它是通过使用 HandlerAdapter  配置的`HttpMessageConverters`来解析 post data body，然后绑定到相应的 bean 上的。
 
-因为配置有FormHttpMessageConverter，所以也可以用来处理 `application/x-www-form-urlencoded`的内容，处理完的结果放在一个MultiValueMap<String, String>里，这种情况在某些特殊需求下使用，详情查看FormHttpMessageConverter api;
+因为配置有 FormHttpMessageConverter，所以也可以用来处理  `application/x-www-form-urlencoded`的内容，处理完的结果放在一个 MultiValueMap<String, String>里，这种情况在某些特殊需求下使用，详情查看 FormHttpMessageConverter api;
 
 ``` java
 @RequestMapping(value = "/something", method = RequestMethod.PUT)
@@ -463,9 +451,9 @@ public void handle(@RequestBody String body, Writer writer) throws IOExc
 
 ### @SessionAttributes
 
-该注解用来绑定HttpSession中的attribute对象的值，便于在方法中的参数里使用。
+该注解用来绑定 HttpSession 中的 attribute 对象的值，便于在方法中的参数里使用。
 
-该注解有value、types两个属性，可以通过名字和类型指定要使用的attribute 对象；
+该注解有 value、types 两个属性，可以通过名字和类型指定要使用的 attribute  对象；
 
 示例代码：
 
@@ -482,17 +470,17 @@ public class EditPetForm {
 
 该注解有两个用法，一个是用于方法上，一个是用于参数上；
 
-用于方法上时：  通常用来在处理@RequestMapping之前，为请求绑定需要从后台查询的model；
+用于方法上时：   通常用来在处理@RequestMapping 之前，为请求绑定需要从后台查询的 model；
 
-用于参数上时： 用来通过名称对应，把相应名称的值绑定到注解的参数bean上；要绑定的值来源于：
+用于参数上时：  用来通过名称对应，把相应名称的值绑定到注解的参数 bean 上；要绑定的值来源于：
 
-A) @SessionAttributes 启用的attribute 对象上；
+A) @SessionAttributes  启用的 attribute  对象上；
 
-B) @ModelAttribute 用于方法上时指定的model对象；
+B) @ModelAttribute  用于方法上时指定的 model 对象；
 
-C) 上述两种情况都没有时，new一个需要绑定的bean对象，然后把request中按名称对应的方式把值绑定到bean中。
+C)  上述两种情况都没有时，new 一个需要绑定的 bean 对象，然后把 request 中按名称对应的方式把值绑定到 bean 中。
 
-用到方法上@ModelAttribute的示例代码：
+用到方法上@ModelAttribute 的示例代码：
 
 ``` java
 // Add one attribute
@@ -506,9 +494,9 @@ public Account addAccount(@RequestParam String number) {
 
 ```
 
-这种方式实际的效果就是在调用@RequestMapping的方法之前，为request对象的model里put(“account”， Account)；
+这种方式实际的效果就是在调用@RequestMapping 的方法之前，为 request 对象的 model 里 put(“account”， Account)；
 
-用在参数上的@ModelAttribute示例代码：
+用在参数上的@ModelAttribute 示例代码：
 
 ``` java
 @RequestMapping(value="/owners/{ownerId}/pets/{petId}/edit", method = RequestMethod.POST)
@@ -517,7 +505,7 @@ public String processSubmit(@ModelAttribute Pet pet) {
 }
 ```
 
-首先查询 @SessionAttributes有无绑定的Pet对象，若没有则查询@ModelAttribute方法层面上是否绑定了Pet对象，若没有则将URI template中的值按对应的名称绑定到Pet对象的各属性上。
+首先查询  @SessionAttributes 有无绑定的 Pet 对象，若没有则查询@ModelAttribute 方法层面上是否绑定了 Pet 对象，若没有则将 URI template 中的值按对应的名称绑定到 Pet 对象的各属性上。
 
 ## Response
 
@@ -525,7 +513,7 @@ public String processSubmit(@ModelAttribute Pet pet) {
 
 ### Jsonp
 
-对于Jsonp风格的请求，Spring在返回时需要加以修改已支持前端的跨域调用，在后端处理方式如下：
+对于 Jsonp 风格的请求，Spring 在返回时需要加以修改已支持前端的跨域调用，在后端处理方式如下：
 
 ``` java
 protected String responseHandler(JSONObject rtn, 
@@ -564,21 +552,15 @@ jsonp: function (path, params, callback) {
 
 ## Restful
 
-
-
-
-
 # Model
 
 ## Spring JDBC
-
-
 
 ## Transaction(事务管理)
 
 ### Programmatic transaction management(编程式事务)
 
-### 声明式事务
+###  声明式事务
 
 ``` java
 <?xml version="1.0" encoding="UTF-8"?>
@@ -631,7 +613,7 @@ jsonp: function (path, params, callback) {
 
 ### Ehcache
 
-关键的pom文件声明如下：
+关键的 pom 文件声明如下：
 
 ``` xml
 
@@ -663,9 +645,7 @@ jsonp: function (path, params, callback) {
 	</dependency>
 ```
 
-
-
-然后在Spring的配置文件中：
+然后在 Spring 的配置文件中：
 
 ``` xml
     <!-- 缓存配置 -->  
@@ -689,9 +669,7 @@ jsonp: function (path, params, callback) {
      class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="ehcache.xml"/>
 ```
 
-
-
-相对应的ehcache的配置如下：
+相对应的 ehcache 的配置如下：
 
 ``` xml
 <!-- Ehcache2.x的变化(取自https://github.com/springside/springside4/wiki/Ehcache) -->
@@ -753,35 +731,29 @@ memoryStoreEvictionPolicy========内存存储与释放策略,即达到maxElement
 -->
 ```
 
-最后，在Java代码中只要直接声明并且自动注入一个`CacheManager`对象即可：
+最后，在 Java 代码中只要直接声明并且自动注入一个`CacheManager`对象即可：
 
 ``` java
 Cache cache = manager.getCache("sampleCache1");  
 ```
 
-
-
-
-
-
-
 # Mybatis
 
-> [mybatis-3-annotation-example-with-select-insert-update-and-delete](http://www.concretepage.com/mybatis-3/mybatis-3-annotation-example-with-select-insert-update-and-delete)
+> [mybatis-3-annotation-example-with-select-insert-update-and-delete](http://www.concretepage.com/mybatis-3/mybatis-3-annotation-example-with-select-insert-update-and-delete)
 
-MyBatis是一个半自动化的SQL辅助工具，在MyBatis的生命周期中，常见有以下几个组件：
+MyBatis 是一个半自动化的 SQL 辅助工具，在 MyBatis 的生命周期中，常见有以下几个组件：
 
 - SqlSessionFactoryBuilder
 
-这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。因此 SqlSessionFactoryBuilder 实例的最佳范围是方法范围(也就是局部方法变量)。你可以重用 SqlSessionFactoryBuilder 来创建多个 SqlSessionFactory 实例，但是最好还是不要让其一直存在以保证所有的 XML 解析资源开放给更重要的事情。
+这个类可以被实例化、使用和丢弃，一旦创建了  SqlSessionFactory，就不再需要它了。因此  SqlSessionFactoryBuilder  实例的最佳范围是方法范围(也就是局部方法变量)。你可以重用  SqlSessionFactoryBuilder  来创建多个  SqlSessionFactory  实例，但是最好还是不要让其一直存在以保证所有的  XML  解析资源开放给更重要的事情。
 
 - SqlSessionFactory
 
-SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，没有任何理由对它进行清除或重建。使用 SqlSessionFactory 的最佳实践是在应用运行期间不要重复创建多次，多次重建 SqlSessionFactory 被视为一种代码“坏味道(bad smell)”。因此 SqlSessionFactory 的最佳范围是应用范围。有很多方法可以做到，最简单的就是使用单例模式或者静态单例模式。
+SqlSessionFactory  一旦被创建就应该在应用的运行期间一直存在，没有任何理由对它进行清除或重建。使用  SqlSessionFactory  的最佳实践是在应用运行期间不要重复创建多次，多次重建  SqlSessionFactory  被视为一种代码“坏味道(bad smell)”。因此  SqlSessionFactory  的最佳范围是应用范围。有很多方法可以做到，最简单的就是使用单例模式或者静态单例模式。
 
 - SqlSession
 
-每个线程都应该有它自己的 SqlSession 实例。SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的范围是请求或方法范围。绝对不能将 SqlSession 实例的引用放在一个类的静态域，甚至一个类的实例变量也不行。也绝不能将 SqlSession 实例的引用放在任何类型的管理范围中，比如 Serlvet 架构中的 HttpSession。如果你现在正在使用一种 Web 框架，要考虑 SqlSession 放在一个和 HTTP 请求对象相似的范围中。换句话说，每次收到的 HTTP 请求，就可以打开一个 SqlSession，返回一个响应，就关闭它。这个关闭操作是很重要的，你应该把这个关闭操作放到 finally 块中以确保每次都能执行关闭。下面的示例就是一个确保 SqlSession 关闭的标准模式：
+每个线程都应该有它自己的  SqlSession  实例。SqlSession  的实例不是线程安全的，因此是不能被共享的，所以它的最佳的范围是请求或方法范围。绝对不能将  SqlSession  实例的引用放在一个类的静态域，甚至一个类的实例变量也不行。也绝不能将  SqlSession  实例的引用放在任何类型的管理范围中，比如  Serlvet  架构中的  HttpSession。如果你现在正在使用一种  Web  框架，要考虑  SqlSession  放在一个和  HTTP  请求对象相似的范围中。换句话说，每次收到的  HTTP  请求，就可以打开一个  SqlSession，返回一个响应，就关闭它。这个关闭操作是很重要的，你应该把这个关闭操作放到  finally  块中以确保每次都能执行关闭。下面的示例就是一个确保  SqlSession  关闭的标准模式：
 
 ``` 
 SqlSession session = sqlSessionFactory.openSession();
@@ -794,9 +766,9 @@ try {
 
 在你的所有的代码中一致性地使用这种模式来保证所有数据库资源都能被正确地关闭。
 
-- 映射器实例(Mapper Instances)
+-  映射器实例(Mapper Instances)
 
-映射器是创建用来绑定映射语句的接口。映射器接口的实例是从 SqlSession 中获得的。因此从技术层面讲，映射器实例的最大范围是和 SqlSession 相同的，因为它们都是从 SqlSession 里被请求的。尽管如此，映射器实例的最佳范围是方法范围。也就是说，映射器实例应该在调用它们的方法中被请求，用过之后即可废弃。并不需要显式地关闭映射器实例，尽管在整个请求范围(request scope)保持映射器实例也不会有什么问题，但是很快你会发现，像 SqlSession 一样，在这个范围上管理太多的资源的话会难于控制。所以要保持简单，最好把映射器放在方法范围(method scope)内。下面的示例就展示了这个实践：
+映射器是创建用来绑定映射语句的接口。映射器接口的实例是从  SqlSession  中获得的。因此从技术层面讲，映射器实例的最大范围是和  SqlSession  相同的，因为它们都是从  SqlSession  里被请求的。尽管如此，映射器实例的最佳范围是方法范围。也就是说，映射器实例应该在调用它们的方法中被请求，用过之后即可废弃。并不需要显式地关闭映射器实例，尽管在整个请求范围(request scope)保持映射器实例也不会有什么问题，但是很快你会发现，像  SqlSession  一样，在这个范围上管理太多的资源的话会难于控制。所以要保持简单，最好把映射器放在方法范围(method scope)内。下面的示例就展示了这个实践：
 
 ``` 
 SqlSession session = sqlSessionFactory.openSession();
@@ -808,11 +780,9 @@ try {
 }
 ```
 
-
-
 ## Enrollment
 
-要使用 MyBatis， 只需将 mybatis-x.x.x.jar 文件置于 classpath 中即可。如果使用 Maven 来构建项目，则需将下面的 dependency 代码置于 pom.xml 文件中：
+要使用  MyBatis，  只需将  mybatis-x.x.x.jar  文件置于  classpath  中即可。如果使用  Maven  来构建项目，则需将下面的  dependency  代码置于  pom.xml  文件中：
 
 ``` xml
 <dependency>
@@ -824,7 +794,7 @@ try {
 
 ### Java:直接在代码中创建
 
-如果你更愿意直接从 Java 程序而不是 XML 文件中创建 configuration，或者创建你自己的 configuration 构建器，MyBatis 也提供了完整的配置类，提供所有和 XML 文件相同功能的配置项。
+如果你更愿意直接从  Java  程序而不是  XML  文件中创建  configuration，或者创建你自己的  configuration  构建器，MyBatis  也提供了完整的配置类，提供所有和  XML  文件相同功能的配置项。
 
 ``` 
 DataSource dataSource = BlogDataSourceFactory.getBlogDataSource();
@@ -835,9 +805,9 @@ configuration.addMapper(BlogMapper.class);
 SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 ```
 
-注意该例中，configuration 添加了一个映射器类(mapper class)。映射器类是 Java 类，它们包含 SQL 映射语句的注解从而避免了 XML 文件的依赖。不过，由于 Java 注解的一些限制加之某些 MyBatis 映射的复杂性，XML 映射对于大多数高级映射(比如：嵌套 Join 映射)来说仍然是必须的。有鉴于此，如果存在一个对等的 XML 配置文件的话，MyBatis 会自动查找并加载它(这种情况下， BlogMapper.xml 将会基于类路径和 BlogMapper.class 的类名被加载进来)。具体细节稍后讨论。
+注意该例中，configuration  添加了一个映射器类(mapper class)。映射器类是  Java  类，它们包含  SQL  映射语句的注解从而避免了  XML  文件的依赖。不过，由于  Java  注解的一些限制加之某些  MyBatis  映射的复杂性，XML  映射对于大多数高级映射(比如：嵌套  Join  映射)来说仍然是必须的。有鉴于此，如果存在一个对等的  XML  配置文件的话，MyBatis  会自动查找并加载它(这种情况下， BlogMapper.xml  将会基于类路径和  BlogMapper.class  的类名被加载进来)。具体细节稍后讨论。
 
-既然有了 SqlSessionFactory ，顾名思义，我们就可以从中获得 SqlSession 的实例了。SqlSession 完全包含了面向数据库执行 SQL 命令所需的所有方法。你可以通过 SqlSession 实例来直接执行已映射的 SQL 语句。例如：
+既然有了  SqlSessionFactory ，顾名思义，我们就可以从中获得  SqlSession  的实例了。SqlSession  完全包含了面向数据库执行  SQL  命令所需的所有方法。你可以通过  SqlSession  实例来直接执行已映射的  SQL  语句。例如：
 
 ``` java
 SqlSession session = sqlSessionFactory.openSession();
@@ -848,7 +818,7 @@ try {
 }
 ```
 
-诚然这种方式能够正常工作，并且对于使用旧版本 MyBatis 的用户来说也比较熟悉，不过现在有了一种更直白的方式。使用对于给定语句能够合理描述参数和返回值的接口(比如说BlogMapper.class)，你现在不但可以执行更清晰和类型安全的代码，而且还不用担心易错的字符串字面值以及强制类型转换。
+诚然这种方式能够正常工作，并且对于使用旧版本  MyBatis  的用户来说也比较熟悉，不过现在有了一种更直白的方式。使用对于给定语句能够合理描述参数和返回值的接口(比如说 BlogMapper.class)，你现在不但可以执行更清晰和类型安全的代码，而且还不用担心易错的字符串字面值以及强制类型转换。
 
 例如：
 
@@ -862,11 +832,9 @@ try {
 }
 ```
 
+### XML-Configuration:使用独立的 XML 配置文件
 
-
-### XML-Configuration:使用独立的XML配置文件
-
-每个基于 MyBatis 的应用都是以一个 SqlSessionFactory 的实例为中心的。SqlSessionFactory 的实例可以通过 SqlSessionFactoryBuilder 获得。而 SqlSessionFactoryBuilder 则可以从 XML 配置文件或一个预先定制的 Configuration 的实例构建出 SqlSessionFactory 的实例。从 XML 文件中构建 SqlSessionFactory 的实例非常简单，建议使用类路径下的资源文件进行配置。但是也可以使用任意的输入流(InputStream)实例，包括字符串形式的文件路径或者 file:// 的 URL 形式的文件路径来配置。MyBatis 包含一个名叫 Resources 的工具类，它包含一些实用方法，可使从 classpath 或其他位置加载资源文件更加容易。
+每个基于  MyBatis  的应用都是以一个  SqlSessionFactory  的实例为中心的。SqlSessionFactory  的实例可以通过  SqlSessionFactoryBuilder  获得。而  SqlSessionFactoryBuilder  则可以从  XML  配置文件或一个预先定制的  Configuration  的实例构建出  SqlSessionFactory  的实例。从  XML  文件中构建  SqlSessionFactory  的实例非常简单，建议使用类路径下的资源文件进行配置。但是也可以使用任意的输入流(InputStream)实例，包括字符串形式的文件路径或者  file://  的  URL  形式的文件路径来配置。MyBatis  包含一个名叫  Resources  的工具类，它包含一些实用方法，可使从  classpath  或其他位置加载资源文件更加容易。
 
 ``` java
 String resource = "org/mybatis/example/mybatis-config.xml";
@@ -874,7 +842,7 @@ InputStream inputStream = Resources.getResourceAsStream(resource);
 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 ```
 
-XML 配置文件(configuration XML)中包含了对 MyBatis 系统的核心设置，包含获取数据库连接实例的数据源(DataSource)和决定事务范围和控制方式的事务管理器(TransactionManager)。XML 配置文件的详细内容后面再探讨，这里先给出一个简单的示例：
+XML  配置文件(configuration XML)中包含了对  MyBatis  系统的核心设置，包含获取数据库连接实例的数据源(DataSource)和决定事务范围和控制方式的事务管理器(TransactionManager)。XML  配置文件的详细内容后面再探讨，这里先给出一个简单的示例：
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -899,9 +867,9 @@ XML 配置文件(configuration XML)中包含了对 MyBatis 系统的核心�
 </configuration>
 ```
 
-### Spring-Integrated:在Spring中集成
+### Spring-Integrated:在 Spring 中集成
 
-在Spring MVC中使用Mybatis中的特性，需要做如下配置：
+在 Spring MVC 中使用 Mybatis 中的特性，需要做如下配置：
 
 ``` xml
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -916,21 +884,21 @@ XML 配置文件(configuration XML)中包含了对 MyBatis 系统的核心�
 
 ## Mapper
 
-MyBatis 的真正强大在于它的映射语句，也是它的魔力所在。由于它的异常强大，映射器的 XML 文件就显得相对简单。如果拿它跟具有相同功能的 JDBC 代码进行对比，你会立即发现省掉了将近 95% 的代码。MyBatis 就是针对 SQL 构建的，并且比普通的方法做的更好。
+MyBatis  的真正强大在于它的映射语句，也是它的魔力所在。由于它的异常强大，映射器的  XML  文件就显得相对简单。如果拿它跟具有相同功能的  JDBC  代码进行对比，你会立即发现省掉了将近  95%  的代码。MyBatis  就是针对  SQL  构建的，并且比普通的方法做的更好。
 
-SQL 映射文件有很少的几个顶级元素(按照它们应该被定义的顺序)：
+SQL  映射文件有很少的几个顶级元素(按照它们应该被定义的顺序)：
 
-- cache – 给定命名空间的缓存配置。
-- cache-ref – 其他命名空间缓存配置的引用。
-- resultMap – 是最复杂也是最强大的元素，用来描述如何从数据库结果集中来加载对象。
--  parameterMap – 已废弃！老式风格的参数映射。内联参数是首选,这个元素可能在将来被移除，这里不会记录。
-- sql – 可被其他语句引用的可重用语句块。
-- insert – 映射插入语句
-- update – 映射更新语句
-- delete – 映射删除语句
-- select – 映射查询语句
+- cache –  给定命名空间的缓存配置。
+- cache-ref –  其他命名空间缓存配置的引用。
+- resultMap –  是最复杂也是最强大的元素，用来描述如何从数据库结果集中来加载对象。
+-  parameterMap –  已废弃！老式风格的参数映射。内联参数是首选,这个元素可能在将来被移除，这里不会记录。
+- sql –  可被其他语句引用的可重用语句块。
+- insert –  映射插入语句
+- update –  映射更新语句
+- delete –  映射删除语句
+- select –  映射查询语句
 
-在MyBatis 3.0之后，即可以直接以Annotation方式将SQL与配置写在Java文件中，也可以直接写在XML文件中。笔者建议的简单的SQL语句可以直接以Annotation方式编写，复杂的SQL语句可以写在XML文件中。
+在 MyBatis 3.0 之后，即可以直接以 Annotation 方式将 SQL 与配置写在 Java 文件中，也可以直接写在 XML 文件中。笔者建议的简单的 SQL 语句可以直接以 Annotation 方式编写，复杂的 SQL 语句可以写在 XML 文件中。
 
 #### XML-Based
 
@@ -955,8 +923,6 @@ public interface UserMapper 
 
 }
 ```
-
-
 
 ``` xml
 <?xml version='1.0' encoding='UTF-8' ?>
@@ -1056,9 +1022,9 @@ public interface BlogMapper 
 
 #### foreach
 
-> [解决mybatis foreach 错误: Parameter ‘__frch_item_0‘ not found](http://www.bubuko.com/infodetail-913433.html)
+> [解决 mybatis foreach  错误: Parameter ‘\_\_frch_item_0‘ not found](http://www.bubuko.com/infodetail-913433.html)
 
-foreach 多用于值重复
+foreach  多用于值重复
 
 ##### in
 
@@ -1084,9 +1050,7 @@ foreach 多用于值重复
 public boolean insertChallenge(ChallengeResource.Entity challenge);
 ```
 
-
-
-##### 插入多行
+#####  插入多行
 
 ``` 
 @Options(useGeneratedKeys = false, keyProperty = "challengeAttendResourceList[].challenge_attend_id", keyColumn = "challenge_attend_id")
@@ -1105,15 +1069,12 @@ public boolean insertChallenge(ChallengeResource.Entity challenge);
 public boolean insertChallengeAttendSingleOrMultiple(@Param("challengeAttendResourceList") List<ChallengeAttendResource.Entity> challengeAttendResourceList);
 ```
 
-
-
 # View
-
-
 
 # AOP
 
-> 
+>
+
 - [spring-framework-reference-aop](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/aop.html)
 
 ## Concepts
@@ -1195,7 +1156,7 @@ public class SystemArchitecture {
 
 ## Annotation-Based
 
-如果需要以注解方式启动AspectJ，需要在Configuration类前加上注解：
+如果需要以注解方式启动 AspectJ，需要在 Configuration 类前加上注解：
 
 ``` java
 @Configuration
@@ -1280,7 +1241,7 @@ public class Worker implements Work{  
 }  
 ```
 
-实际的测试中，可以知道AOP的执行顺序为：
+实际的测试中，可以知道 AOP 的执行顺序为：
 
 ``` 
 begin doAround...  
@@ -1298,11 +1259,9 @@ doAfterReturning... 
 3.  * java.lang.Object getTarget() ：获取连接点所在的目标对象； 
 4.  * java.lang.Object getThis() ：获取代理对象本身；
 
-
-
 ## XML-Based
 
-采用XML配置时，需要启动AspectJ的支持。
+采用 XML 配置时，需要启动 AspectJ 的支持。
 
 ``` xml
 <aop:aspectj-autoproxy/>
@@ -1327,22 +1286,15 @@ doAfterReturning... 
 ...
 ```
 
-
-
 # Error Handling
 
-> 
+>
+
 - [spring-mvc-rest-exception-handling-best-practices](https://stormpath.com/blog/spring-mvc-rest-exception-handling-best-practices-part-1/)
-
-
-
-
-
-
 
 ### AOP Integration
 
-有时候會在AOP中以doAround的方法進行統一的权限验证，譬如在某个业务场景中，需要在Controller之前对于传入的user_token进行验证，对于验证通过的则替换为user_id，否则就直接报错。这边有一个小的Trick，在正常执行时，可以直接返回方法创建的DeferredResult对象，而如果报错的话，就不会再执行原有方法了，因此需要在原方法中的最后加入一个HttpServletResponse对象，这样的话就可以从中获取返回流：
+有时候會在 AOP 中以 doAround 的方法進行統一的权限验证，譬如在某个业务场景中，需要在 Controller 之前对于传入的 user_token 进行验证，对于验证通过的则替换为 user_id，否则就直接报错。这边有一个小的 Trick，在正常执行时，可以直接返回方法创建的 DeferredResult 对象，而如果报错的话，就不会再执行原有方法了，因此需要在原方法中的最后加入一个 HttpServletResponse 对象，这样的话就可以从中获取返回流：
 
 ``` java
 HttpServletResponse response = (HttpServletResponse) args[args.length - 1];
@@ -1352,9 +1304,9 @@ response.getWriter().close();
 
 ### HTTP Streaming
 
-## Reactive Integration(集成RxJava)
+## Reactive Integration(集成 RxJava)
 
-对于RxJava的使用这里不再赘述。
+对于 RxJava 的使用这里不再赘述。
 
 ``` java
 @RequestMapping("/getAMessageObsBlocking")
@@ -1384,13 +1336,11 @@ public Observable<Message> getAMessageObs() {
 }
 ```
 
-
-
 ### Blocking(同步执行)
 
-To transform an `Observable` into a `BlockingObservable`, use the[`Observable.toBlocking( )`](http://reactivex.io/RxJava/javadoc/rx/Observable.html#toBlocking()) method or the [`BlockingObservable.from( )`](http://reactivex.io/RxJava/javadoc/rx/observables/BlockingObservable.html#from(rx.Observable)) method.
+To transform an `Observable` into a `BlockingObservable`, use the[`Observable.toBlocking( )`](<http://reactivex.io/RxJava/javadoc/rx/Observable.html#toBlocking()>) method or the [`BlockingObservable.from( )`](<http://reactivex.io/RxJava/javadoc/rx/observables/BlockingObservable.html#from(rx.Observable)>) method.
 
-## Future(集成Future)
+## Future(集成 Future)
 
 ``` 
 @RequestMapping("/getAMessageFutureBlocking")
@@ -1412,8 +1362,6 @@ public DeferredResult<Message> getAMessageFutureAsync() {
     return deffered;
 }
 ```
-
-
 
 ``` 
 public CompletableFuture<Message> getAMessageFuture() {

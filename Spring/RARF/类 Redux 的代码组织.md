@@ -1,17 +1,13 @@
-﻿
+﻿在笔者之前关于[RARF](https://segmentfault.com/a/1190000004600730)的描述中，曾提及基于 MVC 风格的业务模块代码架构中存在的一些问题。彼时笔者推崇的是基于 URFP 的链式逻辑组织，换言之，一个完整的业务逻辑有数个 ResourceHandler 链接完成。但是在实践中这种方式并不是适用于全部的情况，很多时候，从一个正常的思维角度来说，我们还是习惯于去写**面条式**的代码，即在一个 Controller 中通过调用多个 Service 进行一条业务逻辑线的处理，本文笔者即是在编写这种面条式的逻辑代码的前提下，自己思索的一些实践。
 
-
-
-在笔者之前关于[RARF](https://segmentfault.com/a/1190000004600730)的描述中，曾提及基于MVC风格的业务模块代码架构中存在的一些问题。彼时笔者推崇的是基于URFP的链式逻辑组织，换言之，一个完整的业务逻辑有数个ResourceHandler链接完成。但是在实践中这种方式并不是适用于全部的情况，很多时候，从一个正常的思维角度来说，我们还是习惯于去写**面条式**的代码，即在一个Controller中通过调用多个Service进行一条业务逻辑线的处理，本文笔者即是在编写这种面条式的逻辑代码的前提下，自己思索的一些实践。
-
-
- > 笔者并没有评估过本文这种实现所引起的性能损耗，大概是因为JVM调试分析的能力太渣了吧。另一方面，本文很有可能矫枉过正，所以权当一乐。
-
+> 笔者并没有评估过本文这种实现所引起的性能损耗，大概是因为 JVM 调试分析的能力太渣了吧。另一方面，本文很有可能矫枉过正，所以权当一乐。
 
 # Overview
+
 为了能有一个大概的印象，我们以一个简单的登录注册逻辑作为示范，整个流程中只有两条主要的逻辑线，大概如下图所示：
-![](http://7xkt0f.com1.z0.glb.clouddn.com/B5EE471B-D893-4B88-8B5A-53C46588A801.png) 
-然后我们直接看最终的Controller的写法：
+![](http://7xkt0f.com1.z0.glb.clouddn.com/B5EE471B-D893-4B88-8B5A-53C46588A801.png)
+然后我们直接看最终的 Controller 的写法：
+
 ```@RequestMapping("/login/{verifyCode}")
 String login(HttpServletRequest request, @PathVariable("verifyCode") String verifyCode) {
 
@@ -113,21 +109,27 @@ String login(HttpServletRequest request, @PathVariable("verifyCode") String veri
             .getResponseString();
 }
 ```
-上面就是完成该流程的整个的代码，可以看出整个流程由step划分为了数个层次，这也是借鉴了软件设计中的分层模型，一般来说，每次请求只会针对一条逻辑线，即是每一个Step中只有一个Reducer会被调用。同一个Step中的不同的Reducer往往之间是不同的条件选择，而不同Step之间只会用Action进行沟通。但是整个流程还是以面条式的代码实现，方便理解。我们再看下整个的请求与响应效果：
+
+上面就是完成该流程的整个的代码，可以看出整个流程由 step 划分为了数个层次，这也是借鉴了软件设计中的分层模型，一般来说，每次请求只会针对一条逻辑线，即是每一个 Step 中只有一个 Reducer 会被调用。同一个 Step 中的不同的 Reducer 往往之间是不同的条件选择，而不同 Step 之间只会用 Action 进行沟通。但是整个流程还是以面条式的代码实现，方便理解。我们再看下整个的请求与响应效果：
 (1)正常登录请求：login/1?requestData={"username":"chevalier","password":123}
+
 ```
 
       {    "code": 0,    "subCode": 0,    "runtimeLog":    {        "Context Uptime": 2,        "steps":        [            {                "actualReducerDesc": "RequestHandler",                "stepDesc": "RequestHandler",                "stepId": 0,                "actualReducerAction":                {                    "actionType": "RequestDataReady",                    "actionData":                    {                        "password": "123",                        "username": "chevalier"                    }                },                "stepRunTime": 0,                "actualReducerUUID": "2608550a-6550-40da-84aa-a6a5b68bb93d"            },            {                "actualReducerDesc": "判断用户是否存在",                "stepDesc": "请求处理",                "stepId": 1,                "actualReducerAction":                {                    "actionType": "doLogin",                    "actionData":                    {                        "password": "123",                        "username": "chevalier"                    }                },                "stepRunTime": 0,                "actualReducerUUID": "92277976-bc24-4f69-b286-a4c95be993ac"            },            {                "actualReducerDesc": "对于已存在用户进行登录操作,返回user_token",                "stepDesc": "执行登录操作或者创建新用户",                "stepId": 2,                "actualReducerAction":                {                    "actionType": "Complete",                    "actionData":                    {                    }                },                "stepRunTime": 0,                "actualReducerUUID": "f21b1a80-9b86-49d7-9751-5bdc6d90c355"            }        ]    },    "user_token": "499206a2-0130-484b-82e0-2b822c3b8dfa",    "desc": "Success"
 }
 ```
+
 (2)正常注册请求：login/1?requestData={"username":"123","password":123}
+
 ```
 
       {    "password": "123",    "code": 0,    "create_time": 1461944838909,    "subCode": 0,    "runtimeLog":    {        "Context Uptime": 0,        "steps":        [            {                "actualReducerDesc": "RequestHandler",                "stepDesc": "RequestHandler",                "stepId": 0,                "actualReducerAction":                {                    "actionType": "RequestDataReady",                    "actionData":                    {                        "password": "123",                        "username": "123"                    }                },                "stepRunTime": 0,                "actualReducerUUID": "c3e3040d-6ff4-41a7-b911-dbc31de6c6dd"            },            {                "actualReducerDesc": "判断用户是否存在",                "stepDesc": "请求处理",                "stepId": 1,                "actualReducerAction":                {                    "actionType": "doRegister",                    "actionData":                    {                        "password": "123",                        "username": "123"                    }                },                "stepRunTime": 0,                "actualReducerUUID": "a5ea22dd-41c4-46bc-9d14-f60c8f6a737d"            },            {                "actualReducerDesc": "对于新用户判断用户名是否存在,返回创建好的信息与user_token",                "stepDesc": "执行登录操作或者创建新用户",                "stepId": 2,                "actualReducerAction":                {                    "actionType": "Complete",                    "actionData":                    {                    }                },                "stepRunTime": 0,                "actualReducerUUID": "eb06837e-03b3-4812-9c2d-ff86a4d795a0"            }        ]    },    "user_token": "6866cf13-ee06-4333-831a-dde0f2114764",    "username": "123",    "desc": "Success"}
 
 
 ```
+
 (3)我在随机一个地方抛出了一个异常：
+
 ```
 
       {    "code": -1008,    "runtimeLog":    {        "Context Uptime": 5,        "steps":        [            {                "actualReducerDesc": "RequestHandler",                "stepDesc": "RequestHandler",                "stepId": 0,                "actualReducerAction":                {                    "actionType": "RequestDataReady",                    "actionData":                    {                        "password": "123",                        "username": "error"                    }                },                "stepRunTime": 0,                "actualReducerUUID": "50cb7b43-cc09-4491-8650-3294903fd6e6"            },            {                "stepDesc": "请求处理",                "stepId": 1,                "stepRunTime": -1461944917734            },            {                "stepDesc": "执行登录操作或者创建新用户",                "stepId": 2,                "stepRunTime": 0            }        ]    },    "stackTrace": "error
@@ -271,9 +273,10 @@ java.lang.Thread.run(Thread.java:745)
 ",    "desc": "内部错误"}
 ```
 
-
 # Features & Motivation
-首先，我们需要考虑现在的问题是什么，以及改进的目标是什么。笔者最早萌生出要做出一些改进的动因，是看到了下面这一个Controller，因为代码过多，如果有碍阅读可以直接拉到下面看。一个Controller写了600多行，这绝不是一件令人骄傲的事情，这种代码的可读性、可维护性基本上为零。而这种代码的产生，正如笔者在[RARF](https://segmentfault.com/a/1190000004600730)中分析的，并不一定是因为程序猿的能力和整体代码规范的问题。下面的这个代码还算是规范的吧(笔者已经删去了很多的注释)，但是因为在一个快速演进迭代地业务系统中，我们不可避免的要以打补丁的方式来修正逻辑。但是打补丁的可能后果之一就是因为在一条业务逻辑线中的分支过多而导致N层的内嵌选择。最佳的方式，肯定是在系统规划之初就把这个逻辑线再细分一下，但是PM说好的不会改需求呢？
+
+首先，我们需要考虑现在的问题是什么，以及改进的目标是什么。笔者最早萌生出要做出一些改进的动因，是看到了下面这一个 Controller，因为代码过多，如果有碍阅读可以直接拉到下面看。一个 Controller 写了 600 多行，这绝不是一件令人骄傲的事情，这种代码的可读性、可维护性基本上为零。而这种代码的产生，正如笔者在[RARF](https://segmentfault.com/a/1190000004600730)中分析的，并不一定是因为程序猿的能力和整体代码规范的问题。下面的这个代码还算是规范的吧(笔者已经删去了很多的注释)，但是因为在一个快速演进迭代地业务系统中，我们不可避免的要以打补丁的方式来修正逻辑。但是打补丁的可能后果之一就是因为在一条业务逻辑线中的分支过多而导致 N 层的内嵌选择。最佳的方式，肯定是在系统规划之初就把这个逻辑线再细分一下，但是 PM 说好的不会改需求呢？
+
 ```
     @RequestMapping("doShareCreateWithAt")
     public void doShareCreateWithAt(HttpServletRequest request, PrintWriter out)
@@ -910,8 +913,11 @@ java.lang.Thread.run(Thread.java:745)
         out.close();
     }
 ```
+
 ## 清晰的业务代码逻辑
-一般来说，一个Controller是进行一个业务流程的处理，而该流程可能根据输入参数的不同、当前状态的不同导致走不同的逻辑流线。正如上文中列举的代码，正是因为存在着多个可选参数导致存在着大量的if-else分支。而用面条式的、瀑布流式的代码是最好的逻辑表现，但是一旦分支多了，if-else多了之后，就变成了一团乱麻。笔者不是否认在充分的注释情况下可以完全理解原有代码，但是这样的可读性依然很差。笔者之前一直在测试中比较喜欢BDD方式，譬如：
+
+一般来说，一个 Controller 是进行一个业务流程的处理，而该流程可能根据输入参数的不同、当前状态的不同导致走不同的逻辑流线。正如上文中列举的代码，正是因为存在着多个可选参数导致存在着大量的 if-else 分支。而用面条式的、瀑布流式的代码是最好的逻辑表现，但是一旦分支多了，if-else 多了之后，就变成了一团乱麻。笔者不是否认在充分的注释情况下可以完全理解原有代码，但是这样的可读性依然很差。笔者之前一直在测试中比较喜欢 BDD 方式，譬如：
+
 ```
   Scenario: 两数相加
     Given 我有一个计算器
@@ -920,45 +926,61 @@ java.lang.Thread.run(Thread.java:745)
     When 我点击累加
     Then 我应该看到结果120
 ```
-在OverView部分，笔者呈现出的代码也希望能符合这个特性:
+
+在 OverView 部分，笔者呈现出的代码也希望能符合这个特性:
+
 ```
 requestHandler().
 step("我是本步骤的描述").
 reducer("我是本步骤的第一个可能情况").
 reducer("我是本步骤的第二个可能情况")
 ```
-## 全局状态与局部状态的分割
-在Redux中，会把所有的状态放在Store中进行统一管理，这样就把状态变量和临时变量区分了开来，即把全局状态与局部状态分割了开来。笔者没有真实的大公司的工作经验，不过在一个可能几百行的逻辑处理中，很有可能出现大量的a,b,c,d这样临时的变量，然后在最后构造返回数据时，随手把之前的某个临时变量封装进去。此外，整个逻辑线的不同步骤中的局部变量可能相互干扰，可能在步骤一中定义了某个临时变量，步骤二中没用到，然后步骤三中突然拿来进行某个条件的判断，然后步骤四中再重新赋予其他用法。然后在维护的时候，大家都懵逼了。
-## 可回溯性
-Redux有一个非常诱人的特性叫时空旅行，即可以回溯整个应用生命周期中的所有状态。这个特性主要是基于其状态树，可以回溯出每个操作之后的状态。笔者认为可回溯性在业务逻辑开发中的表现即是全局状态的记录与每次业务处理中的局部状态的记录。之前进行Log的时候，有很大的随意性，而有了一个全局状态之后，可以对于输入、输出进行统一的记录。而对于中间状态，因为划分了Step和不同Step之间统一的Action，也可以方便的记录下来。在这种情况下，只要了解每个Step具体执行了哪个Reducer，并且每个Reducer的输出值，可以很快定位到问题代码所在的地方。
-## 可容错性
-上文中已经提及，因为RARF是记录了每个Step的情况，那么可以很快的定位到错误代码。此外，由于全部的代码是包裹在了Observable之中，那么任何的未知错误也都可以进行妥善处理，而不用担心不可回溯。
-## 并发编程与异步实现
-随着计算机硬件，笔者比较推崇响应式流这种异步模型，在本部分的实现中，笔者也是优先考虑了并发的易实现性。RARF将整个业务处理逻辑分成了数个Step，如果你发现哪个Step是IO密集型或者计算密集型，简言之，就需要耗费较长的时间，那么完全可以放到新线程中执行，而把Main线程流出来响应新的请求。
-RxJava这种链式调用形式的异步写法很是清晰明了，不过需要注意的是RxJava本身并不一定是并发地，默认情况下所有的Observable与Subscriber都是在一个线程里运行，但是可以简单的使用`subscribeOn`方法将某个Observable扔到子线程中运行。
 
+## 全局状态与局部状态的分割
+
+在 Redux 中，会把所有的状态放在 Store 中进行统一管理，这样就把状态变量和临时变量区分了开来，即把全局状态与局部状态分割了开来。笔者没有真实的大公司的工作经验，不过在一个可能几百行的逻辑处理中，很有可能出现大量的 a,b,c,d 这样临时的变量，然后在最后构造返回数据时，随手把之前的某个临时变量封装进去。此外，整个逻辑线的不同步骤中的局部变量可能相互干扰，可能在步骤一中定义了某个临时变量，步骤二中没用到，然后步骤三中突然拿来进行某个条件的判断，然后步骤四中再重新赋予其他用法。然后在维护的时候，大家都懵逼了。
+
+## 可回溯性
+
+Redux 有一个非常诱人的特性叫时空旅行，即可以回溯整个应用生命周期中的所有状态。这个特性主要是基于其状态树，可以回溯出每个操作之后的状态。笔者认为可回溯性在业务逻辑开发中的表现即是全局状态的记录与每次业务处理中的局部状态的记录。之前进行 Log 的时候，有很大的随意性，而有了一个全局状态之后，可以对于输入、输出进行统一的记录。而对于中间状态，因为划分了 Step 和不同 Step 之间统一的 Action，也可以方便的记录下来。在这种情况下，只要了解每个 Step 具体执行了哪个 Reducer，并且每个 Reducer 的输出值，可以很快定位到问题代码所在的地方。
+
+## 可容错性
+
+上文中已经提及，因为 RARF 是记录了每个 Step 的情况，那么可以很快的定位到错误代码。此外，由于全部的代码是包裹在了 Observable 之中，那么任何的未知错误也都可以进行妥善处理，而不用担心不可回溯。
+
+## 并发编程与异步实现
+
+随着计算机硬件，笔者比较推崇响应式流这种异步模型，在本部分的实现中，笔者也是优先考虑了并发的易实现性。RARF 将整个业务处理逻辑分成了数个 Step，如果你发现哪个 Step 是 IO 密集型或者计算密集型，简言之，就需要耗费较长的时间，那么完全可以放到新线程中执行，而把 Main 线程流出来响应新的请求。
+RxJava 这种链式调用形式的异步写法很是清晰明了，不过需要注意的是 RxJava 本身并不一定是并发地，默认情况下所有的 Observable 与 Subscriber 都是在一个线程里运行，但是可以简单的使用`subscribeOn`方法将某个 Observable 扔到子线程中运行。
 
 # Terminology
+
 ![](http://7xkt0f.com1.z0.glb.clouddn.com/0F1F45B5-53DB-4768-8122-BE7F43151230.png)
- 
 
 ## Context
-Context即对应一个业务处理流程，包含多个逻辑线。一个Context会被划分为输入处理、一到多个中间过程以及最后的输出处理。
-## Step
-一个Step即是某个具体的业务处理块，一个Step包含一到多个Reducer，每个Reducer表示该步骤可能的一个逻辑线。一般来说，一起请求中一个Step中只有一个Reducer会有效执行，即返回有效的Action。如果某个Step中所有Action都没有执行，那么会返回一个错误代码。
 
+Context 即对应一个业务处理流程，包含多个逻辑线。一个 Context 会被划分为输入处理、一到多个中间过程以及最后的输出处理。
+
+## Step
+
+一个 Step 即是某个具体的业务处理块，一个 Step 包含一到多个 Reducer，每个 Reducer 表示该步骤可能的一个逻辑线。一般来说，一起请求中一个 Step 中只有一个 Reducer 会有效执行，即返回有效的 Action。如果某个 Step 中所有 Action 都没有执行，那么会返回一个错误代码。
 
 ## UniResourceBag
+
 资源包即是上文描述的全局状态存放的地方，包括输入、输出。
+
 ## Reducer & Action
-每个Reducer的执行块都会返回一个Action对象，如果Action的isValid值为True，表示要把该Action发射到下一个Observable，否则不进行发射。每个Reducer首先会对上一步Step传入的Action类型进行判断，只有在是自己需要的类型的情况下才会进行执行。每个Reducer在有效执行后会发射有效地Action到下一步中。
 
-
+每个 Reducer 的执行块都会返回一个 Action 对象，如果 Action 的 isValid 值为 True，表示要把该 Action 发射到下一个 Observable，否则不进行发射。每个 Reducer 首先会对上一步 Step 传入的 Action 类型进行判断，只有在是自己需要的类型的情况下才会进行执行。每个 Reducer 在有效执行后会发射有效地 Action 到下一步中。
 
 ### RequestHandler:对于请求数据进行预处理
-请求方式基于RARF中的URFP，即是PathVariable与RequestData混合的方式，一个典型的登录请求为：
+
+请求方式基于 RARF 中的 URFP，即是 PathVariable 与 RequestData 混合的方式，一个典型的登录请求为：
+
 ```
 /login/{verifyCode}?requestData={"username":chevalier,"password":123456}
 ```
+
 ### ResponseHandler:对于输出数据进行处理
-ResponseHandler会对ResourceBag中的数据进行最终的处理校验，同时负责处理日志啊、消息推送啊等等非必须逻辑的异步实现。
+
+ResponseHandler 会对 ResourceBag 中的数据进行最终的处理校验，同时负责处理日志啊、消息推送啊等等非必须逻辑的异步实现。
