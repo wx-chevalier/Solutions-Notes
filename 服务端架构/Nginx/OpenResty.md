@@ -1,13 +1,15 @@
-[![返回目录](https://parg.co/Udx)](https://parg.co/UdT) 
+[![返回目录](https://parg.co/Udx)](https://parg.co/UdT)
+
 # OpenResty: 基于 Nginx 的全功能 Web 应用服务器
 
-OpenResty (也称为 ngx_openresty)是一个全功能的 Web 应用服务器。它打包了标准的 [Nginx](undefined) 核心，很多的常用的[第三方模块](http://wiki.nginx.org/3rdPartyModules)，以及它们的大多数依赖项。通过众多进行良好设计的 Nginx 模块，OpenResty 有效地把 Nginx 服务器转变为一个强大的 Web 应用服务器，基于它开发人员可以使用 Lua 编程语言对 Nginx 核心以及现有的各种 Nginx C 模块进行脚本编程，构建出可以处理一万以上并发请求的极端高性能的 Web 应用。OpenResty 致力于将你的服务器端应用完全运行于 Nginx 服务器中，充分利用 Nginx 的事件模型来进行非阻塞 I/O 通信。不仅仅是和 HTTP 客户端间的网络通信是非阻塞的，与MySQL、PostgreSQL、Memcached、以及 Redis 等众多远方后端之间的网络通信也是非阻塞的。因为 OpenResty 软件包的维护者也是其中打包的许多 Nginx 模块的作者，所以 OpenResty 可以确保所包含的所有组件可以可靠地协同工作。
-
+OpenResty (也称为 ngx_openresty)是一个全功能的 Web 应用服务器。它打包了标准的 [Nginx](undefined) 核心，很多的常用的[第三方模块](http://wiki.nginx.org/3rdPartyModules)，以及它们的大多数依赖项。通过众多进行良好设计的 Nginx 模块，OpenResty 有效地把 Nginx 服务器转变为一个强大的 Web 应用服务器，基于它开发人员可以使用 Lua 编程语言对 Nginx 核心以及现有的各种 Nginx C 模块进行脚本编程，构建出可以处理一万以上并发请求的极端高性能的 Web 应用。OpenResty 致力于将你的服务器端应用完全运行于 Nginx 服务器中，充分利用 Nginx 的事件模型来进行非阻塞 I/O 通信。不仅仅是和 HTTP 客户端间的网络通信是非阻塞的，与 MySQL、PostgreSQL、Memcached、以及 Redis 等众多远方后端之间的网络通信也是非阻塞的。因为 OpenResty 软件包的维护者也是其中打包的许多 Nginx 模块的作者，所以 OpenResty 可以确保所包含的所有组件可以可靠地协同工作。
 
 # 安装与部署
 
 # HttpClient
+
 ## [lua-resty-http](https://github.com/pintsized/lua-resty-http)
+
 - HTTP 1.0 and 1.1
 - Streaming interface to reading bodies using coroutines, for predictable memory usage in Lua land.
 - Alternative simple interface for singleshot requests without manual connection step.
@@ -110,6 +112,7 @@ server {
 # 存储
 
 ## [Redis](https://github.com/openresty/lua-resty-redis)
+
 ```conf
 # you do not need the following line if you are using
     # the OpenResty bundle:
