@@ -4,9 +4,9 @@
 
 # Cache
 
-* **Client Caching:** Also referred to as "browser caching", the client, browser, app, other service, etc. downloading the data can keep track of what was downloaded when, if that data had any expire time, ETags for the last request to allow for conditional request if data has changed, etc.
-* **Network Caching:** Tools like [Varnish](https://www.varnish-cache.org/) or [Squid](http://www.squid-cache.org/) intercept requests that look the same (based on various configurable criteria), returning a response early straight out of memory, instead of hitting the application server. This allows allows the application server to spend more time handling other traffic.
-* **Application Caching:** Software like Memcache, Redis, etc. can be implemented in your application, to cache various things like datastore queries, which should make responses quicker to generate.
+- **Client Caching:** Also referred to as "browser caching", the client, browser, app, other service, etc. downloading the data can keep track of what was downloaded when, if that data had any expire time, ETags for the last request to allow for conditional request if data has changed, etc.
+- **Network Caching:** Tools like [Varnish](https://www.varnish-cache.org/) or [Squid](http://www.squid-cache.org/) intercept requests that look the same (based on various configurable criteria), returning a response early straight out of memory, instead of hitting the application server. This allows allows the application server to spend more time handling other traffic.
+- **Application Caching:** Software like Memcache, Redis, etc. can be implemented in your application, to cache various things like datastore queries, which should make responses quicker to generate.
 
 # 缓存设计
 
@@ -16,7 +16,9 @@
 
 ## 更新 / 删除
 
-![](http://mmbiz.qpic.cn/mmbiz/sXiaukvjR0RAfYKRMKDBqZYPpwLjSbUkcia4GzH8UH09octde8VpkS5nrcJ4FOYguAL5HRaYSbodbDSoK1qnbpgw/640?wx_fmt=png&wxfrom=5&wx_lazy=1) ![](http://mmbiz.qpic.cn/mmbiz/sXiaukvjR0RAfYKRMKDBqZYPpwLjSbUkcOchXO2vU7bMgWM8zG6qrzMVI5ZtxjSj099xIIoG4NcocMUAKq3DIKg/640?wx_fmt=png&wxfrom=5&wx_lazy=1)
+![](http://mmbiz.qpic.cn/mmbiz/sXiaukvjR0RAfYKRMKDBqZYPpwLjSbUkcia4GzH8UH09octde8VpkS5nrcJ4FOYguAL5HRaYSbodbDSoK1qnbpgw/640?wx_fmt=png&wxfrom=5&wx_lazy=1)
+
+![](http://mmbiz.qpic.cn/mmbiz/sXiaukvjR0RAfYKRMKDBqZYPpwLjSbUkcOchXO2vU7bMgWM8zG6qrzMVI5ZtxjSj099xIIoG4NcocMUAKq3DIKg/640?wx_fmt=png&wxfrom=5&wx_lazy=1)
 
 ### DB 和缓存一致性
 
