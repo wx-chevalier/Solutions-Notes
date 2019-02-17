@@ -2,7 +2,7 @@
 
 [IT 技术图谱与知识架构-服务端应用程序开发与系统架构](https://parg.co/U0A)中概括的领域相关技术内容。
 
-![default](https://i.postimg.cc/MHBjgpQR/image.png)
+![default](https://i.postimg.cc/y1QXgJ6f/image.png)
 
 本仓库涵盖了笔者在服务端开发过程中总结的笔记、资料与开源项目。
 
