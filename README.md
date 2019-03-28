@@ -8,7 +8,7 @@
 
 # Nav | 导航
 
-**建议前往 [xCompass](https://wxyyxc1992.github.io/home/#/search)/[alfred-sg](https://github.com/wxyyxc1992/Soogle/tree/master/alfred-sg) 交互式地检索、查找需要的文章/链接/书籍/课程，或者直接浏览本仓库的目录以了解更多内容。**
+**建议前往 [xCompass](https://wx-chevalier.github.io/home/#/search)/[alfred-sg](https://github.com/wx-chevalier/Soogle/tree/master/alfred-sg) 交互式地检索、查找需要的文章/链接/书籍/课程，或者直接浏览本仓库的目录以了解更多内容。**
 
 ## 篇章
 
@@ -26,9 +26,9 @@ DevOps 是一种使持续交付成为可能的理念，关注于所有人共同�
 
 ## OpenSource Projects
 
-- [node-server-boilerplate](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/tree/master/OpenSource/node-server-boilerplate): 基于 Koa2 的 Node 服务端应用开发框架模板
+- [node-server-boilerplate](https://github.com/wx-chevalier/ServerSideApplication-Development-And-System-Architecture/tree/master/OpenSource/node-server-boilerplate): 基于 Koa2 的 Node 服务端应用开发框架模板
 
-- [swagger-decorator](https://github.com/wxyyxc1992/ServerSideApplication-Development-And-System-Architecture/tree/master/OpenSource/swagger-decorator): 基于注解 Koa2 应用的接口文档自动生成
+- [swagger-decorator](https://github.com/wx-chevalier/ServerSideApplication-Development-And-System-Architecture/tree/master/OpenSource/swagger-decorator): 基于注解 Koa2 应用的接口文档自动生成
 
 # Preface | 前言
 
@@ -41,4 +41,4 @@ DevOps 是一种使持续交付成为可能的理念，关注于所有人共同�
 
 笔者所有文章遵循 [知识共享 署名-非商业性使用-禁止演绎 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh)，欢迎转载，尊重版权。如果觉得本系列对你有所帮助，欢迎给我家布丁买点狗粮(支付宝扫码)~
 
-![](https://github.com/wxyyxc1992/OSS/blob/master/2017/8/1/Buding.jpg?raw=true)
+![](https://github.com/wx-chevalier/OSS/blob/master/2017/8/1/Buding.jpg?raw=true)

@@ -152,7 +152,7 @@ bootRun {
 - `gradle bootRun`来开启 Spring Boot 服务
 
 ![](https://raw.githubusercontent.com/d-sauer/blog/master/2015/spring_boot_dev_tools_with_gradle/console.png)
-实例可以查看[这里](https://github.com/wxyyxc1992/SpringMVC-Boilerplate/blob/master/build.gradle)
+实例可以查看[这里](https://github.com/wx-chevalier/SpringMVC-Boilerplate/blob/master/build.gradle)
 
 # Configuration
 

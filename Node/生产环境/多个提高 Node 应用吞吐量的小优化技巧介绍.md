@@ -1,4 +1,4 @@
-> [多个提高 Node.js 应用吞吐量的小优化技巧介绍](https://zhuanlan.zhihu.com/p/25276558)翻译自 InfoQ 英文站的 [node-micro-optimizations-javascript](https://www.infoq.com/articles/node-micro-optimizations-javascript) 一文，从属于笔者的[Web 前端入门与工程实践](https://github.com/wxyyxc1992/Web-Frontend-Introduction-And-Engineering-Practices)。
+> [多个提高 Node.js 应用吞吐量的小优化技巧介绍](https://zhuanlan.zhihu.com/p/25276558)翻译自 InfoQ 英文站的 [node-micro-optimizations-javascript](https://www.infoq.com/articles/node-micro-optimizations-javascript) 一文，从属于笔者的[Web 前端入门与工程实践](https://github.com/wx-chevalier/Web-Frontend-Introduction-And-Engineering-Practices)。
 
 # 多个提高 Node.js 应用吞吐量的小优化技巧介绍
 

@@ -1,4 +1,4 @@
-> [API 的过去，现在与未来](https://zhuanlan.zhihu.com/p/24681051)主体内容参考翻译自[Future of APIs](https://blog.goodapi.co/future-of-apis-c84a76bc9c85#.wrravx6bf)。本文从属于笔者的[服务端应用程序入门与实践](https://github.com/wxyyxc1992/ServerSideApplication-Introduction-And-Practices)。
+> [API 的过去，现在与未来](https://zhuanlan.zhihu.com/p/24681051)主体内容参考翻译自[Future of APIs](https://blog.goodapi.co/future-of-apis-c84a76bc9c85#.wrravx6bf)。本文从属于笔者的[服务端应用程序入门与实践](https://github.com/wx-chevalier/ServerSideApplication-Introduction-And-Practices)。
 
 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/12/3/1-V4DQWx-EKXphLTaV19JT2w.jpeg)
 

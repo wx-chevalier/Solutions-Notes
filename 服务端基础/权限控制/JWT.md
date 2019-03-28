@@ -2,7 +2,7 @@
 
 # JWT 机制详解
 
-JWT 是 Auth0 提出的通过对 JSON 进行加密签名来实现授权验证的方案。可以参考 [Backend-Boilerplate](https://github.com/wxyyxc1992/Backend-Boilerplate) 中 JWT 在于 Node.js/Java/Go 等常见服务端应用开发中的应用。
+JWT 是 Auth0 提出的通过对 JSON 进行加密签名来实现授权验证的方案。可以参考 [Backend-Boilerplate](https://github.com/wx-chevalier/Backend-Boilerplate) 中 JWT 在于 Node.js/Java/Go 等常见服务端应用开发中的应用。
 
 ![image](https://user-images.githubusercontent.com/5803001/48563391-33682c80-e92f-11e8-9cb1-a855546837c9.png)
 
