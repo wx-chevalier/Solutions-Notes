@@ -110,31 +110,3 @@ $ iostat -x -d 2
 Device:         rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
 vda               0.00     0.25    0.04    0.53     0.56     4.88    19.25     0.00    6.85    3.09    7.14   0.25   0.01
 ```
-
-# 文件备份
-
-在每月第一天备份并压缩/etc 目录的所有内容，存放在/root/bak 目录里，且文件名为如下形式 yymmdd_etc，yy 为年，mm 为月，dd 为日。
-
-```sh
-#!/bin/sh
-DIRNAME=`ls /root | grep bak`
-if [ -z "$DIRNAME" ] ; then
-mkdir /root/bak
-cd /root/bak
-fi
-YY=`date +%y`
-MM=`date +%m`
-DD=`date +%d`
-BACKETC=$YY$MM$DD_etc.tar.gz
-tar zcvf $BACKETC /etc
-echo “fileback finished!”
-```
-
-编写任务定时器：
-
-```sh
-echo “0 0 1 * * /bin/sh /usr/bin/fileback” >; /root/etcbakcron
-crontab /root/etcbakcron
-或使用crontab -e 命令添加定时任务：
-0 1 * * * /bin/sh /usr/bin/fileback
-```
