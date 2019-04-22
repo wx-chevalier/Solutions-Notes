@@ -4,8 +4,6 @@
 
 # ThreadPool:线程池的实现
 
->
-
 - [jetty 线程池的实现](http://blog.csdn.net/pwlazy/article/details/7166395)
 
 最近在项目中使用到了 Jetty，想弄清楚 Jetty 在默认情况下会使用多少个线程来处理请求，看了一下源代码。
