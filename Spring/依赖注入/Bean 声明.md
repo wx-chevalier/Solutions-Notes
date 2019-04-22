@@ -1002,3 +1002,9 @@ MyClass a;
 @Qualifier("b")
 MyClass b;
 ```
+
+# 注解方式声明
+
+在 Spring2.0 之前的版本中，@Repository 注解可以标记在任何的类上，用来表明该类是用来执行与数据库相关的操作（即 DAO 对象），并支持自动处理数据库操作产生的异常。在 Spring2.5 版本中，引入了更多的 Spring 类注解：@Component,@Service,@Controller。@Component 是一个通用的 Spring 容器管理的单例 bean 组件。而@Repository, @Service, @Controller 就是针对不同的使用场景所采取的特定功能化的注解组件。
+
+因此，当你的一个类被@Component 所注解，那么就意味着同样可以用@Repository, @Service, @Controller 来替代它，同时这些注解会具备有更多的功能，而且功能各异。最后，如果你不知道要在项目的业务层采用@Service 还是@Component 注解。那么，@Service 是一个更好的选择。就如上文所说的，@Repository 早已被支持了在你的持久层作为一个标记可以去自动处理数据库操作产生的异常
