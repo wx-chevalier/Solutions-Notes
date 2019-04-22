@@ -2,18 +2,6 @@
 
 ## Definition
 
-|  Properties                |  Description                                                                                                                                                           |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  class                     |  This attribute is mandatory and specify the bean class to be used to create the bean.                                                                                 |
-|  name/id                   |  This attribute specifies the bean identifier uniquely. In XML-based configuration metadata, you use the id and/or name attributes to specify the bean identifier(s).  |
-|  scope                     |  This attribute specifies the scope of the objects created from a particular bean definition and it will be discussed in bean scopes chapter.                          |
-|  constructor-arg           |  This is used to inject the dependencies and will be discussed in next chapters.                                                                                       |
-|  properties                |  This is used to inject the dependencies and will be discussed in next chapters.                                                                                       |
-|  autowiring mode           |  This is used to inject the dependencies and will be discussed in next chapters.                                                                                       |
-|  lazy-initialization mode  |  A lazy-initialized bean tells the IoC container to create a bean instance when it is first requested, rather than at startup.                                         |
-|  initialization method     |  A callback to be called just after all necessary properties on the bean have been set by the container. It will be discussed in bean life cycle chapter.              |
-|  destruction method        |  A callback to be used when the container containing the bean is destroyed. It will be discussed in bean life cycle chapter.                                           |
-
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -104,7 +92,7 @@ public class DefaultServiceLocator {
 
 当然，实例工厂方法也可以在一个工厂类中提供多个方法：
 
-``` java
+```xml
 <bean id="serviceLocator" class="examples.DefaultServiceLocator">
     <!-- inject any dependencies required by this locator bean -->
 </bean>
@@ -118,7 +106,7 @@ public class DefaultServiceLocator {
     factory-method="createAccountServiceInstance"/>
 ```
 
-```
+```java
 public class DefaultServiceLocator {
 
     private static ClientService clientService = new ClientServiceImpl();
