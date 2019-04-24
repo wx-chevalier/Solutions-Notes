@@ -2,18 +2,6 @@
 
 ## Definition
 
-|  Properties                |  Description                                                                                                                                                           |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  class                     |  This attribute is mandatory and specify the bean class to be used to create the bean.                                                                                 |
-|  name/id                   |  This attribute specifies the bean identifier uniquely. In XML-based configuration metadata, you use the id and/or name attributes to specify the bean identifier(s).  |
-|  scope                     |  This attribute specifies the scope of the objects created from a particular bean definition and it will be discussed in bean scopes chapter.                          |
-|  constructor-arg           |  This is used to inject the dependencies and will be discussed in next chapters.                                                                                       |
-|  properties                |  This is used to inject the dependencies and will be discussed in next chapters.                                                                                       |
-|  autowiring mode           |  This is used to inject the dependencies and will be discussed in next chapters.                                                                                       |
-|  lazy-initialization mode  |  A lazy-initialized bean tells the IoC container to create a bean instance when it is first requested, rather than at startup.                                         |
-|  initialization method     |  A callback to be called just after all necessary properties on the bean have been set by the container. It will be discussed in bean life cycle chapter.              |
-|  destruction method        |  A callback to be used when the container containing the bean is destroyed. It will be discussed in bean life cycle chapter.                                           |
-
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -104,7 +92,7 @@ public class DefaultServiceLocator {
 
 当然，实例工厂方法也可以在一个工厂类中提供多个方法：
 
-``` java
+```xml
 <bean id="serviceLocator" class="examples.DefaultServiceLocator">
     <!-- inject any dependencies required by this locator bean -->
 </bean>
@@ -118,7 +106,7 @@ public class DefaultServiceLocator {
     factory-method="createAccountServiceInstance"/>
 ```
 
-```
+```java
 public class DefaultServiceLocator {
 
     private static ClientService clientService = new ClientServiceImpl();
@@ -1014,3 +1002,9 @@ MyClass a;
 @Qualifier("b")
 MyClass b;
 ```
+
+# 注解方式声明
+
+在 Spring2.0 之前的版本中，@Repository 注解可以标记在任何的类上，用来表明该类是用来执行与数据库相关的操作（即 DAO 对象），并支持自动处理数据库操作产生的异常。在 Spring2.5 版本中，引入了更多的 Spring 类注解：@Component,@Service,@Controller。@Component 是一个通用的 Spring 容器管理的单例 bean 组件。而@Repository, @Service, @Controller 就是针对不同的使用场景所采取的特定功能化的注解组件。
+
+因此，当你的一个类被@Component 所注解，那么就意味着同样可以用@Repository, @Service, @Controller 来替代它，同时这些注解会具备有更多的功能，而且功能各异。最后，如果你不知道要在项目的业务层采用@Service 还是@Component 注解。那么，@Service 是一个更好的选择。就如上文所说的，@Repository 早已被支持了在你的持久层作为一个标记可以去自动处理数据库操作产生的异常
