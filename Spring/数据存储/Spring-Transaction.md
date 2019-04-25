@@ -34,10 +34,10 @@
 
 ```
 public interface PlatformTransactionManager {
-    TransactionStatus getTransaction(
-            TransactionDefinition definition) throws TransactionException;
-    void commit(TransactionStatus status) throws TransactionException;
-    void rollback(TransactionStatus status) throws TransactionException;
+  TransactionStatus getTransaction(
+  TransactionDefinition definition) throws TransactionException;
+  void commit(TransactionStatus status) throws TransactionException;
+  void rollback(TransactionStatus status) throws TransactionException;
 }
 ```
 
@@ -85,12 +85,12 @@ public interface PlatformTransactionManager {
 
 - PROPAGATION_NESTED:如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则进行与 PROPAGATION_REQUIRED 类似的操作。从字面也可知道，nested，嵌套级别事务。该传播级别的特征是：如果上下文中存在事务，则嵌套事务执行，如果不存在事务，则新建事务。那么什么是嵌套事务呢？很多人都不理解，我看过一些博客，都是有些理解偏差。
   嵌套是子事务嵌套在父事务中执行，子事务是父事务的一部分，在进入子事务之前，父事务建立一个回滚点，叫 save point，然后执行子事务，这个子事务的执行也算是父事务的一部分，然后子事务执行结束，父事务继续执行。重点就在于那个 save point。看几个问题就明了了：
-     - 如果子事务回滚，会发生什么？
+- 如果子事务回滚，会发生什么？
   父事务会回滚到进入子事务前建立的 save point，然后尝试其他的事务或者其他的业务逻辑，父事务之前的操作不会受到影响，更不会自动回滚。
-     - 如果父事务回滚，会发生什么？
+- 如果父事务回滚，会发生什么？
 
 父事务回滚，子事务也会跟着回滚！为什么呢，因为父事务结束之前，子事务是不会提交的，我们说子事务是父事务的一部分，正是这个道理。
-   - 事务的提交，是什么情况？
+ - 事务的提交，是什么情况？
 
 是父事务先提交，然后子事务提交，还是子事务先提交，父事务再提交？答案是第二种情况，还是那句话，子事务是父事务的一部分，由父事务统一提交。
 
@@ -107,15 +107,15 @@ public interface PlatformTransactionManager {
 PROPAGATION_NESTED uses a single physical transaction with multiple savepoints that it can roll back to. Such partial rollbacks allow an inner transaction scope to trigger a rollback for its scope, with the outer transaction being able to continue the physical transaction despite some operations having been rolled back. This setting is typically mapped onto JDBC savepoints, so will only work with JDBC resource transactions. See Spring’sDataSourceTransactionManager.
 
 PROPAGATION_NESTED: 嵌套事务类型，是相对上面提到的六种情况(上面的六种应该称为平面事务类型)，打个比方我现在有一个事务主要有一下几部分：
-      1，从 A 用户帐户里面减去 100 元钱
-      2，往 B 用户帐户里面添加 100 元钱
+  1，从 A 用户帐户里面减去 100 元钱
+  2，往 B 用户帐户里面添加 100 元钱
 这样看和以前不同的事务可能没有什么区别，那我现在有点特殊的要求就是，A 用户有 3 个帐户，B 用户有 2 个帐户，现在我的要求就是只要再 A 用户的 3 个帐户里面任意一个减去 100 元，往 B 用户的两个帐户中任意一个里面增加 100 元就可以了！一旦你有这样的要求那嵌套事务类型就非常适合你！我们可以这样理解，
-        一：将“从 A 用户帐户里面减去 100 元钱” 和 “往 B 用户帐户里面增加 100 元钱”我们暂时认为是一级事务操作
-        二：将从 A 用户的 3 个帐户的任意一个帐户里面减钱看做是“从 A 用户帐户里面减去 100 元钱”这个一级事务的子事务(二级事务)，同样把后面存钱的看成是另一个的二级事务。
-      问题一：当二级事务被 rollback 一级事务会不会被 rollback？
-      答案是不会的，二级事务的 rollback 只针对自己。
-      问题二：什么时候这个一级事务会 commit，什么时候会被 rollback 呢？
-      我们主要看二级里面出现的情况，当所有的二级事务被 commit 了并且一级事务没有失败的操作，那整个事务就算是一个成功的事务，这种情况整个事务会被 commit。当任意一个二级事务没有被 commit 那整个事务就是失败的，整个事务会被 roolback。还是拿上面的例子来说明吧！如果我在 a 的三个帐户里面减钱的操作都被二级事务给 rollback 了，也就是 3 个帐户里面都没有减钱成功，整个事务就失败了就会被 rollback。如果 A 用户帐户三个帐户里面有一个可以扣钱而且 B 用户的两个帐户里面也有一个帐户可以增加钱，那整个事务就算成功的，会被 commit。
+  一：将“从 A 用户帐户里面减去 100 元钱” 和 “往 B 用户帐户里面增加 100 元钱”我们暂时认为是一级事务操作
+  二：将从 A 用户的 3 个帐户的任意一个帐户里面减钱看做是“从 A 用户帐户里面减去 100 元钱”这个一级事务的子事务(二级事务)，同样把后面存钱的看成是另一个的二级事务。
+  问题一：当二级事务被 rollback 一级事务会不会被 rollback？
+  答案是不会的，二级事务的 rollback 只针对自己。
+  问题二：什么时候这个一级事务会 commit，什么时候会被 rollback 呢？
+  我们主要看二级里面出现的情况，当所有的二级事务被 commit 了并且一级事务没有失败的操作，那整个事务就算是一个成功的事务，这种情况整个事务会被 commit。当任意一个二级事务没有被 commit 那整个事务就是失败的，整个事务会被 roolback。还是拿上面的例子来说明吧！如果我在 a 的三个帐户里面减钱的操作都被二级事务给 rollback 了，也就是 3 个帐户里面都没有减钱成功，整个事务就失败了就会被 rollback。如果 A 用户帐户三个帐户里面有一个可以扣钱而且 B 用户的两个帐户里面也有一个帐户可以增加钱，那整个事务就算成功的，会被 commit。
 看了一下觉得上面的例子好像不是很深刻，看这个情况(A 用户的 3 个帐户都是有信用额度的，也就是说可以超支，但是超支有金额限制)。
 
 ## 事务的隔离级别
@@ -134,18 +134,18 @@ PROPAGATION_NESTED: 嵌套事务类型，是相对上面提到的六种情况(�
 最严格的级别，事务串行执行，资源消耗最大。小的时候数手指，第一次数十 10 个，第二次数是 11 个，怎么回事？产生幻觉了？幻读也是这样子，事务 A 首先根据条件索引得到 10 条数据，然后事务 B 改变了数据库一条数据，导致也符合事务 A 当时的搜索条件，这样事务 A 再次搜索发现有 11 条数据了，就产生了幻读。
 
 事务隔离级别对照关系表：
-|                      | **脏读** | **不可重复读** | **幻读** |
+|| **脏读** | **不可重复读** | **幻读** |
 | -------------------- | ------ | --------- | ------ |
-| **SERIALIZABLE**     | 不会     | 不会        | 不会     |
-| **REPEATABLE_READ**  | 不会     | 不会        | 会      |
-| **READ_COMMITTED**   | 不会     | 会         | 会      |
-| **READ_UNCOMMITTED** | 会      | 会         | 会      |
+| **SERIALIZABLE** | 不会 | 不会| 不会 |
+| **REPEATABLE_READ**| 不会 | 不会| 会|
+| **READ_COMMITTED** | 不会 | 会 | 会|
+| **READ_UNCOMMITTED** | 会| 会 | 会|
 
 所以最安全的，是 Serializable，但是伴随而来也是高昂的性能开销。另外，事务常用的两个属性：① **readonly**，设置事务为只读以提升性能；②**timeout**，设置事务的超时时间，一般用于防止大事务的发生。
 
 ## Reference
 
-- [Spring 的事务传播性与隔离级别  ](http://blog.csdn.net/yang1982_0907/article/details/44408809)
+- [Spring 的事务传播性与隔离级别](http://blog.csdn.net/yang1982_0907/article/details/44408809)
 
 # Declarative Transaction Management:声明式事务管理
 
@@ -192,74 +192,74 @@ public class DefaultFooService implements FooService {
 <!-- from the file 'context.xml' -->
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:aop="http://www.springframework.org/schema/aop"
-    xmlns:tx="http://www.springframework.org/schema/tx"
-    xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd
-        http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xsi:schemaLocation="
+  http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/tx
+  http://www.springframework.org/schema/tx/spring-tx.xsd
+  http://www.springframework.org/schema/aop
+  http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-    <!-- this is the service object that we want to make transactional -->
-    <bean id="fooService" class="x.y.service.DefaultFooService"/>
+  <!-- this is the service object that we want to make transactional -->
+  <bean id="fooService" class="x.y.service.DefaultFooService"/>
 
 
-   <!--通用事务管理器-->
-    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
+ <!--通用事务管理器-->
+  <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <property name="dataSource" ref="dataSource"/>
+  </bean>
 
 
-    <!-- 指定事务策略,声明一个通知，用以指出要管理哪些事务方法及如何管理 -->
-    <tx:advice id="txAdvice" transaction-manager="txManager">
-        <!-- the transactional semantics... -->
-        <tx:attributes>
-            <!-- all methods starting with 'get' are read-only -->
-            <tx:method name="get*" read-only="true"/>
-            <!-- other methods use the default transaction settings (see below) -->
-            <tx:method name="*"/>
-        </tx:attributes>
-    </tx:advice>
+  <!-- 指定事务策略,声明一个通知，用以指出要管理哪些事务方法及如何管理 -->
+  <tx:advice id="txAdvice" transaction-manager="txManager">
+  <!-- the transactional semantics... -->
+  <tx:attributes>
+  <!-- all methods starting with 'get' are read-only -->
+  <tx:method name="get*" read-only="true"/>
+  <!-- other methods use the default transaction settings (see below) -->
+  <tx:method name="*"/>
+  </tx:attributes>
+  </tx:advice>
 
 
-    <!-- 声明一个config，用以将事务策略和业务类关联起来-->
-    <aop:config>
-        <aop:pointcut id="fooServiceOperation" expression="execution(* x.y.service.FooService.*(..))"/>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="fooServiceOperation"/>
-    </aop:config>
+  <!-- 声明一个config，用以将事务策略和业务类关联起来-->
+  <aop:config>
+  <aop:pointcut id="fooServiceOperation" expression="execution(* x.y.service.FooService.*(..))"/>
+  <aop:advisor advice-ref="txAdvice" pointcut-ref="fooServiceOperation"/>
+  </aop:config>
 
 
-    <!-- don't forget the DataSource -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@rj-t42:1521:elvis"/>
-        <property name="username" value="scott"/>
-        <property name="password" value="tiger"/>
-    </bean>
+  <!-- don't forget the DataSource -->
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+  <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+  <property name="url" value="jdbc:oracle:thin:@rj-t42:1521:elvis"/>
+  <property name="username" value="scott"/>
+  <property name="password" value="tiger"/>
+  </bean>
 
 
 
 
-    <!-- other <bean/> definitions here -->
+  <!-- other <bean/> definitions here -->
 
 
 </beans>
 ```
 
 这里 tx:method 的详细配置项如下：
-| 属性              | 说明                                       |
+| 属性| 说明 |
 | --------------- | ---------------------------------------- |
-| name            | 方法名的匹配模式，通知根据该模式寻找匹配的方法。   该属性可以使用 asterisk (\*)通配符 |
-| propagation     | 设定事务定义所用的传播级别                            |
-| isolation       | 设定事务的隔离级别                                |
-| timeout         | 指定事务的超时(单位为秒)                            |
-| read-only       | 该属性为 true 指示事务是只读的(典型地，   对于只执行查询的事务你会将该属性设为 true，   如果出现了更新、插入或是删除语句时只读事务就会失败) |
-| no-rollback-for | 以逗号分隔的异常类的列表，目标方法可以抛出   这些异常而不会导致通知执行回滚   |
-| rollback-for    | 以逗号分隔的异常类的列表，当目标方法抛出这些   异常时会导致通知执行回滚。默认情况下，该列表为空，   因此不在 no-rollback-for 列表中的任何运行   时异常都会导致回滚 |
+| name| 方法名的匹配模式，通知根据该模式寻找匹配的方法。 该属性可以使用 asterisk (\*)通配符 |
+| propagation | 设定事务定义所用的传播级别|
+| isolation | 设定事务的隔离级别|
+| timeout | 指定事务的超时(单位为秒)|
+| read-only | 该属性为 true 指示事务是只读的(典型地， 对于只执行查询的事务你会将该属性设为 true， 如果出现了更新、插入或是删除语句时只读事务就会失败) |
+| no-rollback-for | 以逗号分隔的异常类的列表，目标方法可以抛出 这些异常而不会导致通知执行回滚 |
+| rollback-for| 以逗号分隔的异常类的列表，当目标方法抛出这些 异常时会导致通知执行回滚。默认情况下，该列表为空， 因此不在 no-rollback-for 列表中的任何运行 时异常都会导致回滚 |
 
 如果你希望针对所有的 Service 类都包裹在事务中，则：
 
@@ -424,4 +424,4 @@ txManager.commit(status);
 
 >
 
-- [分布式事务笔记  ](http://www.yangguo.info/2016/05/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AC%94%E8%AE%B0/)
+- [分布式事务笔记](http://www.yangguo.info/2016/05/23/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E7%AC%94%E8%AE%B0/)

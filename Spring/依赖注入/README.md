@@ -10,8 +10,8 @@
 
 一般控制反转分为 3 类：
 
-- Type 1 :  基于接口  (interface injection)。Depending object  需要实现(implement)  特定  interface  以供框架注入所需对象。
-- Type 2 :  基于设值函数  (setter injection)。Depending object  需要实现特定  setter  方法  (但不需要依赖特定 interface)，
-- Type 3 :  基于构造函数  (constructor injection)
+- Type 1 :  基于接口(interface injection)。Depending object  需要实现(implement)  特定 interface  以供框架注入所需对象。
+- Type 2 :  基于设值函数(setter injection)。Depending object  需要实现特定 setter  方法(但不需要依赖特定 interface)，
+- Type 3 :  基于构造函数(constructor injection)
 
 套用 Laravel 中的名词，Spring 中的 ApplicationContext 本身就是起到了一个服务容器的作用，所有在 ApplicationContext 中注入的 Bean 会由 Spring 自动构造，并且根据@AutoWired 关键字自动的注入到各个类的成员中。

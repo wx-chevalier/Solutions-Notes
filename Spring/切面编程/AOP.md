@@ -6,17 +6,17 @@
 
 ```
 public interface PointcutAdvisor {
-   Pointcut getPointcut();
-   Advice getAdvice();
+ Pointcut getPointcut();
+ Advice getAdvice();
 }
 
 1public interface PointcutAdvisor {
 
 
-2   Pointcut getPointcut();
+2 Pointcut getPointcut();
 
 
-3   Advice getAdvice();
+3 Advice getAdvice();
 
 
 4}

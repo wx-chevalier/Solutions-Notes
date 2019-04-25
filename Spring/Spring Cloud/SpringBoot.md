@@ -7,10 +7,10 @@
 ```xml
 ...
 <bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-      p:driverClassName="com.mysql.jdbc.Driver"
-      p:url="${db.url}?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true"
-      p:username="${db.username}"
-      p:password="${db.password}">
+p:driverClassName="com.mysql.jdbc.Driver"
+p:url="${db.url}?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true"
+p:username="${db.username}"
+p:password="${db.password}">
 
 </bean>
 ...
@@ -56,8 +56,8 @@ targetCompatibility = 1.8
 //配置Spring Boot
 bootRun {
     main = "wx.application.Application"
-    addResources = false
-    systemProperty 'spring.profiles.active', 'dev'
+addResources = false
+systemProperty 'spring.profiles.active', 'dev'
 }
 
 bootRepackage {
@@ -78,8 +78,8 @@ task deploy << {
 processResources {
 
     filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [
-            activeProfiles: project.getProperties().containsKey('activeProfiles') ? project.property('activeProfiles') : 'deploy'  //默认值只会用在打包部署的情况下,因此使用deploy配置文件
-    ]
+            activeProfiles: project.getProperties().containsKey('activeProfiles') ? project.property('activeProfiles') : 'deploy'//默认值只会用在打包部署的情况下,因此使用deploy配置文件
+]
 
 }
 
@@ -96,7 +96,7 @@ repositories {
 //配置依赖
 dependencies {
     compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-    compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.3.3.RELEASE') {
+compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.3.3.RELEASE') {
         exclude(module: 'spring-boot-starter-tomcat')
         exclude(module: 'spring-boot-starter-logging')
     }
@@ -120,29 +120,29 @@ Spring Boot 提供了 DevTools，内含了一系列辅助开发工具，可以�
 
 ```
 buildscript {
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.0.RELEASE")
-    }
-    repositories {
-        mavenCentral()
-    }
+dependencies {
+classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.0.RELEASE")
+}
+repositories {
+mavenCentral()
+}
 }
 apply plugin: 'java'
 apply plugin: 'spring-boot'
 repositories {
-    mavenCentral()
+mavenCentral()
 }
 configurations {
-    dev
+dev
 }
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web:1.3.0.RELEASE")
-    compile 'org.slf4j:slf4j-api:1.7.13'
-    dev("org.springframework.boot:spring-boot-devtools")
+compile("org.springframework.boot:spring-boot-starter-web:1.3.0.RELEASE")
+compile 'org.slf4j:slf4j-api:1.7.13'
+dev("org.springframework.boot:spring-boot-devtools")
 }
 bootRun {
-    // Use Spring Boot DevTool only when we run Gradle bootRun task
-    classpath = sourceSets.main.runtimeClasspath + configurations.dev
+// Use Spring Boot DevTool only when we run Gradle bootRun task
+classpath = sourceSets.main.runtimeClasspath + configurations.dev
 }
 ```
 
@@ -180,22 +180,22 @@ public class Application {
 @Component
 public class XClacksOverhead implements Filter {
 
-  public static final String X_CLACKS_OVERHEAD = "X-Clacks-Overhead";
+public static final String X_CLACKS_OVERHEAD = "X-Clacks-Overhead";
 
-  @Override
-  public void doFilter(ServletRequest req, ServletResponse res,
-      FilterChain chain) throws IOException, ServletException {
+@Override
+public void doFilter(ServletRequest req, ServletResponse res,
+FilterChain chain) throws IOException, ServletException {
 
-    HttpServletResponse response = (HttpServletResponse) res;
-    response.setHeader(X_CLACKS_OVERHEAD, "GNU Terry Pratchett");
-    chain.doFilter(req, res);
-  }
+HttpServletResponse response = (HttpServletResponse) res;
+response.setHeader(X_CLACKS_OVERHEAD, "GNU Terry Pratchett");
+chain.doFilter(req, res);
+}
 
-  @Override
-  public void destroy() {}
+@Override
+public void destroy() {}
 
-  @Override
-  public void init(FilterConfig arg0) throws ServletException {}
+@Override
+public void init(FilterConfig arg0) throws ServletException {}
 
 }
 ```

@@ -131,13 +131,13 @@ public class DefaultServiceLocator {
 @Configuration
 public class TestConfig {
 
-    @Bean
-    public HessianProxyFactoryBean helloClient() {
-        HessianProxyFactoryBean factory = new HessianProxyFactoryBean();
-        factory.setServiceUrl("http://localhost:8181/HelloService");
-        factory.setServiceInterface(HelloService.class);
-        return factory;
-    }
+@Bean
+public HessianProxyFactoryBean helloClient() {
+HessianProxyFactoryBean factory = new HessianProxyFactoryBean();
+factory.setServiceUrl("http://localhost:8181/HelloService");
+factory.setServiceInterface(HelloService.class);
+return factory;
+}
 }
 ```
 
@@ -296,12 +296,12 @@ India Message3 : Namaste India!
 
 Spring 框架中主要的作用域为如下五种，其中三种只能用在基于 Web 的 ApplicationContext 中：
 
-|  Scope           |  Description                                                                                                            |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
-|  singleton       |  This scopes the bean definition to a single instance per Spring IoC container (default).                               |
-|  prototype       |  This scopes a single bean definition to have any number of object instances.                                           |
-|  request         |  This scopes a bean definition to an HTTP request. Only valid in the context of a web-aware Spring ApplicationContext.  |
-|  session         |  This scopes a bean definition to an HTTP session. Only valid in the context of a web-aware Spring ApplicationContext.  |
+| Scope           | Description                                                                                                            |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| singleton       | This scopes the bean definition to a single instance per Spring IoC container (default).                               |
+| prototype       | This scopes a single bean definition to have any number of object instances.                                           |
+| request         | This scopes a bean definition to an HTTP request. Only valid in the context of a web-aware Spring ApplicationContext.  |
+| session         | This scopes a bean definition to an HTTP session. Only valid in the context of a web-aware Spring ApplicationContext.  |
 
 | global-session | This scopes a bean definition to a global HTTP session. Only valid in the context of a web-aware Spring ApplicationContext. |
 
@@ -378,17 +378,17 @@ Your Message : I'm object A
 @Service
 public class Singleton {
 
-    private static AtomicReference<Singleton> INSTANCE = new AtomicReference<Singleton>();
+private static AtomicReference<Singleton> INSTANCE = new AtomicReference<Singleton>();
 
-    public Singleton() {
-        final Singleton previous = INSTANCE.getAndSet(this);
-        if(previous != null)
-            throw new IllegalStateException("Second singleton " + this + " created after " + previous);
-    }
+public Singleton() {
+final Singleton previous = INSTANCE.getAndSet(this);
+if(previous != null)
+throw new IllegalStateException("Second singleton " + this + " created after " + previous);
+}
 
-    public static Singleton getInstance() {
-        return INSTANCE.get();
-    }
+public static Singleton getInstance() {
+return INSTANCE.get();
+}
 
 }
 ```
@@ -462,15 +462,15 @@ Your Message : null
 
 ## LifeCycle
 
-容器初始化  bean  和销毁前所做的操作定义方式有三种：
+容器初始化 bean  和销毁前所做的操作定义方式有三种：
 
-- [第一种：通过@PostConstruct  和  @PreDestroy  方法   实现初始化和销毁 bean 之前进行的操作](http://write.blog.csdn.net/postedit/8681497)
+- [第一种：通过@PostConstruct  和@PreDestroy  方法 实现初始化和销毁 bean 之前进行的操作](http://write.blog.csdn.net/postedit/8681497)
 
--  第二种是：[通过   在 xml 中定义 init-method  和   destory-method 方法](http://blog.csdn.net/topwqp/article/details/8681467)
+-  第二种是：[通过 在 xml 中定义 init-method  和  destory-method 方法](http://blog.csdn.net/topwqp/article/details/8681467)
 
--  第三种是：[  通过 bean 实现 InitializingBean 和  DisposableBean 接口](http://blog.csdn.net/topwqp/article/details/8681573)
+-  第三种是：[  通过 bean 实现 InitializingBean 和 DisposableBean 接口](http://blog.csdn.net/topwqp/article/details/8681573)
 
-### @PostConstruct  和  @PreDestory
+### @PostConstruct  和@PreDestory
 
 -  定义相关的实现类
 
@@ -802,13 +802,13 @@ Setter-based DI is accomplished by the container calling setter methods
 
 有些依赖不需要显示声明，而只需要在 Java 的类定义时使用@Autowired 注解即可。
 
-|  Mode                                                                                     |  Description                                                                                                                                                                                                                                                                                                                                                           |
-| ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|  no                                                                                       |  This is default setting which means no autowiring and you should use explicit bean reference for wiring. You have nothing to do special for this wiring. This is what you already have seen in Dependency Injection chapter.                                                                                                                                          |
-|  [byName](http://www.tutorialspoint.com/spring/spring_autowiring_byname.htm)              |  Autowiring by property name. Spring container looks at the properties of the beans on which *autowire* attribute is set to*byName* in the XML configuration file. It then tries to match and wire its properties with the beans defined by the same names in the configuration file.                                                                                  |
-|  [byType](http://www.tutorialspoint.com/spring/spring_autowiring_bytype.htm)              |  Autowiring by property datatype. Spring container looks at the properties of the beans on which *autowire* attribute is set to *byType* in the XML configuration file. It then tries to match and wire a property if its **type** matches with exactly one of the beans name in configuration file. If more than one such beans exists, a fatal exception is thrown.  |
-|  [constructor](http://www.tutorialspoint.com/spring/spring_autowiring_byconstructor.htm)  |  Similar to byType, but type applies to constructor arguments. If there is not exactly one bean of the constructor argument type in the container, a fatal error is raised.                                                                                                                                                                                            |
-|  autodetect                                                                               |  Spring first tries to wire using autowire by *constructor*, if it does not work, Spring tries to autowire by *byType*.                                                                                                                                                                                                                                                |
+| Mode                                                                                     | Description                                                                                                                                                                                                                                                                                                                                                           |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| no                                                                                       | This is default setting which means no autowiring and you should use explicit bean reference for wiring. You have nothing to do special for this wiring. This is what you already have seen in Dependency Injection chapter.                                                                                                                                          |
+| [byName](http://www.tutorialspoint.com/spring/spring_autowiring_byname.htm)              | Autowiring by property name. Spring container looks at the properties of the beans on which *autowire* attribute is set to*byName* in the XML configuration file. It then tries to match and wire its properties with the beans defined by the same names in the configuration file.                                                                                  |
+| [byType](http://www.tutorialspoint.com/spring/spring_autowiring_bytype.htm)              | Autowiring by property datatype. Spring container looks at the properties of the beans on which *autowire* attribute is set to *byType* in the XML configuration file. It then tries to match and wire a property if its **type** matches with exactly one of the beans name in configuration file. If more than one such beans exists, a fatal exception is thrown.  |
+| [constructor](http://www.tutorialspoint.com/spring/spring_autowiring_byconstructor.htm)  | Similar to byType, but type applies to constructor arguments. If there is not exactly one bean of the constructor argument type in the container, a fatal error is raised.                                                                                                                                                                                            |
+| autodetect                                                                               | Spring first tries to wire using autowire by *constructor*, if it does not work, Spring tries to autowire by *byType*.                                                                                                                                                                                                                                                |
 
 You can apply the `@Autowired` annotation to constructors:
 
@@ -816,16 +816,16 @@ You can apply the `@Autowired` annotation to constructors:
 public class MovieRecommender {
 
 
-    private final CustomerPreferenceDao customerPreferenceDao;
+  private final CustomerPreferenceDao customerPreferenceDao;
 
 
-    @Autowired
-    public MovieRecommender(CustomerPreferenceDao customerPreferenceDao) {
-        this.customerPreferenceDao = customerPreferenceDao;
-    }
+  @Autowired
+  public MovieRecommender(CustomerPreferenceDao customerPreferenceDao) {
+  this.customerPreferenceDao = customerPreferenceDao;
+  }
 
 
-    // ...
+  // ...
 
 
 }
@@ -837,16 +837,16 @@ As expected, you can also apply the `@Autowired` annotation to "traditional" set
 public class SimpleMovieLister {
 
 
-    private MovieFinder movieFinder;
+  private MovieFinder movieFinder;
 
 
-    @Autowired
-    public void setMovieFinder(MovieFinder movieFinder) {
-        this.movieFinder = movieFinder;
-    }
+  @Autowired
+  public void setMovieFinder(MovieFinder movieFinder) {
+  this.movieFinder = movieFinder;
+  }
 
 
-    // ...
+  // ...
 
 
 }
@@ -858,21 +858,21 @@ You can also apply the annotation to methods with arbitrary names and/or multipl
 public class MovieRecommender {
 
 
-    private MovieCatalog movieCatalog;
+  private MovieCatalog movieCatalog;
 
 
-    private CustomerPreferenceDao customerPreferenceDao;
+  private CustomerPreferenceDao customerPreferenceDao;
 
 
-    @Autowired
-    public void prepare(MovieCatalog movieCatalog,
-            CustomerPreferenceDao customerPreferenceDao) {
-        this.movieCatalog = movieCatalog;
-        this.customerPreferenceDao = customerPreferenceDao;
-    }
+  @Autowired
+  public void prepare(MovieCatalog movieCatalog,
+  CustomerPreferenceDao customerPreferenceDao) {
+  this.movieCatalog = movieCatalog;
+  this.customerPreferenceDao = customerPreferenceDao;
+  }
 
 
-    // ...
+  // ...
 
 
 }
@@ -884,20 +884,20 @@ You can apply `@Autowired` to fields as well and even mix it with constructors:
 public class MovieRecommender {
 
 
-    private final CustomerPreferenceDao customerPreferenceDao;
+  private final CustomerPreferenceDao customerPreferenceDao;
 
 
-    @Autowired
-    private MovieCatalog movieCatalog;
+  @Autowired
+  private MovieCatalog movieCatalog;
 
 
-    @Autowired
-    public MovieRecommender(CustomerPreferenceDao customerPreferenceDao) {
-        this.customerPreferenceDao = customerPreferenceDao;
-    }
+  @Autowired
+  public MovieRecommender(CustomerPreferenceDao customerPreferenceDao) {
+  this.customerPreferenceDao = customerPreferenceDao;
+  }
 
 
-    // ...
+  // ...
 
 
 }
@@ -909,11 +909,11 @@ It is also possible to provide _all_ beans of a particular type from the `Applic
 public class MovieRecommender {
 
 
-    @Autowired
-    private MovieCatalog[] movieCatalogs;
+  @Autowired
+  private MovieCatalog[] movieCatalogs;
 
 
-    // ...
+  // ...
 
 
 }
@@ -925,16 +925,16 @@ The same applies for typed collections:
 public class MovieRecommender {
 
 
-    private Set<MovieCatalog> movieCatalogs;
+  private Set<MovieCatalog> movieCatalogs;
 
 
-    @Autowired
-    public void setMovieCatalogs(Set<MovieCatalog> movieCatalogs) {
-        this.movieCatalogs = movieCatalogs;
-    }
+  @Autowired
+  public void setMovieCatalogs(Set<MovieCatalog> movieCatalogs) {
+  this.movieCatalogs = movieCatalogs;
+  }
 
 
-    // ...
+  // ...
 
 
 }
@@ -946,16 +946,16 @@ Even typed Maps can be autowired as long as the expected key type is `String`. T
 public class MovieRecommender {
 
 
-    private Map<String, MovieCatalog> movieCatalogs;
+  private Map<String, MovieCatalog> movieCatalogs;
 
 
-    @Autowired
-    public void setMovieCatalogs(Map<String, MovieCatalog> movieCatalogs) {
-        this.movieCatalogs = movieCatalogs;
-    }
+  @Autowired
+  public void setMovieCatalogs(Map<String, MovieCatalog> movieCatalogs) {
+  this.movieCatalogs = movieCatalogs;
+  }
 
 
-    // ...
+  // ...
 
 
 }
@@ -967,16 +967,16 @@ By default, the autowiring fails whenever _zero_ candidate beans are available; 
 public class SimpleMovieLister {
 
 
-    private MovieFinder movieFinder;
+  private MovieFinder movieFinder;
 
 
-    @Autowired(required=false)
-    public void setMovieFinder(MovieFinder movieFinder) {
-        this.movieFinder = movieFinder;
-    }
+  @Autowired(required=false)
+  public void setMovieFinder(MovieFinder movieFinder) {
+  this.movieFinder = movieFinder;
+  }
 
 
-    // ...
+  // ...
 
 
 }

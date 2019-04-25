@@ -64,7 +64,7 @@ sleep 2
 docker service ps redis --no-trunc
 
 
-# run the redis-trib.rb script  (the docker inspect runs on the host and the echo output is passed the along to the ruby container)
+# run the redis-trib.rb script(the docker inspect runs on the host and the echo output is passed the along to the ruby container)
 docker run -it --rm --net $network ruby sh -c "\
   gem install redis --version 3.2 \
   && wget http://download.redis.io/redis-stable/src/redis-trib.rb \
@@ -121,87 +121,87 @@ services:
 
 # Core API services are pinned, HA is provided for functions.
 
-    gateway:
+  gateway:
 
-        volumes:
+  volumes:
 
-            - "/var/run/docker.sock:/var/run/docker.sock"
+  - "/var/run/docker.sock:/var/run/docker.sock"
 
-        ports:
+  ports:
 
-            - 8080:8080
+  - 8080:8080
 
-        image: functions/gateway:0.6.1
+  image: functions/gateway:0.6.1
 
-        networks:
+  networks:
 
-            - functions
+  - functions
 
-        environment:
+  environment:
 
-            dnsrr: "true"  # Temporarily use dnsrr in place of VIP while issue persists on PWD
+  dnsrr: "true"  # Temporarily use dnsrr in place of VIP while issue persists on PWD
 
-        deploy:
+  deploy:
 
-            placement:
+  placement:
 
-                constraints: [node.role == manager]
+  constraints: [node.role == manager]
 ```
 
 ```
 root@ubuntu-176:/tmp/faas# docker stack ps func
 
-ID                  NAME                  IMAGE                                   NODE                DESIRED STATE       CURRENT STATE                    ERROR               PORTS
+ID  NAME  IMAGE   NODE  DESIRED STATE   CURRENT STATE  ERROR   PORTS
 
-ehg6btnb78g3        func_nodeinfo.1       functions/nodeinfo:latest               ubuntu-177          Running             Preparing 2 minutes ago
+ehg6btnb78g3  func_nodeinfo.1   functions/nodeinfo:latest   ubuntu-177  Running   Preparing 2 minutes ago
 
-od9h1nhdyejc        func_alertmanager.1   functions/alertmanager:latest           Ubuntu-11           Running             Preparing 2 minutes ago
+od9h1nhdyejc  func_alertmanager.1   functions/alertmanager:latest   Ubuntu-11   Running   Preparing 2 minutes ago
 
-cn43a00rhp9l        func_hubstats.1       alexellis2/faas-dockerhubstats:latest   Ubuntu-15           Running             Running about a minute ago
+cn43a00rhp9l  func_hubstats.1   alexellis2/faas-dockerhubstats:latest   Ubuntu-15   Running   Running about a minute ago
 
-u59bj7p586m4        func_prometheus.1     functions/prometheus:latest             Ubuntu-11           Running             Preparing 2 minutes ago
+u59bj7p586m4  func_prometheus.1   functions/prometheus:latest   Ubuntu-11   Running   Preparing 2 minutes ago
 
-yt9gmyhccrcu        func_echoit.1         functions/alpine:health                 ubuntu-178          Running             Running about a minute ago
+yt9gmyhccrcu  func_echoit.1   functions/alpine:health   ubuntu-178  Running   Running about a minute ago
 
-vy5wsgr50z61        func_gateway.1        functions/gateway:0.6.1                 Ubuntu-11           Running             Preparing 2 minutes ago
+vy5wsgr50z61  func_gateway.1  functions/gateway:0.6.1   Ubuntu-11   Running   Preparing 2 minutes ago
 
-y42uhzjsikoo        func_decodebase64.1   functions/alpine:health                 ubuntu-77.14        Running             Running less than a second ago
+y42uhzjsikoo  func_decodebase64.1   functions/alpine:health   ubuntu-77.14  Running   Running less than a second ago
 
-xen7wn6timqz        func_base64.1         functions/alpine:health                 Ubuntu-11           Running             Preparing 2 minutes ago
+xen7wn6timqz  func_base64.1   functions/alpine:health   Ubuntu-11   Running   Preparing 2 minutes ago
 
-kcz0sym9jqu6        func_webhookstash.1   functions/webhookstash:latest           ubuntu-179          Running             Running 24 seconds ago
+kcz0sym9jqu6  func_webhookstash.1   functions/webhookstash:latest   ubuntu-179  Running   Running 24 seconds ago
 
-3udkdbip8c4p        func_wordcount.1      functions/alpine:health                 Ubuntu-15           Running             Running 2 minutes ago
+3udkdbip8c4p  func_wordcount.1  functions/alpine:health   Ubuntu-15   Running   Running 2 minutes ago
 
-st0c4ibfze83        func_markdown.1       alexellis2/faas-markdownrender:latest   Ubuntu-11           Running             Running about a minute ago
+st0c4ibfze83  func_markdown.1   alexellis2/faas-markdownrender:latest   Ubuntu-11   Running   Running about a minute ago
 
 
 
 root@ubuntu-176:/tmp/faas# docker stack services func
 
-ID                  NAME                MODE                REPLICAS            IMAGE                                   PORTS
+ID  NAME  MODE  REPLICAS  IMAGE   PORTS
 
-3wniopfhdykt        func_echoit         replicated          1/1                 functions/alpine:health
+3wniopfhdykt  func_echoit   replicated  1/1   functions/alpine:health
 
-6he8cqjmb0jm        func_decodebase64   replicated          1/1                 functions/alpine:health
+6he8cqjmb0jm  func_decodebase64   replicated  1/1   functions/alpine:health
 
-d6f9xlqdbwe8        func_webhookstash   replicated          1/1                 functions/webhookstash:latest
+d6f9xlqdbwe8  func_webhookstash   replicated  1/1   functions/webhookstash:latest
 
-en5at93ev76k        func_gateway        replicated          1/1                 functions/gateway:0.6.1                 *:8080->8080/tcp
+en5at93ev76k  func_gateway  replicated  1/1   functions/gateway:0.6.1   *:8080->8080/tcp
 
-nsfmi41aphbj        func_base64         replicated          1/1                 functions/alpine:health
+nsfmi41aphbj  func_base64   replicated  1/1   functions/alpine:health
 
-qngwiey9b8ek        func_nodeinfo       replicated          1/1                 functions/nodeinfo:latest
+qngwiey9b8ek  func_nodeinfo   replicated  1/1   functions/nodeinfo:latest
 
-s6i49lq9epas        func_prometheus     replicated          0/1                 functions/prometheus:latest             *:9090->9090/tcp
+s6i49lq9epas  func_prometheus   replicated  0/1   functions/prometheus:latest   *:9090->9090/tcp
 
-skkmxt2bx4je        func_wordcount      replicated          1/1                 functions/alpine:health
+skkmxt2bx4je  func_wordcount  replicated  1/1   functions/alpine:health
 
-ty5rbwoozz6e        func_hubstats       replicated          1/1                 alexellis2/faas-dockerhubstats:latest
+ty5rbwoozz6e  func_hubstats   replicated  1/1   alexellis2/faas-dockerhubstats:latest
 
-xne9dph1xcit        func_alertmanager   replicated          0/1                 functions/alertmanager:latest           *:9093->9093/tcp
+xne9dph1xcit  func_alertmanager   replicated  0/1   functions/alertmanager:latest   *:9093->9093/tcp
 
-xvwb9uuvqemo        func_markdown       replicated          1/1                 alexellis2/faas-markdownrender:latest
+xvwb9uuvqemo  func_markdown   replicated  1/1   alexellis2/faas-markdownrender:latest
 ```
 
 # 服务网关
