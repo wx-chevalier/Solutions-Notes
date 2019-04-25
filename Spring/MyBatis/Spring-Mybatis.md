@@ -1,4 +1,4 @@
-﻿# Spring Mybatis
+﻿# Spring MyBatis
 
 ```xml
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

@@ -1,6 +1,6 @@
-# Mybatis Generator
+# MyBatis Generator
 
-Mybatis Generator 可以直接通过命令行调用：
+MyBatis Generator 可以直接通过命令行调用：
 
 ```sh
 java -jar mybatis-generator-core-x.x.x.jar -configfile generatorConfig.xml
@@ -227,7 +227,7 @@ Mapper 映射文件生成所在的目录 为每一个数据库的表生成对应
 
 ### 模板使用
 
-对于 Mybatis Generator 生成的代码模板，不建议修改生成后的模板，这样在数据库发生变化时候可以直接重新生成，根据错误提示修改对应代码。Mybatis Generator 为我们自动生成了 Model, Mapper 与 Example 文件，其中 Example 能够被用于构建搜索条件，譬如：
+对于 MyBatis Generator 生成的代码模板，不建议修改生成后的模板，这样在数据库发生变化时候可以直接重新生成，根据错误提示修改对应代码。MyBatis Generator 为我们自动生成了 Model, Mapper 与 Example 文件，其中 Example 能够被用于构建搜索条件，譬如：
 
 ```java
 // 模糊搜索用户名

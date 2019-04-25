@@ -2,7 +2,7 @@
 
 ## Definition
 
-``` xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -66,7 +66,7 @@ public class ClientService {
 
 #### Instance Factory Method:实例工厂方法
 
-``` xml
+```xml
 <!-- the factory bean, which contains a method called createInstance() -->
 <bean id="serviceLocator" class="examples.DefaultServiceLocator">
     <!-- inject any dependencies required by this locator bean -->
@@ -78,7 +78,7 @@ public class ClientService {
     factory-method="createClientServiceInstance"/>
 ```
 
-``` java
+```java
 public class DefaultServiceLocator {
 
     private static ClientService clientService = new ClientServiceImpl();
@@ -147,7 +147,7 @@ return factory;
 
 类似于 Java 中的抽象类或者接口，在 Spring 中定义 Bean 时也支持继承，最简单的示例如下所示：
 
-``` xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -170,7 +170,7 @@ return factory;
 
 对应的 HelloWorld.java 文件定义如下：
 
-``` java
+```java
 package com.tutorialspoint;
 
 public class HelloWorld {
@@ -197,7 +197,7 @@ public class HelloWorld {
 
 HelloIndia.java 文件为：
 
-``` java
+```java
 package com.tutorialspoint;
 
 public class HelloIndia {
@@ -233,7 +233,7 @@ public class HelloIndia {
 
 而主应用文件定义如下：
 
-``` java
+```java
 package com.tutorialspoint;
 
 import org.springframework.context.ApplicationContext;
@@ -270,7 +270,7 @@ India Message3 : Namaste India!
 
 有时候可以创建一个抽象的 Bean 定义的模板以方便被其他的 Bean 定义时候使用。在定义模板时，并不需要指定一个类属性而只需要指定为抽象即可。
 
-``` xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -309,7 +309,7 @@ Spring 框架中主要的作用域为如下五种，其中三种只能用在基�
 ### Singleton(单例)
 -  声明单例
 
-``` xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -326,7 +326,7 @@ Spring 框架中主要的作用域为如下五种，其中三种只能用在基�
 
 -  创建 Java 文件
 
-``` java
+```java
 package com.tutorialspoint;
 //@Component //也可以在这里用注解声明，默认就是单例作用域
 public class HelloWorld {
@@ -344,7 +344,7 @@ public class HelloWorld {
 
 -  创建全局容器
 
-``` java
+```java
 package com.tutorialspoint;
 
 import org.springframework.context.ApplicationContext;
@@ -397,7 +397,7 @@ return INSTANCE.get();
 
 - Java Class
 
-``` java
+```java
 package com.tutorialspoint;
 
 public class HelloWorld {
@@ -415,7 +415,7 @@ public class HelloWorld {
 
 - App
 
-``` java
+```java
 package com.tutorialspoint;
 
 import org.springframework.context.ApplicationContext;
@@ -438,7 +438,7 @@ public class MainApp {
 
 - Beans.xml
 
-``` xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -474,7 +474,7 @@ Your Message : null
 
 -  定义相关的实现类
 
-``` java
+```java
 package com.myapp.core.annotation.init;
 
 import javax.annotation.PostConstruct;
@@ -506,7 +506,7 @@ public class PersonService {
 
 -  定义相关的配置文件
 
-``` xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -531,7 +531,7 @@ http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 -  定义相应类实现 InitializingBean ,DisposableBean  接口
 
-``` java
+```java
 package com.myapp.core.annotation.init;
 
 import javax.annotation.PostConstruct;
@@ -571,7 +571,7 @@ public class PersonService  implements InitializingBean,DisposableBean{
 
 -  定义相应的配置文件
 
-``` xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -632,7 +632,7 @@ public class MainTest {
 
 基于 XML 的配置方案即是传统意义上将所有的 Bean 及其他配置放置在了 XML 文件中并且以 XML 作为第一加载入口。
 
-``` xml
+```xml
 <beans>
     <context:component-scan base-package="org.example">
         <context:include-filter type="regex"
@@ -647,7 +647,7 @@ public class MainTest {
 
 基于注解的配置方案同样是选择了 XML 作为第一配置入口，但是会将大量的 Controller 等 Bean 的配置放置在 Java 代码中。
 
-``` xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -665,7 +665,7 @@ public class MainTest {
 
 基于 Java 代码的配置方案即是选择将 Java 类作为第一配置入口。
 
-``` java
+```java
 @Configuration
 @ComponentScan(basePackages = "org.example",
         includeFilters = @Filter(type = FilterType.REGEX, pattern = ".*Stub.*Repository"),
@@ -677,7 +677,7 @@ public class AppConfig {
 
 同样的，在配置类中依然可以引入 XML 配置的内容：
 
-``` java
+```java
 @Configuration
 @PropertySource("classpath:apis.application.properties")
 @ComponentScan(basePackages = {"org.surfnet.oaaas.resource", "org.surfnet.oaaas.service"})
@@ -690,7 +690,7 @@ public class SpringConfiguration {
 
 有时候，也可以使用@ContextConfiguration 注解：
 
-``` java
+```java
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:META-INF/conf/spring/this-xml-conf.xml",
                     "classpath:META-INF/conf/spring/that-other-xml-conf.xml" })
@@ -703,7 +703,7 @@ public class CleverMoneyMakingBusinessServiceIntegrationTest {...}
 
 ### ConfigurableApplicationContext
 
-``` java
+```java
 new ClassPathXmlApplicationContext(
     new String[] { "classpath:META-INF/conf/spring/this-xml-conf.xml",
                    "classpath:META-INF/conf/spring/that-other-xml-conf.xml" } );
@@ -713,7 +713,7 @@ new ClassPathXmlApplicationContext(
 
 AnnotationConfigApplicationContext 可以从某个以`@Configuration`配置的类中初始化加载所有的 Bean，即以`@Configuration`注解的类本身会注册成某个 Bean，以及所有声明在其中的 Bean 也会完成在 ApplicationContext 中的注册。
 
-``` java
+```java
 public static void main(String[] args) {
     ApplicationContext ctx = new AnnotationConfigApplicationContext(MyServiceImpl.class, Dependency1.class, Dependency2.class);
     MyService myService = ctx.getBean(MyService.class);
@@ -723,7 +723,7 @@ public static void main(String[] args) {
 
 `AnnotationConfigApplicationContext`并不仅仅只可以传入某个配置类作为参数，任何以`@Component`作为注解的类都可以作为参数传入其构造器中：
 
-``` java
+```java
 public static void main(String[] args) {
     ApplicationContext ctx = new AnnotationConfigApplicationContext(MyServiceImpl.class, Dependency1.class, Dependency2.class);
     MyService myService = ctx.getBean(MyService.class);
@@ -733,7 +733,7 @@ public static void main(String[] args) {
 
 除了在初始化时候传入一些 Bean 的配置，`AnnotationConfigApplicationContext`还允许在运行时利用代码动态地注册一些 Bean 的配置类，如下所示：
 
-``` java
+```java
 public static void main(String[] args) {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
     ctx.register(AppConfig.class, OtherConfig.class);
@@ -782,7 +782,7 @@ public class Foo {
 
 Setter-based DI is accomplished by the container calling setter methods on your beans after invoking a no-argument constructor or no-argument static factory method to instantiate your bean.
 
-``` xml
+```xml
 <bean id="exampleBean" class="examples.ExampleBean">
     <!-- setter injection using the nested ref element -->
     <property name="beanOne">
@@ -986,14 +986,14 @@ public class SimpleMovieLister {
 
 如果有同一个类的不同的声明：
 
-``` xml
+```xml
 <bean id="a" class="com.package.MyClass"/>
 <bean id="b" class="com.package.MyClass"/>
 ```
 
 可以使用：
 
-``` java
+```java
 @Autowired
 @Qualifier("a")
 MyClass a;
