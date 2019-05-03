@@ -5,15 +5,10 @@ MyBatis 的真正强大在于它的映射语句，由于它的异常强大，映
 ```java
 public interface UserMapper 
 {
-
  public void insertUser(User user);
-
  public User getUserById(Integer userId);
-
  public List<User> getAllUsers();
-
  public void updateUser(User user);
-
  public void deleteUser(Integer userId);
 }
 ```
@@ -23,9 +18,8 @@ public interface UserMapper 
 <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
   'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
 
-<mapper namespace='com.sivalabs.mybatisdemo.mappers.UserMapper'>
-
-  <select id='getUserById' parameterType='int' resultType='com.sivalabs.mybatisdemo.domain.User'>
+<mapper namespace='wx.mappers.UserMapper'>
+  <select id='getUserById' parameterType='int' resultType='wx.domain.User'>
      SELECT 
       user_id as userId, 
       email_id as emailId , 
@@ -407,8 +401,6 @@ ResultMap 可以帮我们优雅地解决别名问题：
 <!-- SQL 映射 XML 中 -->
 <select id="selectUsers" resultType="User">
 ```
-
-## 构造方法
 
 ## 自动映射
 
