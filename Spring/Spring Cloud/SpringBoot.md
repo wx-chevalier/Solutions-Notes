@@ -2,7 +2,7 @@
 
 在构建环境之初，一个很重要的特性就是根据不同的环境自动使用不同的配置文件，从而完成譬如测试数据库与开发数据库的动态切换。而 Spring Boot 提供了一个非常好用的动态切换配置文件的方法，在 application.properties 文件中指定`spring.profiles.active`参数，那么 Spring 会自动在 classpath 或者 classpath:./config 目录下寻找`application-{profile}.properties`文件，并且将其中内容提取出来用作创建 Bean 的时候动态替换占位符。
 
-在`database.xml`中可以这么写：
+在 `database.xml` 中可以这么写：
 
 ```xml
 ...
