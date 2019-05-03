@@ -1,6 +1,8 @@
+# Bean 生命周期
+
 ## BeanFactoryPostProcessor 接口
 
-通过 BeanFactoryPostProcessor 提供的 beanFactory 进行 bean 的注册，常规的自定义 bean 可以完全由此加载
+通过 BeanFactoryPostProcessor 提供的 beanFactory 进行 Bean 的注册，常规的自定义 Bean 可以完全由此加载
 
 ```java
 @Configuration
@@ -15,7 +17,7 @@ public class SelfBeanFactoryLoader implements BeanFactoryPostProcessor {
 
 ## BeanDefinitionRegistryPostProcessor 接口
 
-这个接口是继承自 BeanFactoryPostProcessor 接口的，bean 注册相关的可以参考上文：
+这个接口是继承自 BeanFactoryPostProcessor Bean 注册相关的可以参考上文：
 
 ```java
 @Configuration
@@ -35,7 +37,7 @@ public class SelfBeanLoader implements BeanDefinitionRegistryPostProcessor {
 
 ## ApplicationContextAware
 
-这个接口比较靠后也是大家使用比较多的，在前两者 bean 的基础上，增加 xml 注入，而且这里给出了另外一个参数 environment，便于用户在此注入特殊的 profile。
+这个接口比较靠后也是大家使用比较多的，在前两者 Bean 的基础上，增加 xml 注入，而且这里给出了另外一个参数 environment，便于用户在此注入特殊的 profile。
 
 ```java
 @Configuration
