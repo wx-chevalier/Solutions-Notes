@@ -7,3 +7,7 @@
 # About
 
 ![image](https://user-images.githubusercontent.com/5803001/52274670-53384b00-2988-11e9-84a0-0dc12d2c2507.png)
+
+## Motivation & Credits
+
+- https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html

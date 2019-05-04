@@ -4,7 +4,7 @@
 
 # @RestController
 
-Spring 4.0 引入了@RestController，这是一个控制器的专用版本，它是一个方便的注释，除了添加@Controller 和@ResponseBody 注释之外什么都不做。 通过使用@RestController 注释注释控制器类，您不再需要将@ResponseBody 添加到所有请求映射方法。 @ResponseBody 注释默认处于活动状态。
+Spring 4.0 引入了 @RestController，这是一个控制器的专用版本，它是一个方便的注释，除了添加 @Controller 和 @ResponseBody 注释之外什么都不做。 通过使用 @RestController 注释注释控制器类，您不再需要将 @ResponseBody 添加到所有请求映射方法。@ResponseBody 注释默认处于活动状态。
 
 ![](https://resources.cloud.genuitec.com/wp-content/uploads/2015/09/4.x-diagram.png)
 
@@ -29,7 +29,3 @@ public class EmployeeController { 
     } 
 }
 ```
-
-# Todos
-
-- https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
