@@ -1008,3 +1008,82 @@ MyClass b;
 在 Spring 2.0 之前的版本中，@Repository 注解可以标记在任何的类上，用来表明该类是用来执行与数据库相关的操作（即 DAO 对象），并支持自动处理数据库操作产生的异常。在 Spring 2.5 版本中，引入了更多的 Spring 类注解：@Component,@Service,@Controller。@Component 是一个通用的 Spring 容器管理的单例 bean 组件。而@Repository, @Service, @Controller 就是针对不同的使用场景所采取的特定功能化的注解组件。
 
 因此，当你的一个类被 @Component 所注解，那么就意味着同样可以用 @Repository, @Service, @Controller 来替代它，同时这些注解会具备有更多的功能，而且功能各异。最后，如果你不知道要在项目的业务层采用@Service 还是@Component 注解。那么，@Service 是一个更好的选择。就如上文所说的，@Repository 早已被支持了在你的持久层作为一个标记可以去自动处理数据库操作产生的异常
+
+# Conditional Configuration | 条件化配置
+
+Class conditions allow us to specify that a configuration bean will be included if a specified class is present.
+
+```java
+@Configuration
+@ConditionalOnClass(DataSource.class)
+public class MySQLAutoconfiguration {
+    //...
+}
+```
+
+也可以根据某个 Bean 是否存在来决定是否需要创建 Bean:
+
+```java
+@Bean
+@ConditionalOnBean(name = "dataSource")
+@ConditionalOnMissingBean
+public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+    LocalContainerEntityManagerFactoryBean em
+      = new LocalContainerEntityManagerFactoryBean();
+    ...
+    return em;
+}
+```
+
+还可以根据是否存在某个属性配置来决定是否需要创建某个 Bean:
+
+```java
+@Bean
+@ConditionalOnProperty(
+  name = "usemysql",
+  havingValue = "local")
+@ConditionalOnMissingBean
+public DataSource dataSource() {
+    DriverManagerDataSource dataSource = new DriverManagerDataSource();
+    ...
+    return dataSource;
+}
+```
+
+```java
+// Defining Condition that checks if the JdbcTemplate is available on the classpath
+//
+// Conditions are used by the auto-configuration mechanism of Spring Boot
+// There are several configuration classes in the spring-boot-autoconfigure.jar
+// which contribute to the configuration if specific conditions are met
+public class JdbcTemplateCondition implements Condition {
+  @Override
+  public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+    try {
+      context.getClassLoader().loadClass("org.springframework.jdbc.core.JdbcTemplate");
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+}
+
+// Use a custom condition class to decide whether a Bean should be created or not
+@Conditional(JdbcTemplateCondition.class)
+public class MyService {
+  ...
+}
+```
+
+| 条件化注解                      | 配置生效条件                                            |
+| ------------------------------- | ------------------------------------------------------- |
+| @ConditionalOnBean              | 配置了某个特定 bean                                     |
+| @ConditionalOnMissingBean       | 没有配置特定的 bean                                     |
+| @ConditionalOnClass             | Classpath 里有指定的类                                  |
+| @ConditionalOnMissingClass      | Classpath 里没有指定的类                                |
+| @ConditionalOnExpression        | 给定的 Spring Expression Language 表达式计算结果为 true |
+| @ConditionalOnJava              | Java 的版本匹配特定指或者一个范围值                     |
+| @ConditionalOnProperty          | 指定的配置属性要有一个明确的值                          |
+| @ConditionalOnResource          | Classpath 里有指定的资源                                |
+| @ConditionalOnWebApplication    | 这是一个 Web 应用程序                                   |
+| @ConditionalOnNotWebApplication | 这不是一个 Web 应用程序                                 |
