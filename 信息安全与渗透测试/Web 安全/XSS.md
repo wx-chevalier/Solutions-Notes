@@ -1,4 +1,4 @@
-[![返回目录](https://i.postimg.cc/50XLzC7C/image.png)](https://parg.co/UHU)
+[![返回目录](https://i.postimg.cc/50XLzC7C/image.png)](https://github.com/wx-chevalier/Web-Series)
 
 # XSS 跨站脚本详解
 
