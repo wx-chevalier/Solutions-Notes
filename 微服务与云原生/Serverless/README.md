@@ -1,5 +1,7 @@
 # Serverless
 
+参考 CNCF 的定义，
+
 Serverless 从 2014 年 AWS 发布 Lambda 时专门用来指代函数计算（或者说 FaaS）发展到今天，已经被扩展成了包括大多数 PaaS 功能在内的一个泛指术语。而究其本质，“无状态（Stateless & auto-scalable）”、“事件驱动（Event triggered）”和“按实际使用计费（Pay as you go）”，可以认为是 Serverless 最主要的三个特征。Serverless 三大特征背后所体现的，乃是云端应用开发过程向“用户友好”和“低心智负担”方向演进的最直接途径。而这种“简单、经济、可信赖”的朴实诉求，正是云计算诞生的最初期许和永恒的发展方向。
 
 Serverless 并不拘泥于 Function，而是应该多种部署形态并存。最简单的 Lambda 函数模式，单个函数执行单个 Action：
@@ -11,6 +13,8 @@ exports.helloGet = (req, res) => {
 ```
 
 如果以应用方式部署，则是遵循单一职责原则，但是能够触发多个事件；也可以在容器级别部署，能够包含任意语言、任意运行时，譬如 [Knative](https://github.com/knative) 这样的解法。
+
+从前端的视角来看，Serverless 也赋予了前端更多的自由与可能性，在服务端渲染，小程序开发的简单服务端支持，包括 BFF 接口聚合等方面都有很多的空间。
 
 # Background | 背景
 
