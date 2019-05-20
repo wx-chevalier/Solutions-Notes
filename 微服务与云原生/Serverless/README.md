@@ -1,16 +1,20 @@
 # Serverless
 
-Serverless 从 2014 年 AWS 发布 Lambda 时专门用来指代函数计算（或者说 FaaS）发展到今天，已经被扩展成了包括大多数 PaaS 功能在内的一个泛指术语。而究其本质，“无状态（Stateless & auto-scalable）”、“事件驱动（Event triggered）”和“按实际使用计费（Pay as you go）”，可以认为是 Serverless 最主要的三个特征。Serverless 三大特征背后所体现的，乃是云端应用开发过程向“用户友好”和“低心智负担”方向演进的最直接途径。而这种“简单、经济、可信赖”的朴实诉求，正是云计算诞生的最初期许和永恒的发展方向。
+参考 CNCF 的定义，Serverless 是指构建和运行不需要服务器管理的应用程序的概念；而 AWS 官方对于 Serverless 的介绍是：服务器架构是基于互联网的系统，其中应用开发不使用常规的服务进程。相反，它们仅依赖于第三方服务（例如 AWS Lambda 服务），客户端逻辑和服务托管远程过程调用的组合。
 
-Serverless 并不拘泥于 Function，而是应该多种部署形态并存。最简单的 Lambda 函数模式，单个函数执行单个 Action：
+Serverless 目前主要的落地形式为 BaaS 与 FaaS。BaaS 后端即服务，即是一些后端云服务，比如云数据库、对象存储、消息队列等。利用 BaaS，可以极大简化我们的应用开发难度。FaaS 函数即服务，则是暂存容器中运行的自定义代码，函数是无服务器架构中抽象语言运行时的最小单位。在 FaaS 中，用户主要为函数的运行时间付费，而不需要关心 CPU 或 RAM 或任何其他资源及其运维的负担。
 
-```js
-exports.helloGet = (req, res) => {
-  res.send('Hello World!');
-};
-```
+参考 BaaS 与 FaaS 的定义，我们可以知道 Serverless 的主要特点有：
 
-如果以应用方式部署，则是遵循单一职责原则，但是能够触发多个事件；也可以在容器级别部署，能够包含任意语言、任意运行时，譬如 [Knative](https://github.com/knative) 这样的解法。
+- 事件驱动：函数在 FaaS 平台中，需要通过一系列的事件来驱动函数执行。
+
+- 无状态：因为每次函数执行，可能使用的都是不同的容器，无法进行内存或数据共享。如果要共享数据，则只能通过第三方服务，比如 Redis 等。
+
+- 无运维：使用 Serverless 我们不需要关心服务器，不需要关心运维。这也是 Serverless 思想的核心。
+
+- 按实际使用计费：使用 Serverless 成本很低，因为我们只需要为每次函数的运行付费。函数不运行，则不花钱，也不会浪费服务器资源。
+
+这些特征的本质，是用户对于云端应用开发，乃至于所谓云原生应用中的用户友好与低心智负担方向演讲的最直接途径，而这种简单、经济、可信赖的期许，也是云计算的初心。当然 Serverless 并不拘泥于 Function，而是应该多种部署形态并存，譬如以应用方式部署，则是遵循单一职责原则，但是能够触发多个事件；也可以在容器级别部署，能够包含任意语言、任意运行时，譬如 [Knative](https://github.com/knative) 这样的解法。在[微服务与云原生/Serverless](https://github.com/wxyyxc1992/Backend-Series/blob/master/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Serverless/README.md#L17) 一节中我们也讨论了更多的 Serverless 落地模式。
 
 # Background | 背景
 
