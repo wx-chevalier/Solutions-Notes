@@ -1,8 +1,12 @@
+![](https://i.postimg.cc/Yq5Mymft/image.png)
+
 # Serverless
 
 参考 CNCF 的定义，Serverless 是指构建和运行不需要服务器管理的应用程序的概念；而 AWS 官方对于 Serverless 的介绍是：服务器架构是基于互联网的系统，其中应用开发不使用常规的服务进程。相反，它们仅依赖于第三方服务（例如 AWS Lambda 服务），客户端逻辑和服务托管远程过程调用的组合。
 
 Serverless 目前主要的落地形式为 BaaS 与 FaaS。BaaS 后端即服务，即是一些后端云服务，比如云数据库、对象存储、消息队列等。利用 BaaS，可以极大简化我们的应用开发难度。FaaS 函数即服务，则是暂存容器中运行的自定义代码，函数是无服务器架构中抽象语言运行时的最小单位。在 FaaS 中，用户主要为函数的运行时间付费，而不需要关心 CPU 或 RAM 或任何其他资源及其运维的负担。
+
+![](https://i.postimg.cc/J4DRqQXT/image.png)
 
 参考 BaaS 与 FaaS 的定义，我们可以知道 Serverless 的主要特点有：
 
