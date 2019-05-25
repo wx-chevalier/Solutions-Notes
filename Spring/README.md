@@ -1,4 +1,4 @@
-# Spring Boot 与 Spring Cloud 微服务实践
+# Spring Boot 微服务实践
 
 ![](https://i.postimg.cc/T2g6cQD1/image.png)
 
