@@ -64,7 +64,9 @@ generatorConfig.xml 的基础结构如下：
 - flat: 该模型为每一张表只生成一个实体类，这个实体类包含表中的所有字段。
 - hierarchical: 如果表有主键,那么该模型会产生一个单独的主键实体类,如果表还有 BLOB 字段， 则会为表生成一个包含所有 BLOB 字段的单独的实体类,然后为所有其他的字段生成一个单独的实体类。 MBG 会在所有生成的实体类之间维护一个继承关系。
 
-MBG 配置中的其他几个元素，基本上都是<context>的子元素，这些子元素（有严格的配置顺序）包括：
+## 上下文配置
+
+MBG 配置中的其他几个元素，基本上都是 `<context>` 的子元素，这些子元素（有严格的配置顺序）包括：
 
 - `<property>` (0 个或多个)
 
@@ -100,6 +102,8 @@ jdbcConnection 用于指定数据库连接信息，该元素必选，并且只�
 <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.connectionURL}" userId="${jdbc.userId}" password="${jdbc.password}">
 </jdbcConnection>
 ```
+
+## 实体类解析配置
 
 - `<javaTypeResolver>` (0 个或 1 个)
 
@@ -223,7 +227,63 @@ Mapper 映射文件生成所在的目录 为每一个数据库的表生成对应
 </table>
 ```
 
-如果我们希望在生成的实体类中支持 Lombok，那可以参考 [mybatis-generator-lombok-plugin](https://github.com/softwareloop/mybatis-generator-lombok-plugin) 等项目。
+## Lombok
+
+如果我们希望在生成的实体类中支持 Lombok，那可以参考 [mybatis-generator-lombok-plugin](https://github.com/softwareloop/mybatis-generator-lombok-plugin) 等项目。在 pom.xml 中可以添加该插件：
+
+```xml
+<plugin>
+    <groupId>org.mybatis.generator</groupId>
+    <artifactId>mybatis-generator-maven-plugin</artifactId>
+    <version>${mybatis.generator.version}</version>
+    <configuration>
+        <overwrite>true</overwrite>
+    </configuration>
+    <dependencies>
+        <dependency>
+            <groupId>com.softwareloop</groupId>
+            <artifactId>mybatis-generator-lombok-plugin</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+</plugin>
+```
+
+然后在 Generator 的配置中添加该插件：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="example"
+             targetRuntime="MyBatis3Simple"
+             defaultModelType="flat">
+        <!-- include the plugin -->
+        <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">
+
+             <!-- enable annotations -->
+             <property name="builder" value="true"/>
+             <!-- annotation's option(boolean) -->
+             <property name="builder.fluent" value="true"/>
+             <!-- annotation's option(String) -->
+             <property name="builder.builderMethodName" value="myBuilder"/>
+
+             <property name="accessors" value="true"/>
+             <!-- annotation's option(array of String) -->
+             <property name="accessors.prefix" value="m_, _"/>
+
+             <!-- disable annotations -->
+             <property name="allArgsConstructor" value="false"/>
+        </plugin>
+
+        <!-- other configurations -->
+
+    </context>
+</generatorConfiguration>
+```
 
 # 模板使用
 
