@@ -1,4 +1,4 @@
-# 体系架构与事件循环
+# Node.js 中的事件循环
 
 ![](https://pic4.zhimg.com/v2-8966bd88d6c3773ccd133969f1f39be3_b.png)
 
@@ -44,7 +44,7 @@ node index.js
  └───────────────────────┘
 ```
 
-```
+```js
 //index.js
 var fs = require('fs');
 fs.readFile("my-file-path.txt", function() {
@@ -64,7 +64,7 @@ SETIMMEDIATE
 SETTIMEOUT
 ```
 
-```
+```js
 var Suite = require('benchmark').Suite
 var fs = require('fs')
 
