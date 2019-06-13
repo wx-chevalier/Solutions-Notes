@@ -8,3 +8,6 @@
 
 随着智能手机的出现以及4G标准的普及，互联网应用由PC端迅速转向更加自由的移动端。移动设备由于携带方便且便于定位，因此在出行、网络购物、支付等方面彻底改变了现代人的生活方式。在技术方面，为了应对更加庞大的集群规模，单纯的分布式系统已经难于驾驭，因此技术圈开启了一个概念爆发的时代——SOA、DevOps、容器、CI/CD、微服务、Service Mesh等概念层出不穷，而Docker、Kubernetes、Mesos、SpringCloud、gRPC、Istio等一系列产品的出现，标志着云时代已真正到来。
 
+# 链接
+
+- https://mp.weixin.qq.com/s/T9m_li4O7uUwt0K4kpk6TQ
