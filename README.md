@@ -1,22 +1,24 @@
-# 服务端架构与实践
+![](https://i.postimg.cc/4xhqKLQj/image.png)
+
+# 服务端开发实践与工程架构
+
+在[某熊的技术之路指北 ☯](https://github.com/wx-chevalier/Developer-Zero-To-Mastery)中我们介绍过，本系列[服务端架构与实践](https://github.com/wx-chevalier/Backend-Series)与[深入浅出分布式基础架构](https://github.com/wx-chevalier/Distributed-Infrastructure-Series)这两个系列承载了笔者在泛服务端开发、运维相关工作中的知识沉淀。
 
 # Nav | 导航
 
-**建议前往 [xCompass](https://wx-chevalier.github.io/home/#/search)/[alfred-sg](https://github.com/wx-chevalier/Soogle/tree/master/alfred-sg) 交互式地检索、查找需要的文章/链接/书籍/课程，或者直接浏览本仓库的目录以了解更多内容。**
+- [服务端应用程序开发基础](./服务端基础):
 
-## 篇章
+- [微服务与云原生](./微服务与云原生):
 
-- [服务端应用程序开发基础](./基础)
+- [深入浅出 Node.js 全栈架构](./Node):
 
-- [深入浅出 Node.js 全栈架构](./Node)
+- [Spring Boot 5 与 Spring Cloud 微服务实践](./Spring):
 
-- [Spring Boot 5 与 Spring Cloud 微服务实践](./Spring)
+- [DevOps 与 SRE 实战](./DevOps): DevOps 是一种使持续交付成为可能的理念，关注于所有人共同协作以改进开发效率方面的衡量(比如生产力)，同时增加稳定性并降低平均故障修复时间。
 
-- [DevOps 与 SRE 实战](./DevOps)
+- [信息安全与渗透测试必知必会](./信息安全与渗透测试):
 
-- [信息安全与渗透测试必知必会](./InfoSecurity)
-
-DevOps 是一种使持续交付成为可能的理念，关注于所有人共同协作以改进开发效率方面的衡量(比如生产力)，同时增加稳定性并降低平均故障修复时间。
+可以前往 [xCompass](https://wx-chevalier.github.io/home/#/search)/[alfred-sg](https://github.com/wx-chevalier/Soogle/tree/master/alfred-sg) 交互式地检索、查找需要的文章/链接/书籍/课程，或者直接浏览本仓库的目录以了解更多内容。
 
 # Preface | 前言
 
