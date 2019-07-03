@@ -2,6 +2,8 @@
 
 # 缓存
 
+缓存是软件系统中
+
 ![](https://i.postimg.cc/Tw8DdwYZ/image.png)
 
 - **Client Caching:** Also referred to as "browser caching", the client, browser, app, other service, etc. downloading the data can keep track of what was downloaded when, if that data had any expire time, ETags for the last request to allow for conditional request if data has changed, etc.

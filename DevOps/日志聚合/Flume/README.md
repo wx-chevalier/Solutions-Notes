@@ -1,3 +1,5 @@
+[![](https://i.postimg.cc/WzXsh0MX/image.png)](https://github.com/wx-chevalier/Backend-Series)
+
 # Flume
 
 Flume NG 是一个分布式、可靠、可用的系统，它能够将不同数据源的海量日志数据进行高效收集、聚合、移动，最后存储到一个中心化数据存储系统中。由原来的 Flume OG 到现在的 Flume NG，进行了架构重构，并且现在 NG 版本完全不兼容原来的 OG 版本。经过架构重构后，Flume NG 更像是一个轻量的小工具，非常简单，容易适应各种方式日志收集，并支持 failover 和负载均衡。Flume 初始的发行版本目前被统称为 Flume OG(original generation )，属于 Cloudera。但随着 Flume 功能的扩展，Flume OG 代码工程臃肿、核心组件设计不合理、核心配置不标准等缺点暴露出来，尤其是在 Flume OG 的最后一个发行版本 0.94.0 中，日志传输不稳定的现象尤为严重，为了解决这些问题，2011 年 10 月 22 号，Cloudera 完成了 Flume-728，对 Flume 进行了里程碑式的改动：重构核心组件、核心配置以及代码架构，重构后的版本统称为 Flume NG(next generation )；改动的另一原因是将 Flume 纳入 apache 旗下，Cloudera Flume 改名为 Apache Flume。

@@ -1,3 +1,5 @@
+[![](https://i.postimg.cc/WzXsh0MX/image.png)](https://github.com/wx-chevalier/Backend-Series)
+
 # 磁盘 IOPS
 
 io 请求越大，需要消耗的时间就会越长。对于块设备而言，时间分成 2 个部分：寻道与读或写操作。
