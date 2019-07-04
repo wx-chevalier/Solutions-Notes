@@ -1,4 +1,4 @@
-[![返回目录](https://parg.co/Udx)](https://parg.co/UdT)
+[![返回目录](https://i.postimg.cc/WzXsh0MX/image.png)](https://parg.co/UdT)
 
 # OpenResty: 基于 Nginx 的全功能 Web 应用服务器
 
