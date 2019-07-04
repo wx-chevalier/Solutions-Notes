@@ -1,3 +1,5 @@
+[![](https://i.postimg.cc/WzXsh0MX/image.png)](https://github.com/wx-chevalier/Backend-Series)
+
 # Koa 介绍与基础使用
 
 所有的请求经过一个中间件的时候都会执行两次，对比 express 形式的中间件，koa 的模型可以非常方便的实现后置处理逻辑，对比 koa 和 express 的 compress 中间件就可以明显的感受到 koa 中间件模型的优势。
