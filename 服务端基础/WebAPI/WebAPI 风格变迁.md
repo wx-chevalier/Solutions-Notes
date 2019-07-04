@@ -1,3 +1,5 @@
+[![返回目录](https://i.postimg.cc/WzXsh0MX/image.png)](https://parg.co/UdT)
+
 > 本文是整体倾向于表述 GraphQL 相对于 REST 的一些优越性，但是并不代表笔者认为 GraphQL 就可以完全代替 REST。尺有所短，寸有所长，REST 的简单易用性导致一定缺陷的同时也方便很多需要快速开发的环境。笔者在自己的选择中会使用 REST 作为稳定的、长期的、简单的接口风格，选择 GraphQL 作为易变的、复杂的接口实现方式。另外本文篇幅略长，建议读者选择自己感兴趣的章节阅读。笔者正在进行[ConfigurableAPIServer](https://github.com/wx-chevalier/ConfigurableAPIServer)这个开源项目，即是允许通过纯配置方式进行可审查的动态 API 配置，可以用于数据中心或者需要快速使用的业务场景。笔者拟将自己的一些最佳实践融合进去，因此也欢迎大家提意见与开 Issue。
 
 # WebAPI 风格变迁

@@ -1,3 +1,7 @@
+[![返回目录](https://i.postimg.cc/WzXsh0MX/image.png)](https://parg.co/UdT)
+
+# GraphQL
+
 > GraphQL is Facebook’s new query language for fetching application data in a uniform way.
 
 GraphQL 并不是一个面向图数据库的查询语言，而是一个数据抽象层，包括数据格式、数据关联、查询方式定义与实现等等一揽子的东西。GraphQL 也并不是一个具体的后端编程框架，如果将 REST 看做适合于简单逻辑的查询标准，那么 GraphQL 可以做一个独立的抽象层，通过对于多个 REST 风格的简单的接口的排列组合提供更多复杂多变的查询方式。与 REST 相比，GraphQL 定义了更严格、可扩展、可维护的数据查询方式。 ![](https://cldup.com/ysnmIMhqRU.png) ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/1/1/fdasfasdfdasfsd.gif)

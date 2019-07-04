@@ -1,4 +1,4 @@
-> [API 的过去，现在与未来](https://zhuanlan.zhihu.com/p/24681051)主体内容参考翻译自[Future of APIs](https://blog.goodapi.co/future-of-apis-c84a76bc9c85#.wrravx6bf)。本文从属于笔者的[服务端应用程序入门与实践](https://github.com/wx-chevalier/ServerSideApplication-Introduction-And-Practices)。
+[![返回目录](https://i.postimg.cc/WzXsh0MX/image.png)](https://parg.co/UdT)
 
 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2016/12/3/1-V4DQWx-EKXphLTaV19JT2w.jpeg)
 
@@ -50,21 +50,21 @@ Deep Blue 出现的三年之后，也就是 2000 年时，Roy Fielding 发布了
 
 随着 API 数量与访问量的指数级的增长，因为人为大规模的介入 API 的开发与访问也带来了越来越多的问题。基本上每个 API 都会存在以下问题：
 
-* Synchronicity: 同步性
+- Synchronicity: 同步性
 
 现有模式下，在两台机器互联互通之前我们需要编写与分享 API 说明文档，即使我们忽略了因为人为沟通而导致的误解，如果 APIs 的规范发生了变化很多开发者还是会照着旧的文档编写 API 消费程序，最终导致驴头不对马嘴。在工程实践中，想要保持文档与 API 的实时一致性非常困难，需要大量的人力物力，另一方面，想要保持所有的客户端与 API 保持一致更是痴人说梦。 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/1/1/1-2SCmHLfgdpJKcsng_z_bVg.png)
 
-* Versioning: 版本控制
+- Versioning: 版本控制
 
 上面提及的接口同步问题也随之带来了版本控制的问题，鉴于实际上大部分的接口并没有严格遵循 Fielding 的 REST 准则，很多的 API 客户端都与这些接口强耦合。这种强耦合最终会导致一个非常脆弱、鲁棒性非常低的系统，任何 API 的变化都有可能导致客户端的崩溃。同时，API 客户端的升级也是完全依赖于开发者，这一点的代价也非常昂贵且缓慢，并且还要考虑到大量的已经部署的无法轻易升级的老版本 API 客户端。 ![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/1/1/1-9utOz-qyggiV9LdF2tCvzw.png)
 
 这林林总总的问题让我们畏惧改变，每次对代码的修改都好似埋下未知的炸弹。我们不敢去修改已存在的接口，而是不断地编写新的接口，最终导致代码库日益庞杂。我们需要投入更多的人力物力，背负更多的技术负债，以及无休止的讨论来解决版本难题。
 
-* Scaling: 可扩展性
+- Scaling: 可扩展性
 
 既然在 API 的发布过程中不可避免的有人类的参与，那么我们需要雇佣更多的开发者来扩展 API。人非圣贤，孰能无过，更多的开发者也就意味着更高的错误出现概率。并且大量的开发者参与进来的确可以提升编写或者阅读文档的速度，而更快地构建更多的 APIs，但是这并不意味着你就可以解决上文提及的 API 变化响应速度。总而言之，如果我们以添加人员的方式来扩展 API，那么会无限制地扩充我们的专属名词库，也增加了错误的可能性。譬如某个消费者希望得到的是 Title，另一个消费者希望得到的是博客的 Heading，其实是同一属性的不同语义表述，这样就会使得消费者陷入迷惑，或者导致数据的冗余。
 
-* Discovery:API 发现
+- Discovery:API 发现
 
 最后，我们要来聊聊 API 共享与发现这个问题(API Discovery )。我们应该如何去寻找合适的 API，特别是当我们构建一个大型系统的时候，我们不希望重复地造大量的轮子，我们就迫切的希望能找到合适的 API 来辅助开发。另一个方面，API 的提供者也不知道如何进行市场营销，很有可能存在着比 Google Places API 优秀的多的地理位置服务商，不过我们也无从找起。
 
@@ -82,11 +82,11 @@ Deep Blue 出现的三年之后，也就是 2000 年时，Roy Fielding 发布了
 
 既然人类的介入导致了昂贵、缓慢且错误频发的后果，那是否有方法来避免这种情况？我们是否能够创建完全自动化的接口呢？首先，我们需要一个渠道来开发并且共享专用名词(Vocabularies )，然后在 API 上线之后通过某个统一的 API Discovery 进行注册发布。整个自动化的没有人类介入的流程描述如下：
 
-* 某个机器在发布接口的同时提供接口的描述文档与专属的词汇库，然后自动地在某个 API 发现服务中完成注册。
+- 某个机器在发布接口的同时提供接口的描述文档与专属的词汇库，然后自动地在某个 API 发现服务中完成注册。
 
-* 然后某个需要服务支持的 API 消费者在发现服务中利用关键字进行搜索，如果找到某个匹配的服务之后则将其描述文档推送给抓取程序。
+- 然后某个需要服务支持的 API 消费者在发现服务中利用关键字进行搜索，如果找到某个匹配的服务之后则将其描述文档推送给抓取程序。
 
-* 指定的 API 客户端能够根据请求到的词汇库自动训练与调试，这样开发者就能够利用这些 API 进行上层开发。
+- 指定的 API 客户端能够根据请求到的词汇库自动训练与调试，这样开发者就能够利用这些 API 进行上层开发。
 
 这些客户端更多地能够以声明式的方式完成特定的工作，而不会强耦合于某个特定的服务接口。以某个具体的程序为例，如果我们希望查询巴黎的天气：
 
@@ -108,10 +108,10 @@ print forecast(Temperature)
 
 总结来看，自动化 API 的构建会包含以下几块：
 
-* Vocabulary Registry
-* 运行时解析
-* API Discovery Service
-* 面向 Vocabulary 而不是数据结构的编程
+- Vocabulary Registry
+- 运行时解析
+- API Discovery Service
+- 面向 Vocabulary 而不是数据结构的编程
 
 ## 即将到来的 2017
 
@@ -119,8 +119,8 @@ print forecast(Temperature)
 
 # 延伸阅读
 
-* [来自于 PayPal 的 RESTful API 标准](https://segmentfault.com/a/1190000005924733)
-* [来自微软的接口设计指南](https://segmentfault.com/a/1190000006037478)
-* [2016- 我的技术之路：编程知识体系结构图](https://zhuanlan.zhihu.com/p/24476917)
-* [2016- 我的前端之路 : 工具化与工程化](https://zhuanlan.zhihu.com/p/24575395)
-* [GraphQL 初探 : 从 REST 到 GraphQL，更完善的数据查询定义](https://segmentfault.com/a/1190000005766732)
+- [来自于 PayPal 的 RESTful API 标准](https://segmentfault.com/a/1190000005924733)
+- [来自微软的接口设计指南](https://segmentfault.com/a/1190000006037478)
+- [2016- 我的技术之路：编程知识体系结构图](https://zhuanlan.zhihu.com/p/24476917)
+- [2016- 我的前端之路 : 工具化与工程化](https://zhuanlan.zhihu.com/p/24575395)
+- [GraphQL 初探 : 从 REST 到 GraphQL，更完善的数据查询定义](https://segmentfault.com/a/1190000005766732)

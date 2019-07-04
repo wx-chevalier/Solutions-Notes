@@ -1,3 +1,5 @@
+[![返回目录](https://i.postimg.cc/WzXsh0MX/image.png)](https://parg.co/UdT)
+
 # OAuth
 
 简单说，OAuth 就是一种授权机制。数据的所有者告诉系统，同意授权第三方应用进入系统，获取这些数据。系统从而产生一个短期的进入令牌（token），用来代替密码，供第三方应用使用。

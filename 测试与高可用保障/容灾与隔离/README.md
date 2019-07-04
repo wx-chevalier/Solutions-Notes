@@ -1,4 +1,6 @@
-# 服务容错
+[![](https://i.postimg.cc/WzXsh0MX/image.png)](https://github.com/wx-chevalier/Backend-Series)
+
+# 服务容灾与隔离
 
 从一个计算机系统的角度讲，一切引起系统非正常停机的事件都可以称为灾难。大致可以分成以下三个类型：
 
