@@ -2,7 +2,9 @@
 
 # Sentinel
 
-Sentinel 是对资源调用的控制组件，主要涵盖授权、限流、降级、调用统计等功能模块。Sentinel 往往部署在服务的前端，为服务提供了代理调用的形式：
+Sentinel 是对资源调用的控制组件，主要涵盖授权、限流、降级、调用统计等功能模块。Sentinel 接入方式简单，默认适配 Dubbo，Web Url，DAO 等接入端；适用于流量控制、熔断降级、热点限流、系统保护等场景。Sentinel 还提供了非常灵活的规则配置机制，规则组合多样，更改即时生效；并且 Sentinel 损耗可控，单机 4W QPS 时性能损耗只有 2.4%。
+
+Sentinel 往往部署在服务的前端，为服务提供了代理调用的形式：
 
 ![](https://i.postimg.cc/SqpLNB5C/image.png)
 
