@@ -12,7 +12,7 @@ CSRF (Cross-site request forgery)，中文名称：跨站请求伪造，也被�
 <img src=http://www.mybank.com/Transfer.php?toBankId=11&money=1000>
 ```
 
-银行网站 A 违反了 HTTP 规范，使用 GET 请求更新资源。在访问危险网站 B 的之前，你已经登录了银行网站 A，而 B 中的<img>以 GET 的方 式请求第三方资源(这里的第三方就是指银行网站了，原本这是一个合法的请求，但这里被不法分子利用了)，所以你的浏览器会带上你的银行网站 A 的 Cookie 发出 Get 请求，去获取资源 “http://www.mybank.com/Transfer.php?toBankId=11& money=1000”，结果银行网站服务器收到请求后，认为这是一个更新资源操作(转账操作)，所以就立刻进行转账操作。参考[深入解析跨站请求伪造漏洞：原理剖析 (](http://netsecurity.51cto.com/art/200812/102951_1.htm)中所述，XSS 与 CSRF 的区别在于：
+银行网站 A 违反了 HTTP 规范，使用 GET 请求更新资源。在访问危险网站 B 的之前，你已经登录了银行网站 A，而 B 中的`<img>`以 GET 的方 式请求第三方资源(这里的第三方就是指银行网站了，原本这是一个合法的请求，但这里被不法分子利用了)，所以你的浏览器会带上你的银行网站 A 的 Cookie 发出 Get 请求，去获取资源 “http://www.mybank.com/Transfer.php?toBankId=11& money=1000”，结果银行网站服务器收到请求后，认为这是一个更新资源操作(转账操作)，所以就立刻进行转账操作。参考[深入解析跨站请求伪造漏洞：原理剖析 (](http://netsecurity.51cto.com/art/200812/102951_1.htm)中所述，XSS 与 CSRF 的区别在于：
 
 - XSS 攻击需要 JavaScript，而 CSRF 攻击不需要。
 - XSS 攻击要求站点接受恶意代码，而对于 CSRF 攻击来说，恶意代码位于第三方站点上。过滤用户的输入可以防止恶意代码注入到某个站点，但是它无阻止法恶意代码在第三方站点上运行。
