@@ -1,15 +1,5 @@
 # Spring Boot 微服务实践
 
-![](https://i.postimg.cc/T2g6cQD1/image.png)
+Spring Boot 充分利用了 JavaConfig 的配置模式以及“约定优于配置”的理念，能够极大的简化基于 Spring MVC 的 Web 应用和 REST 服务开发。Spring Boot 可以使得创建独立的产品级别的基于 Spring 的应用程序变得更加简单，使得能够做到开箱即用。Spring Boot 可以用于创建能够直接用 `java -jar` 命令运行的或者类似于传统的 war 部署方式的应用程序。同样也提供了所谓的 `spring scripts` 这样的命令行工具。
 
-# Nav | 导航
-
-建议前往 [xCompass](https://wx-chevalier.github.io/home/#/search)/[alfred-sg](https://github.com/wx-chevalier/Soogle/tree/master/alfred-sg) 交互式地检索、查找需要的文章/链接/书籍/课程，或者直接浏览本仓库的目录以了解更多内容。
-
-# About
-
-![image](https://user-images.githubusercontent.com/5803001/52274670-53384b00-2988-11e9-84a0-0dc12d2c2507.png)
-
-## Motivation & Credits
-
-- https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
+![mindmap](https://i.postimg.cc/T2g6cQD1/image.png)

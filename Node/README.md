@@ -2,7 +2,7 @@
 
 # 深入浅出 Node.js 全栈架构
 
-Imagine all the benefits of Node.js: one language and technology for both front-end and back-end development, plus its outstanding performance; BUT without the concerns of concurrency and heavy CPU processing, AND with high-level database abstractions: with some interesting parallels to Amazon Web Services’ Lambda, that’s what the QEWD.js framework is designed to deliver
+Node.js 为前端开发者开拓了更广阔的应用空间，前端和后端开发的一种语言和技术，以及出色的性能; 但是没有并发和繁重的 CPU 处理问题，以及高级数据库抽象。
 
 # NodeJS 的前世今生
 
