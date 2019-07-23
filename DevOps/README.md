@@ -1,4 +1,4 @@
-![](https://cdn-images-1.medium.com/max/2000/1*xhBXGvGwX3Y-wv20rQIrng.jpeg)
+![](https://i.postimg.cc/G3QHZcky/image.png)
 
 # DevOps 与 SRE 实战
 
