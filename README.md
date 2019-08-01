@@ -56,7 +56,7 @@
 
 - 基础设施层：云计算 IaaS（服务器、存储、网络、文件系统）、云 IaaS 平台；
 
-![mindmap](https://tva1.sinaimg.cn/large/007DFXDhgy1g4jlvqqryvj30u014o4qp.jpg)
+![mindmap](https://i.postimg.cc/VvfCTYff/image.png)
 
 # 版权
 
