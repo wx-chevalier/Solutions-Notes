@@ -52,24 +52,11 @@ Yarn 是一个新的快速安全可信赖的可以替代 NPM 的依赖管理工�
 完整的 npx 命令提示如下：
 
 ```
-
-
 从 npm 的可执行包执行命令
-
-
   npx [选项] <命令>[@版本] [命令的参数]...
-
-
   npx [选项] [-p|--package <包>]... <命令> [命令的参数]...
-
-
   npx [选项] -c '<命令的字符串>'
-
-
   npx --shell-auto-fallback [命令行解释器]
-
-
-
 
 选项：
   --package, -p包安装的路径 [字符串]
@@ -86,10 +73,7 @@ Yarn 是一个新的快速安全可信赖的可以替代 NPM 的依赖管理工�
   --npm为了执行内部操作的 npm 可执行文件 [字符串] [默认值:
  "/Users/apple/.nvm/versions/node/v8.1.3/lib/node_modules/npm/bin/npm-cli.js"]
   --version, -v显示版本号 [布尔]
-
   --help, -h 显示帮助信息 [布尔]
-
-
 ```
 
 npx 还允许我们单次执行命令而不需要安装；在某些场景下有可能我们安装了某个全局命令行工具之后一直忘了更新，导致以后使用的时候误用了老版本。而使用 `npx create-react-app my-cool-new-app` 来执行 create-react-app 命令时，它会正常地帮我们创建 React 应用而不会实际安装 create-react-app 命令行。
