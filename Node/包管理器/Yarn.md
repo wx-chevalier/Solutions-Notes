@@ -41,40 +41,66 @@ Yarn 是一个新的快速安全可信赖的可以替代 NPM 的依赖管理工�
 | npm publish/login/logout   | yarn publish/login/logout | 发布/登录/登出，一系列 NPM Registry 操作 |
 | npm run/test               | yarn run/test             | 运行某个命令                             |
 
-# npx
+# Yarn Workspaces
 
-近日发布的 npm 5.2.0 版本中内置了伴生命令：npx，类似于 npm 简化了项目开发中的依赖安装与管理，该工具致力于提升开发者使用包提供的命令行的体验。npx 允许我们使用本地安装的命令行工具而不需要再定义 npm run-script，并且允许我们仅执行一次脚本而不需要再将其实际安装到本地；同时 npx 还允许我们以不同的 node 版本来运行指定命令、允许我们交互式地开发 node 命令行工具以及便捷地安装来自于 gist 的脚本。
+工作区是设置你的软件包体系结构的一种新方式，默认情况下从 Yarn 1.0 开始使用。它允许你可以使用这种方式安装多个软件包，就是只需要运行一次 `yarn install` 便可将所有依赖包全部安装。
 
-在传统的命令执行中，我们需要将工具添加到 package.json 的 `scripts` 配置中，这种方式还需要我们以 `--` 方式传递参数；我们也可以使用 `alias npmx=PATH=$(npm bin):$PATH,` 或者 `./node_modules/.bin/mocha` 方式来执行命令，虽然都能达到目标，但不免繁杂了许多。而 npx 允许我们以 `npx mocha` 这样的方式直接运行本地安装的 mocha 命令。
+- 你的依赖包可以链接在一起，这意味着你的工作区可以相互依赖，同时始终使用最新的可用代码。 这也是一个比 `yarn link` 更好的机制，因为它只影响你工作区的依赖树，而不会影响整个系统。
 
-![](https://coding.net/u/hoteam/p/Cache/git/raw/master/2017/6/1/1-A4HJT1FHQA_1_z3aMBc5mg.gif)
+- 所有的项目依赖将被安装在一起，这样可以让 Yarn 来更好地优化它们。
 
-完整的 npx 命令提示如下：
+- Yarn 将使用一个单一的 lock 文件，而不是每个项目多有一个，这意味着更少的冲突和更容易进行代码检查。
 
-```
-从 npm 的可执行包执行命令
-  npx [选项] <命令>[@版本] [命令的参数]...
-  npx [选项] [-p|--package <包>]... <命令> [命令的参数]...
-  npx [选项] -c '<命令的字符串>'
-  npx --shell-auto-fallback [命令行解释器]
+Workspaces 的使用方式也非常简单，在 package.json 文件中添加以下内容，从现在开始，我们将此目录称为 “工作区根目录”：
 
-选项：
-  --package, -p包安装的路径 [字符串]
-  --cachenpm 缓存路径 [字符串]
-  --install如果有包缺失，跳过安装[布尔] [默认值: true]
-  --userconfig 当前用户的 npmrc 路径[字符串]
-  --call, -c 像执行 `npm run-script` 一样执行一个字符串 [字符串]
-  --shell, -s执行命令用到的解释器，可选 [字符串] [默认值: false]
-  --shell-auto-fallback产生“找不到命令”的错误码
-  [字符串] [可选值: "", "bash", "fish", "zsh"]
-  --ignore-existing忽略 $PATH 或工程里已有的可执行文件，这会强制使 npx
- 临时安装一次，并且使用其最新的版本 [布尔]
-  --quiet, -q隐藏 npx 的输出，子命令不会受到影响[布尔]
-  --npm为了执行内部操作的 npm 可执行文件 [字符串] [默认值:
- "/Users/apple/.nvm/versions/node/v8.1.3/lib/node_modules/npm/bin/npm-cli.js"]
-  --version, -v显示版本号 [布尔]
-  --help, -h 显示帮助信息 [布尔]
+```json
+{
+  "private": true,
+  "workspaces": ["workspace-a", "workspace-b"]
+}
 ```
 
-npx 还允许我们单次执行命令而不需要安装；在某些场景下有可能我们安装了某个全局命令行工具之后一直忘了更新，导致以后使用的时候误用了老版本。而使用 `npx create-react-app my-cool-new-app` 来执行 create-react-app 命令时，它会正常地帮我们创建 React 应用而不会实际安装 create-react-app 命令行。
-我们还可以使用类似于 `$ npx -p node-bin@6 npm it` 的格式来指定 Node 版本，或者使用 `npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32` 方式直接运行来自于 Gist 的脚本。
+请注意，`private: true` 是必需的！工作区本身不应当被发布出去，所以我们添加了这个安全措施以确保它不会被意外暴露。创建这个文件后，再创建两个名为 `workspace-a` 和 `workspace-b` 的子文件夹。 在每个文件夹里面，创建一个具有以下内容的 `package. json` 文件：
+
+- workspace-a/package.json:
+
+```json
+{
+  "name": "workspace-a",
+  "version": "1.0.0",
+
+  "dependencies": {
+    "cross-env": "5.0.5"
+  }
+}
+```
+
+- workspace-b/package.json:
+
+```json
+{
+  "name": "workspace-b",
+  "version": "1.0.0",
+
+  "dependencies": {
+    "cross-env": "5.0.5",
+    "workspace-a": "1.0.0"
+  }
+}
+```
+
+最后，在某个地方运行 `yarn install` ，当然最好是在工作区根目录里面。如果一切正常，你现在应该有一个类似这样的文件层次结构：
+
+```
+/package.json
+/yarn.lock
+
+/node_modules
+/node_modules/cross-env
+/node_modules/workspace-a -> /workspace-a
+
+/workspace-a/package.json
+/workspace-b/package.json
+```
+
+Yarn 的工作区是诸如 Lerna 这样的工具可以（并且正在）利用的底层机制。 它们将永远不会试图提供像 Lerna 那么高级的功能，但通过实现该解决方案的核心逻辑和 Yarn 内部的连接步骤，我们希望能够提供新的用法并提高性能。
