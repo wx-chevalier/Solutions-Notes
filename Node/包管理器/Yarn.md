@@ -104,3 +104,11 @@ Workspaces 的使用方式也非常简单，在 package.json 文件中添加以�
 ```
 
 Yarn 的工作区是诸如 Lerna 这样的工具可以（并且正在）利用的底层机制。 它们将永远不会试图提供像 Lerna 那么高级的功能，但通过实现该解决方案的核心逻辑和 Yarn 内部的连接步骤，我们希望能够提供新的用法并提高性能。
+
+```sh
+# 为某个子模块添加本地依赖
+$ yarn workspace x add y@^1.0.0
+
+# 在所有子项目下运行 Build 命令
+$ yarn workspaces run build
+```
