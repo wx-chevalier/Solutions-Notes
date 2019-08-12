@@ -15,7 +15,6 @@
   - [Linux](../DevOps/安全加固/Linux.md) 
   - [文件备份](../DevOps/安全加固/文件备份.md) 
 - [客户端监控](../DevOps/客户端监控/README.md) 
-  - [异常监控与上报](../DevOps/客户端监控/异常监控与上报.md) 
   - [用户追踪](../DevOps/客户端监控/用户追踪.md) 
 - [导论](../DevOps/导论/README.md) 
   - [典型系统](../DevOps/导论/典型系统.md) 
