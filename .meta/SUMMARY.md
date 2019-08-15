@@ -221,6 +221,7 @@
   - [Distributionless](../微服务与云原生/云原生/Distributionless.md) 
   - [Serverless](../微服务与云原生/云原生/Serverless.md) 
 - [单体分层架构](../微服务与云原生/单体分层架构/README.md) 
+- [多租户](../微服务与云原生/多租户/README.md) 
 - [实战案例](../微服务与云原生/实战案例/README.md) 
   - [基于 Docker Swarm 的微服务编排与监控](../微服务与云原生/实战案例/基于 Docker Swarm 的微服务编排与监控.md) 
 - [微服务](../微服务与云原生/微服务/README.md) 
