@@ -6,3 +6,5 @@
 
 - [高并发系统中的常见问题](http://weibo.com/p/1001603862417250608209)
 - https://mp.weixin.qq.com/s/P7UpKcranh_AKGOsZI-7rQ?from=groupmessage&isappinstalled=0
+
+- https://mp.weixin.qq.com/s/ZMjr3UZBffwIeOei9NsBsQ?from=groupmessage&isappinstalled=0

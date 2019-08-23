@@ -11,3 +11,7 @@ select * from user where name = 'zach' and password = '' or '1'='1'
 
 - Web 端进行有效性检验，限制字符串输入的长度。
 - 服务端不用拼接 SQL 字符串，使用预编译的 PrepareStatement，进行有效性检验，过滤 SQL 需要的参数中的特殊字符，比如单引号、双引号等。
+
+# 链接
+
+- https://www.zhihu.com/question/335706717/answer/756929373
