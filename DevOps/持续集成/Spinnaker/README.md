@@ -2,6 +2,8 @@
 
 Spinnaker 是 Netflix 的开源项目，是一个持续交付平台，它定位于将产品快速且持续的部署到多种云平台上。Spinnaker 通过将发布和各个云平台解耦，来将部署流程流水线化，从而降低平台迁移或多云品台部署应用的复杂度，它本身内部支持 Google、AWS EC2、Microsoft Azure、Kubernetes 和 OpenStack 等云平台，并且它可以无缝集成其他持续集成（CI）流程，如 git、Jenkins、Travis CI、Docker registry、cron 调度器等。简而言之，Spinnaker 是致力于提供在多种平台上实现开箱即用的集群管理和部署功能的平台。
 
+# 功能特性
+
 Spinnaker 主要包含两大块内容，集群管理和部署管理。
 
 ## 集群管理
@@ -35,6 +37,8 @@ Spinnaker 主要包含两大块内容，集群管理和部署管理。
 ![](https://i.postimg.cc/P5YLyNv6/image.png)
 
 # Spinnaker 架构组件
+
+![](https://i.postimg.cc/zGYT67cN/image.png)
 
 ![](https://i.postimg.cc/mZ1Fkd2f/image.png)
 
