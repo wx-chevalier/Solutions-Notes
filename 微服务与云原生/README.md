@@ -52,6 +52,8 @@ SOA 往往通过服务接口来通讯，面向服务的设计模式，最终需�
 
 # MSA 微服务架构
 
+![](https://i.postimg.cc/mkMy155d/image.png)
+
 微服务（Microservices Architecture Pattern）由 Martin Fowler 在 2014 年提出的，是希望将某个单一的单体应用，转化为多个可以独立运行、独立开发、独立部署、独立维护的服务或者应用的聚合，从而满足业务快速变化及分布式多团队并行开发的需求。如康威定律（Conway’s Law）所言，任何组织在设计一套系统（广义概念）时，所交付的设计方案在结构上都与该组织的通信结构保持一致，微服务与微前端不仅仅是技术架构的变化，还包含了组织方式、沟通方式的变化。
 
 ![](https://i.postimg.cc/XNmDQrKL/image.png)
@@ -67,6 +69,10 @@ Y 轴：将应用进一步分解为微服务（分库）
 Z 轴：大数据量时，将服务分区（分表）
 
 SOA 与微服务的区别在于，SOA 更多强调重用，而微服务偏向于重写。SOA 偏向水平服务，微服务偏向垂直服务；SOA 偏向自上而下的设计，微服务偏向自下而上的设计。
+
+![](https://i.postimg.cc/fyh0pT8K/image.png)
+
+![](https://i.postimg.cc/L4zPfLs0/image.png)
 
 # Cloud Native 云原生架构
 
