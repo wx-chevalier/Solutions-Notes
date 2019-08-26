@@ -12,7 +12,7 @@ DevOps 与 SRE 实战涵盖了笔者对于大型软件系统开发与运维工�
 
 DevOps 是一种公司文化的变迁，它代表了开发、运维和测试等环节之间的协作，因此多种工具可以组成一个完整的 DevOps 工具链。Chef 的创始人 Adam Jacob 将 DevOps 定义为一种文化和专业的运动。
 
-![](https://ww1.sinaimg.cn/large/007rAy9hgy1g2089fih3vj30e808277g.jpg)
+![](https://i.postimg.cc/wvLsRT8N/image.png)
 
 DevOps 会涉及到各种模式，包括：持续改进、组织文化、学习曲线、持续交付、持续学习、持续协作和自动化：
 
