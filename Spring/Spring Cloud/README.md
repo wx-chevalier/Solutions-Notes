@@ -16,6 +16,10 @@ Spring Cloud 是微服务架构的最佳落地方案。
 断路器。
 分布式消息传递。
 
+目前 Spring Cloud 常和 Kubernetes 协同使用：
+
+![](https://i.postimg.cc/nLfpz5Nw/image.png)
+
 # 链接
 
 - https://juejin.im/post/5be13b83f265da6116393fc7
