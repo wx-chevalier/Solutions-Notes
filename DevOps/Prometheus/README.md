@@ -5,3 +5,7 @@ Prometheus 是一套开源的监控、报警、时间序列数据库的组合，
 Prometheus 的优势在于其易于安装使用，外部依赖较少；并且直接按照分布式、微服务架构模式进行设计，支持服务自动化发现与代码集成。Prometheus 能够自定义多维度的数据模型，内置强大的查询语句，搭配其丰富的社区扩展，能够轻松实现数据可视化。
 
 ![](https://i.postimg.cc/g0SDCRhK/image.png)
+
+# 链接
+
+- https://mp.weixin.qq.com/s/0vZLCZBPFfOMNqubpQUrbg https://mp.weixin.qq.com/s/0vZLCZBPFfOMNqubpQUrbg
