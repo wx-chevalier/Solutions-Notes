@@ -69,3 +69,7 @@ INSERT INTO `config` (`key`, `value`, `updated_time`, `created_time`) VALUES ('c
 其二，直接修改数据库，程序中通过定时任务从数据库读取最新的配置内容。
 
 “DB 配置表”的形式解决了主要的问题，但是它不够优雅，带来了一些“累赘”。
+
+# 链接
+
+- https://mp.weixin.qq.com/s/3JIzG7HhIgL1dGzYMS37pw
