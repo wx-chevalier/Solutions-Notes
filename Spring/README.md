@@ -1,4 +1,4 @@
-![](https://s2.ax1x.com/2019/09/03/nFQaut.png)
+![Spring 题图](https://s2.ax1x.com/2019/09/03/nFQaut.png)
 
 # Spring 微服务实践
 
@@ -7,6 +7,8 @@ Spring 的设计目标是为我们提供一个一站式的轻量级应用开发�
 使用 Spring 进行开发，对开发人员比较轻量，可以使用 POJO 和 Java Bean 的开发方式，使应用面向接口开发，充分支持了面向对象的设计方法。通过 IOC 容器减少了直接耦合，通过 AOP 以动态和非侵入的方式增加了服务的功能，为灵活选取不同的服务实现提供了基础，这也是 Spring 的核心。轻量级是相对于传统 J2EE 而言的，传统的 J2EE 开发，需要依赖按照 J2EE 规范实现的 J2EE 应用服务器，设计和实现时，需要遵循一系列的接口标准，这种开发方式耦合性高，使应用在可测试性和部署上都有影响，对技术的理解和要求相对较高。
 
 ![mindmap](https://i.postimg.cc/T2g6cQD1/image.png)
+
+本篇是《[服务端开发实践与工程架构](https://ngte-be.gitbook.io/i/)》系列文章的一部分，关联的示例代码请参考 [java-snippets](https://github.com/wx-chevalier/java-snippets)，[spring-snippets](https://github.com/wx-chevalier/spring-snippets)。
 
 # Spring 历史
 
