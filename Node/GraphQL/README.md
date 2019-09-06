@@ -170,3 +170,5 @@ query {
 - https://gist.github.com/jbritton/1f60ef440686b51ee37b708e6376b26e
 
 - https://medium.com/graphql-mastery/graphql-quick-tip-how-to-pass-variables-into-a-mutation-in-graphiql-23ecff4add57
+
+- https://mp.weixin.qq.com/s/YjLuf3Oebmw0Zo6Xx-0qKg
