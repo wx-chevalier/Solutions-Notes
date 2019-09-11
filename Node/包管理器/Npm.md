@@ -37,3 +37,21 @@
 
 npx 还允许我们单次执行命令而不需要安装；在某些场景下有可能我们安装了某个全局命令行工具之后一直忘了更新，导致以后使用的时候误用了老版本。而使用 `npx create-react-app my-cool-new-app` 来执行 create-react-app 命令时，它会正常地帮我们创建 React 应用而不会实际安装 create-react-app 命令行。
 我们还可以使用类似于 `$ npx -p node-bin@6 npm it` 的格式来指定 Node 版本，或者使用 `npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32` 方式直接运行来自于 Gist 的脚本。
+
+# 运行小技巧
+
+## 多个任务并发执行
+
+我们可以利用 concurrently 库来并发执行多个任务：
+
+```sh
+$ npm i concurrently --save-dev
+```
+
+然后在 Npm 脚本中使用 concurrent 来运行多个命令：
+
+```json
+{
+  "dev": "concurrently --kill-others \"npm run start-watch\" \"npm run wp-server\""
+}
+```
