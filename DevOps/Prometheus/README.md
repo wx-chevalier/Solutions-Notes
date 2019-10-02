@@ -8,6 +8,15 @@ Prometheus 的优势在于其易于安装使用，外部依赖较少；并且直
 
 ![](https://i.postimg.cc/g0SDCRhK/image.png)
 
+# 架构组件
+
+Prometheus由两个部分组成，一个是监控报警系统，另一个是自带的时序数据库（TSDB）。上图是Prometheus整体架构图，左侧是各种符合Prometheus数据格式的exporter，除此之外为了支持推动数据类型的Agent，可以通过Pushgateway组件，将Push转化为Pull。Prometheus甚至可以从其它的Prometheus获取数据，组建联邦集群。Prometheus的基本原理是通过HTTP周期性抓取被监控组件的状态，任意组件只要提供对应的HTTP接口并且符合Prometheus定义的数据格式，就可以接入Prometheus监控。
+
+![组件连接](https://s2.ax1x.com/2019/10/02/udBOyj.jpg)
+
+上侧是服务发现，Prometheus支持监控对象的自动发现机制，从而可以动态获取监控对象。图片中间是Prometheus Server，Retrieval模块定时拉取数据，并通过Storage模块保存数据。PromQL为Prometheus提供的查询语法，PromQL模块通过解析语法树，调用Storage模块查询接口获取监控数据。图片右侧是告警和页面展现，Prometheus将告警推送到alertmanger，然后通过alertmanger对告警进行处理并执行相应动作。数据展现除了Prometheus自带的WebUI，还可以通过Grafana等组件查询Prometheus监控数据。
+
+
 # 链接
 
 - https://mp.weixin.qq.com/s/0vZLCZBPFfOMNqubpQUrbg https://mp.weixin.qq.com/s/0vZLCZBPFfOMNqubpQUrbg
