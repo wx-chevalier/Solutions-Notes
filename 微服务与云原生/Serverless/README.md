@@ -34,4 +34,4 @@ UC Berkley 认为 Serverless 是 One Step Forward, Two Steps Back。关于 One S
 
 核心的点就在于把业务系统开发时需要用到的各种基础技术产品都隐藏起来，并将要用到的一些基础技术进行归纳抽象，例如存储、服务交互。
 
-Managed Services 里面当然包括 AWS S3，DynamoDB，SNS，SQS 等。这些 Managed Service 不仅在 Serverless 里面可以用，在 server program 里面也在用，但是很显然，这些丰富的 Managed Service 极大地促进了 Serverless ——可以让开发者在体感上完全去除 server 的概念。 例如，虽然 Serverless 里面也可以用 RDS，但因为 RDS 后面你还需要自己管理 Server，因此总体的感觉依然是 Server based。
+Managed Services 里面当然包括 AWS S3，DynamoDB，SNS，SQS 等。这些 Managed Service 不仅在 Serverless 里面可以用，在 server program 里面也在用，但是很显然，这些丰富的 Managed Service 极大地促进了 Serverless ——可以让开发者在体感上完全去除 server 的概念。例如，虽然 Serverless 里面也可以用 RDS，但因为 RDS 后面你还需要自己管理 Server，因此总体的感觉依然是 Server based。
