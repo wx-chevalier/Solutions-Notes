@@ -18,3 +18,4 @@ Borsos 建议使用客户端令牌(使用 JWT)和 API 网关结合的方案，�
 
 - https://zhuanlan.zhihu.com/p/62336927
 - https://medium.com/@jcbaey/authentication-in-spa-reactjs-and-vuejs-the-right-way-e4a9ac5cd9a3
+- https://www.zhihu.com/question/342103776/answer/806983636 现在用的比较多的单点登录技术是什么？
