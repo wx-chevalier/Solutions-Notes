@@ -20,3 +20,4 @@ Prometheus由两个部分组成，一个是监控报警系统，另一个是自�
 # 链接
 
 - https://mp.weixin.qq.com/s/0vZLCZBPFfOMNqubpQUrbg https://mp.weixin.qq.com/s/0vZLCZBPFfOMNqubpQUrbg
+- https://mp.weixin.qq.com/s/ijx8zIUmpmBB6akh8Ru0zw Prometheus基础知识介绍
