@@ -50,11 +50,6 @@
   - [体系设计](../DevOps/自动化运维/体系设计.md) 
   - [场景分析](../DevOps/自动化运维/场景分析.md) 
 
-## [Node](../Node/README.md) 
-
-- [Introduction](../Node/README.md) 
-
-
 ## [Spring](../Spring/README.md) 
 
 - [Introduction](../Spring/README.md) 
@@ -100,6 +95,32 @@
 - [网络安全](../信息安全与渗透测试/网络安全/README.md) 
   - [TCP 安全](../信息安全与渗透测试/网络安全/TCP 安全.md) 
 
+## [功能域](../功能域/README.md) 
+
+- [Introduction](../功能域/README.md) 
+
+- [CMS](../功能域/CMS/README.md) 
+  - [在线协作编辑](../功能域/CMS/在线协作编辑.md) 
+- [LBS](../功能域/LBS/README.md) 
+- [即时通信](../功能域/即时通信/README.md) 
+  - [Feed](../功能域/即时通信/Feed/README.md) 
+  - [WebRTC](../功能域/即时通信/WebRTC/README.md) 
+  - [XMPP](../功能域/即时通信/XMPP/README.md) 
+    - [协议规范](../功能域/即时通信/XMPP/协议规范.md) 
+  - [直播协议](../功能域/即时通信/直播协议/README.md) 
+  - [直播系统](../功能域/即时通信/直播系统/README.md) 
+  - [编解码](../功能域/即时通信/编解码/README.md) 
+    - [视频封装格式](../功能域/即时通信/编解码/视频封装格式.md) 
+    - [视频编解码](../功能域/即时通信/编解码/视频编解码.md) 
+  - [网络传输](../功能域/即时通信/网络传输/README.md) 
+- [开放平台](../功能域/开放平台/README.md) 
+  - [微信](../功能域/开放平台/微信/README.md) 
+  - [支付宝](../功能域/开放平台/支付宝/README.md) 
+- [流程引擎](../功能域/流程引擎/README.md) 
+  - [Activiti](../功能域/流程引擎/Activiti/README.md) 
+  - [BPMN](../功能域/流程引擎/BPMN/README.md) 
+    - [BPMN 规范](../功能域/流程引擎/BPMN/BPMN 规范.md) 
+
 ## [微服务架构](../微服务架构/README.md) 
 
 - [Introduction](../微服务架构/README.md) 
@@ -115,6 +136,7 @@
       - [Java](../微服务架构/RPC/序列化/Avro/Java.md) 
     - [JSON](../微服务架构/RPC/序列化/JSON/README.md) 
       - [JSONSchema](../微服务架构/RPC/序列化/JSON/JSONSchema.md) 
+- [ServiceComb](../微服务架构/ServiceComb/README.md) 
 - [中间件](../微服务架构/中间件/README.md) 
 - [代理服务器](../微服务架构/代理服务器/README.md) 
   - [Apache](../微服务架构/代理服务器/Apache/README.md) 
@@ -138,6 +160,7 @@
   - [Kong](../微服务架构/接入网关/Kong/README.md) 
     - [Kong](../微服务架构/接入网关/Kong/Kong.md) 
   - [长连接](../微服务架构/接入网关/长连接/README.md) 
+    - [DeepStream](../微服务架构/接入网关/长连接/DeepStream.md) 
 - [服务注册与发现](../微服务架构/服务注册与发现/README.md) 
   - [注册与发现流程](../微服务架构/服务注册与发现/注册与发现流程.md) 
 - [服务状态处理](../微服务架构/服务状态处理/README.md) 
