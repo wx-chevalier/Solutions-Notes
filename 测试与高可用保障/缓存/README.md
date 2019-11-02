@@ -24,3 +24,4 @@
 - https://zhuanlan.zhihu.com/p/72671938 Redis 与 Mysql 双写一致性方案解析
 - https://zhuanlan.zhihu.com/p/74880843
 - https://www.atatech.org/articles/150201?spm=ata.home.0.0.11fd75362NxUNp&flag_data_from=home_manual
+- https://www.zhihu.com/question/26190832/answer/825301105 Cache 和 Buffer 都是缓存，主要区别是什么？
