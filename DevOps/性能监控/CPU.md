@@ -24,6 +24,15 @@ CPU 上的的一些异动，通常也可以从线程上观测到，但需要注�
 
 我们更应该关注 CPU 负载，CPU 利用率高一般不是问题，CPU 负载 是判断系统计算资源是否健康的关键依据。
 
+```sh
+# 按照 CPU/内存的使用情况列出前10 的进程
+$ ps axo %mem,pid,euser,cmd | sort -nr | head -10
+$ ps -aeo pcpu,user,pid,cmd | sort -nr | head -10
+
+# 显示系统整体的 CPU利用率和闲置率
+$ grep "cpu " /proc/stat | awk -F ' ' '{total = $2 + $3 + $4 + $5} END {print "idle \t used\n" $5*100/total "% " $2*100/total "%"}'  ​​​​
+```
+
 ## CPU 利用率高 & 平均负载高
 
 这种情况常见于 CPU 密集型的应用，大量的线程处于可运行状态，I/O 很少，常见的大量消耗 CPU 资源的应用场景有：
