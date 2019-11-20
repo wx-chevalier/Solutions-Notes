@@ -5,9 +5,6 @@
 - [Introduction](../DevOps/README.md) 
 
 - [OpenTracing](../DevOps/OpenTracing/README.md) 
-- [Prometheus](../DevOps/Prometheus/README.md) 
-  - [数据模型与类型](../DevOps/Prometheus/数据模型与类型.md) 
-  - [部署配置](../DevOps/Prometheus/部署配置.md) 
 - [分布式追踪](../DevOps/分布式追踪/README.md) 
   - [开源对比](../DevOps/分布式追踪/开源对比.md) 
   - [系统设计](../DevOps/分布式追踪/系统设计.md) 
