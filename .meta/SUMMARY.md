@@ -105,6 +105,8 @@
 - [LBS](../功能域/LBS/README.md) 
 - [即时通信](../功能域/即时通信/README.md) 
   - [Feed](../功能域/即时通信/Feed/README.md) 
+  - [IM Scratch](../功能域/即时通信/IM Scratch/README.md) 
+    - [基于 Java 的 IM 系统](../功能域/即时通信/IM Scratch/基于 Java 的 IM 系统.md) 
   - [WebRTC](../功能域/即时通信/WebRTC/README.md) 
   - [XMPP](../功能域/即时通信/XMPP/README.md) 
     - [协议规范](../功能域/即时通信/XMPP/协议规范.md) 
