@@ -1,3 +1,7 @@
+  - CMS
+    - [在线协作编辑](/CMS/在线协作编辑.md)
+  - [LBS](/LBS/README.md)
+    
   - [信息安全与渗透测试](/信息安全与渗透测试/README.md)
     - [Web 安全](/信息安全与渗透测试/Web%20安全/README.md)
       - [CSRF](/信息安全与渗透测试/Web%20安全/CSRF/README.md)
@@ -44,36 +48,31 @@
         - [滑动验证](/信息安全与渗透测试/爬虫/验证码绕过/滑动验证.md)
     - [网络安全](/信息安全与渗透测试/网络安全/README.md)
       - [TCP 安全](/信息安全与渗透测试/网络安全/TCP%20安全.md)
-  - 功能域
-    - CMS
-      - [在线协作编辑](/功能域/CMS/在线协作编辑.md)
-    - [LBS](/功能域/LBS/README.md)
+  - [即时通信](/即时通信/README.md)
+    - [Feed](/即时通信/Feed/README.md)
       
-    - [即时通信](/功能域/即时通信/README.md)
-      - [Feed](/功能域/即时通信/Feed/README.md)
-        
-      - IM Scratch
-        - [基于 Java 的 IM 系统](/功能域/即时通信/IM%20Scratch/基于%20Java%20的%20IM%20系统.md)
-      - [WebRTC](/功能域/即时通信/WebRTC/README.md)
-        
-      - [XMPP](/功能域/即时通信/XMPP/README.md)
-        - [协议规范](/功能域/即时通信/XMPP/协议规范.md)
-      - [直播协议](/功能域/即时通信/直播协议/README.md)
-        
-      - [直播系统](/功能域/即时通信/直播系统/README.md)
-        
-      - [编解码](/功能域/即时通信/编解码/README.md)
-        - [视频封装格式](/功能域/即时通信/编解码/视频封装格式.md)
-        - [视频编解码](/功能域/即时通信/编解码/视频编解码.md)
-      - [网络传输](/功能域/即时通信/网络传输/README.md)
-        
-    - [开放平台](/功能域/开放平台/README.md)
-      - [微信](/功能域/开放平台/微信/README.md)
-        
-      - [支付宝](/功能域/开放平台/支付宝/README.md)
-        
-    - [流程引擎](/功能域/流程引擎/README.md)
-      - [Activiti](/功能域/流程引擎/Activiti/README.md)
-        
-      - [BPMN](/功能域/流程引擎/BPMN/README.md)
-        - [BPMN 规范](/功能域/流程引擎/BPMN/BPMN%20规范.md)
+    - IM Scratch
+      - [基于 Java 的 IM 系统](/即时通信/IM%20Scratch/基于%20Java%20的%20IM%20系统.md)
+    - [WebRTC](/即时通信/WebRTC/README.md)
+      
+    - [XMPP](/即时通信/XMPP/README.md)
+      - [协议规范](/即时通信/XMPP/协议规范.md)
+    - [直播协议](/即时通信/直播协议/README.md)
+      
+    - [直播系统](/即时通信/直播系统/README.md)
+      
+    - [编解码](/即时通信/编解码/README.md)
+      - [视频封装格式](/即时通信/编解码/视频封装格式.md)
+      - [视频编解码](/即时通信/编解码/视频编解码.md)
+    - [网络传输](/即时通信/网络传输/README.md)
+      
+  - [开放平台](/开放平台/README.md)
+    - [微信](/开放平台/微信/README.md)
+      
+    - [支付宝](/开放平台/支付宝/README.md)
+      
+  - [流程引擎](/流程引擎/README.md)
+    - [Activiti](/流程引擎/Activiti/README.md)
+      
+    - [BPMN](/流程引擎/BPMN/README.md)
+      - [BPMN 规范](/流程引擎/BPMN/BPMN%20规范.md)
