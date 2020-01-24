@@ -4,7 +4,7 @@
 
 在[某熊的技术之路指北 ☯](https://github.com/wx-chevalier/Developer-Zero-To-Mastery)中我们介绍过，本系列[服务端架构与实践](https://github.com/wx-chevalier/Backend-Series)与[深入浅出分布式基础架构](https://github.com/wx-chevalier/Distributed-Infrastructure-Series)这两个系列承载了笔者在泛服务端开发、运维相关工作中的知识沉淀。
 
-# Preface | 前言
+# Introduction | 前言
 
 过去数十年间，信息技术的浪潮深刻地改变了这个社会的通信、交流与协作模式，我们熟知的互联网也经历了基于流量点击赢利的单方面信息发布的 Web 1.0 业务模式，转变为由用户主导而生成内容的 Web 2.0 业务模式；在可见的将来随着 3D 相关技术的落地，互联网应用系统所需处理的访问量和数据量必然会再次爆发性增长。并发的增加对我们的后端架构提出了巨大的挑战，要求我们的系统弹性可扩展。
 
@@ -40,23 +40,22 @@
 
 ![mindmap](https://i.postimg.cc/VvfCTYff/image.png)
 
+# Nav | 导读
+
+- 如果你想了解具体的开发框架，可以参阅 [Spring Series](https://ng-tech.icu/Spring-Series/#/)、[Node Series](https://ng-tech.icu/Node-Series/#/)。
+
+- 如果你想了解微服务架构相关，请参阅 [MicroService-Series](https://github.com/wx-chevalier/MicroService-Series)。
+
 # About
 
-## Copyright
+## Copyright & More | 延伸阅读
 
 <img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg"/><img src="https://parg.co/bDm" />
 
 笔者所有文章遵循 [知识共享 署名-非商业性使用-禁止演绎 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh)，欢迎转载，尊重版权。如果觉得本系列对你有所帮助，欢迎给我家布丁买点狗粮(支付宝扫码)~
-
-
-
-## Copyright & More | 延伸阅读
 
 ![技术视野](https://s2.ax1x.com/2019/12/03/QQJLvt.png)
 
 您还可以前往 [NGTE Books](https://ng-tech.icu/books/) 主页浏览包含知识体系、编程语言、软件工程、模式与架构、Web 与大前端、服务端开发实践与工程架构、分布式基础架构、人工智能与深度学习、产品运营与创业等多类目的书籍列表：
 
 ![NGTE Books](https://s2.ax1x.com/2020/01/18/19uXtI.png)
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/wx-chevalier/Backend-Series.svg)](https://starchart.cc/wx-chevalier/Backend-Series)
