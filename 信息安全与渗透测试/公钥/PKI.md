@@ -1,4 +1,4 @@
-PKI ( Public Key Infrastructure )指的是公钥基础设施。CA ( Certificate Authority )指的是认证中心。PKI 从技术上解决了网络通信安全的种种障碍。CA 从运营、管理、规范、法律、人员等多个角度来解决了网络信任问题。由此，人们统称为 “ PKI/CA ”。从总体构架来看， PKI/CA 主要由最终用户、认证中心和注册机构来组成。
+PKI ( Public Key Infrastructure )指的是公钥基础设施。CA ( Certificate Authority )指的是认证中心。PKI 从技术上解决了网络通信安全的种种障碍。CA 从运营、管理、规范、法律、人员等多个角度来解决了网络信任问题。由此，人们统称为 “ PKI/CA ”。从总体构架来看，PKI/CA 主要由最终用户、认证中心和注册机构来组成。
 
 KCS 全称是 Public-Key Cryptography Standards ，是由 RSA 实验室与其它安全系统开发商为促进公钥密码的发展而制订的一系列标准，PKCS 目前共发布过 15 个标准。常用的有: PKCS#7 Cryptographic Message Syntax Standard PKCS#10 Certification Request Standard PKCS#12 Personal Information Exchange Syntax Standard
 
@@ -12,7 +12,7 @@ PKCS#7 常用的后缀是: .P7B .P7C .SPC PKCS#12 常用的后缀有: .P12 .PFX 
 
 三 x509 到 pfx pkcs12 -export –in keys/client1.crt -inkey keys/client1.key -out keys/client1.pfx
 
-四 PEM 格式的 ca.key 转换为 Microsoft 可以识别的 pvk 格式。pvk -in ca.key -out ca.pvk -nocrypt -topvk 五 PKCS#12 到 PEM 的转换 openssl pkcs12 -nocerts -nodes -in cert.p12 -out private.pem 验证 openssl pkcs12 -clcerts -nokeys -in cert.p12 -out cert.pem 六 从 PFX 格式文件中提取私钥格式文件 (.key) openssl pkcs12 -in mycert.pfx -nocerts -nodes -out mycert.key 七 转换 pem 到到 spc openssl crl2pkcs7 -nocrl -certfile venus.pem -outform DER -out venus.spc 用 -outform -inform 指定 DER 还是 PAM 格式。例如: openssl x509 -in Cert.pem -inform PEM -out cert.der -outform DER 八 PEM 到 PKCS#12 的转换， openssl pkcs12 -export -in Cert.pem -out Cert.p12 -inkey key.pem
+四 PEM 格式的 ca.key 转换为 Microsoft 可以识别的 pvk 格式。pvk -in ca.key -out ca.pvk -nocrypt -topvk 五 PKCS#12 到 PEM 的转换 openssl pkcs12 -nocerts -nodes -in cert.p12 -out private.pem 验证 openssl pkcs12 -clcerts -nokeys -in cert.p12 -out cert.pem 六 从 PFX 格式文件中提取私钥格式文件 (.key) openssl pkcs12 -in mycert.pfx -nocerts -nodes -out mycert.key 七 转换 pem 到到 spc openssl crl2pkcs7 -nocrl -certfile venus.pem -outform DER -out venus.spc 用 -outform -inform 指定 DER 还是 PAM 格式。例如: openssl x509 -in Cert.pem -inform PEM -out cert.der -outform DER 八 PEM 到 PKCS#12 的转换，openssl pkcs12 -export -in Cert.pem -out Cert.p12 -inkey key.pem
 
 密钥库文件格式【Keystore 】
 
