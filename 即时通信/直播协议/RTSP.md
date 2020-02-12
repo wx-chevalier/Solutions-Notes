@@ -4,7 +4,7 @@ RTSP（Real Time Streaming Protocol）是由 Real Network 和 Netscape 共同提
 
 ## rtsp 和 http 的区别和联系
 
-联系在于，两者都用纯文本来发送消息，且 rtsp 协议的语法也和 HTTP 类似。Rtsp 一开始这样设计，也是为了能够兼容使用以前写的 HTTP 协议分析代码 。
+联系在于，两者都用纯文本来发送消息，且 rtsp 协议的语法也和 HTTP 类似。Rtsp 一开始这样设计，也是为了能够兼容使用以前写的 HTTP 协议分析代码。
 
 区别在于，rtsp 是有状态的，不同的是 RTSP 的命令需要知道现在正处于一个什么状态，也就是说 rtsp 的命令总是按照顺序来发送，某个命令总在另外一个命令之前要发送。Rtsp 不管处于什么状态都不会去断掉连接。，而 http 则不保存状态，协议在发送一个命令以后，连接就会断开，且命令之间是没有依赖性的。rtsp 协议使用 554 端口，http 使用 80 端口。
 
@@ -54,7 +54,7 @@ RTSP 版本 状态码 解释 CR LF
 
 # 方法
 
-rtsp 中定义的方法有：OPTIONS, DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE, SCALE, GET_PARAMETER ，SET_PARAMETER。
+rtsp 中定义的方法有：OPTIONS, DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE, SCALE, GET_PARAMETER，SET_PARAMETER。
 
 ## OPTION
 
