@@ -123,7 +123,7 @@ SETUP rtsp://192.168.20.136:5000/xxx666/trackID=0 RTSP/1.0
 CSeq: 3
 Transport: RTP/AVP/TCP;unicast;interleaved=0-1
 User-Agent: VLC media player (LIVE555 Streaming Media v2005.11.10)
-//uri 中带有 trackID ＝ 0，表示对该通道进行设置。Transport 参数设置了传输模式，包的结构。接下来的数据包头部第二个字节位置就是 interleaved，它的值是每个通道都不同的，trackID ＝ 0 的 interleaved 值有两个 0 或 1，0 表示 rtp 包，1 表示 rtcp 包，接受端根据 interleaved 的值来区别是哪种数据包。
+//uri 中带有 trackID ＝ 0，表示对该通道进行设置。Transport 参数设置了传输模式，包的结构。接下来的数据包头部第二个字节位置就是 interleaved，它的值是每个通道都不同的，trackID ＝ 0 的 interleaved 值有两个 0或1，0 表示 rtp 包，1 表示 rtcp 包，接受端根据 interleaved 的值来区别是哪种数据包。
 
 # 服务器回应信息:
 RTSP/1.0 200 OK
