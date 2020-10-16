@@ -12,6 +12,6 @@ When you use WebRTC, the transmitted stream is unreliable. Some packets can be l
 
 If you want to send data channel via WebRTC, you should have some forward error correction algorithm to restore data if a data frame was lost in the network.
 
-# 链接
+# TBD
 
 - https://mp.weixin.qq.com/s/BcvsFP8N-IZ9bxgX_FAECw
