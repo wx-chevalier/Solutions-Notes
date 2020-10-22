@@ -1,5 +1,3 @@
-  - CMS
-    - [在线协作编辑](/CMS/在线协作编辑.md)
   - [IM 与流媒体](/IM%20与流媒体/README.md)
     - [Feed](/IM%20与流媒体/Feed/README.md)
       
@@ -22,8 +20,11 @@
       - [音频编码器](/IM%20与流媒体/编解码/音频编码器.md)
     - [网络传输](/IM%20与流媒体/网络传输/README.md)
       
-  - [LBS](/LBS/README.md)
-    
+  - 其他
+    - CMS
+      - [在线协作编辑](/其他/CMS/在线协作编辑.md)
+    - [LBS](/其他/LBS/README.md)
+      
   - [开放平台](/开放平台/README.md)
     - [微信](/开放平台/微信/README.md)
       
