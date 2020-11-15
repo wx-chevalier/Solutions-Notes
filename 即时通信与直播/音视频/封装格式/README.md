@@ -2,7 +2,7 @@
 
 常见的视频封装格式(简称：视频格式)包括了 AVI，MPEG，VOB 等，即相当于一种储存视频信息的容器，由相应的公司开发出来的。
 
-![image](https://user-images.githubusercontent.com/5803001/47571490-3e9ced80-d96b-11e8-97ec-f1fd8af219e2.png)
+![常见视频容器格式](https://user-images.githubusercontent.com/5803001/47571490-3e9ced80-d96b-11e8-97ec-f1fd8af219e2.png)
 
 # AVI
 
