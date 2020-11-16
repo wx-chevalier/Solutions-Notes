@@ -5,7 +5,8 @@
       
   - [即时通信与直播](/即时通信与直播/README.md)
     - [Feed](/即时通信与直播/Feed/README.md)
-      
+      - [Feed 流方案](/即时通信与直播/Feed/Feed%20流方案.md)
+      - [分页问题](/即时通信与直播/Feed/分页问题.md)
     - [IM Scratch](/即时通信与直播/IM%20Scratch/README.md)
       - [基于 Java 的 IM 系统](/即时通信与直播/IM%20Scratch/基于%20Java%20的%20IM%20系统.md)
     - [WebRTC](/即时通信与直播/WebRTC/README.md)
