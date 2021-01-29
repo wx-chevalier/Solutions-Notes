@@ -8,7 +8,7 @@ AAC 是新一代的音频有损压缩技术，它通过一些附加的编码技�
 
 AAC 共有 9 种规格，以适应不同的场合的需要：
 
-- MPEG-2 AAC LC 低复杂度规格（Low Complexity） 注：比较简单，没有增益控制，但提高了编码效率，在中等码率的编码效率以及音质方面，都能找到平衡点
+- MPEG-2 AAC LC 低复杂度规格（Low Complexity）注：比较简单，没有增益控制，但提高了编码效率，在中等码率的编码效率以及音质方面，都能找到平衡点
 - MPEG-2 AAC Main 主规格
 - MPEG-2 AAC SSR 可变采样率规格（Scaleable Sample Rate）
 - MPEG-4 AAC LC 低复杂度规格（Low Complexity）---现在的手机比较常见的 MP4 文件中的音频部份就包括了该规格音频文件

@@ -45,7 +45,7 @@ H.264 的主要目标是为了有高的视频压缩比和良好的网络亲和�
 
 - VLC 层（Video Coding Layer）：包括核心压缩引擎和块，宏块和片的语法级别定义，设计目标是尽可能地独立于网络进行高效的编码；
 - NAL 层（Network Abstraction Layer）：负责将 VCL 产生的比特字符串适配到各种各样的网络和多元环境中，覆盖了所有片级以上的语法级别。
-- NALU （NAL Unit）：H.264 原始码流(裸流)是由一个接一个 NALU 组成，结构如下图，一个 NALU = 一组对应于视频编码的 NALU 头部信息 + 一个原始字节序列负荷(RBSP,Raw Byte Sequence Payload)。
+- NALU（NAL Unit）：H.264 原始码流(裸流)是由一个接一个 NALU 组成，结构如下图，一个 NALU = 一组对应于视频编码的 NALU 头部信息 + 一个原始字节序列负荷(RBSP,Raw Byte Sequence Payload)。
 
 ![NALU 结构](https://s3.ax1x.com/2020/11/14/DCPOQe.md.png)
 
