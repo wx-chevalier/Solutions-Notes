@@ -30,7 +30,7 @@
 
 ![mindmap](https://i.postimg.cc/VvfCTYff/image.png)
 
-# Nav | 导读
+# Nav | 关联导航
 
 - 如果你想了解具体的开发框架，可以参阅 [Spring Series](https://ng-tech.icu/Spring-Series/#/)、[Node Series](https://ng-tech.icu/Node-Series/#/)。
 
