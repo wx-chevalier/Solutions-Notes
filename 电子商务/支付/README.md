@@ -1,5 +1,5 @@
 # 支付
 
-# TBD
+# Links
 
 - https://www.infoq.cn/article/W_DCLXJ282WDp92hUoqw
