@@ -895,7 +895,7 @@ def set_user(user_id, values):
 
 ### 任务队列
 
-任务队列接收任务及其相关数据，运行它们，然后传递其结果。 它们可以支持调度，并可用于在后台运行计算密集型作业。
+任务队列接收任务及其相关数据，运行它们，然后传递其结果。它们可以支持调度，并可用于在后台运行计算密集型作业。
 
 **Celery** 支持调度，主要是用 Python 开发的。
 
@@ -926,7 +926,7 @@ def set_user(user_id, values):
 
 HTTP 是一种在客户端和服务器之间编码和传输数据的方法。它是一个请求/响应协议：客户端和服务端针对相关内容和完成状态信息的请求和响应。HTTP 是独立的，允许请求和响应流经许多执行负载均衡，缓存，加密和压缩的中间路由器和服务器。
 
-一个基本的 HTTP 请求由一个动词（方法）和一个资源（端点）组成。 以下是常见的 HTTP 动词：
+一个基本的 HTTP 请求由一个动词（方法）和一个资源（端点）组成。以下是常见的 HTTP 动词：
 
 | 动词   | 描述                         | \*幂等 | 安全性 | 可缓存                    |
 | ------ | ---------------------------- | ------ | ------ | ------------------------- |
@@ -955,7 +955,7 @@ HTTP 是依赖于较低级协议（如 **TCP** 和 **UDP**）的应用层协议�
   <strong><a href="http://www.wildbunny.co.uk/blog/2012/10/09/how-to-make-a-multi-player-game-part-1/">资料来源：如何制作多人游戏</a></strong>
 </p>
 
-TCP 是通过 [IP 网络](https://en.wikipedia.org/wiki/Internet_Protocol)的面向连接的协议。 使用[握手](https://en.wikipedia.org/wiki/Handshaking)建立和断开连接。 发送的所有数据包保证以原始顺序到达目的地，用以下措施保证数据包不被损坏：
+TCP 是通过 [IP 网络](https://en.wikipedia.org/wiki/Internet_Protocol)的面向连接的协议。使用[握手](https://en.wikipedia.org/wiki/Handshaking)建立和断开连接。发送的所有数据包保证以原始顺序到达目的地，用以下措施保证数据包不被损坏：
 
 - 每个数据包的序列号和[校验码](https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Checksum_computation)。
 - [确认包](<https://en.wikipedia.org/wiki/Acknowledgement_(data_networks)>)和自动重传
