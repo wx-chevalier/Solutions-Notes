@@ -71,7 +71,7 @@
       - [6.7.3 表结构](/电子商务/结构设计/表结构.md)
     - [6.8 风控](/电子商务/风控/README.md)
       
-  - 7 系统案例
+  - [7 系统案例](/系统案例/README.md)
     - [7.1 System Design Primer](/系统案例/System%20Design%20Primer/README.md)
       - [7.1.1 AWS 上设计一个百万用户级别的系统](/系统案例/System%20Design%20Primer/AWS%20上设计一个百万用户级别的系统.md)
       - [7.1.2 Mint](/系统案例/System%20Design%20Primer/Mint.md)
