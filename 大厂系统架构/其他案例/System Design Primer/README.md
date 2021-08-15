@@ -706,7 +706,7 @@ Google 发布了第一个列型存储数据库 [Bigtable](http://www.read.seas.h
 
 ### 应用缓存
 
-基于内存的缓存比如 Memcached 和 Redis 是应用程序和数据存储之间的一种键值存储。由于数据保存在 RAM 中，它比存储在磁盘上的典型数据库要快多了。RAM 比磁盘限制更多，所以例如 [least recently used (LRU)](https://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used) 的[缓存无效算法](https://en.wikipedia.org/wiki/Cache_algorithms)可以将「热门数据」放在 RAM 中，而对一些比较「冷门」的数据不做处理。
+基于内存的缓存比如 Memcached 和 Redis 是应用程序和数据存储之间的一种键值存储。由于数据保存在 RAM 中，它比存储在磁盘上的典型数据库要快多了。RAM 比磁盘限制更多，所以例如 [least recently used (LRU)](https://en.wikipedia.org/wiki/Cache_algorithms#Least_Recently_Used) 的[缓存无效算法](https://en.wikipedia.org/wiki/Cache_algorithms)可以将热门数据放在 RAM 中，而对一些比较冷门的数据不做处理。
 
 Redis 有下列附加功能：
 
@@ -889,7 +889,7 @@ def set_user(user_id, values):
 
 **Redis** 是一个令人满意的简单的消息代理，但是消息有可能会丢失。
 
-**RabbitMQ** 很受欢迎但是要求你适应「AMQP」协议并且管理你自己的节点。
+**RabbitMQ** 很受欢迎但是要求你适应 AMQP 协议并且管理你自己的节点。
 
 **Amazon SQS** 是被托管的，但可能具有高延迟，并且消息可能会被传送两次。
 
