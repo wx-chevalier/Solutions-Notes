@@ -139,7 +139,7 @@ DNS 和 email 等系统使用的是此种方式。最终一致性在高可用性
 - **NS 记录（域名服务）** ─ 指定解析域名或子域名的 DNS 服务器。
 - **MX 记录（邮件交换）** ─ 指定接收信息的邮件服务器。
 - **A 记录（地址）** ─ 指定域名对应的 IP 地址记录。
-- **CNAME（规范）** ─ 一个域名映射到另一个域名或 `CNAME` 记录（ example.com 指向 www.example.com ）或映射到一个 `A` 记录。
+- **CNAME（规范）** ─ 一个域名映射到另一个域名或 `CNAME` 记录（ example.com 指向 www.example.com）或映射到一个 `A` 记录。
 
 [CloudFlare](https://www.cloudflare.com/dns/) 和 [Route 53](https://aws.amazon.com/route53/) 等平台提供管理 DNS 的功能。某些 DNS 服务通过集中方式来路由流量:
 
