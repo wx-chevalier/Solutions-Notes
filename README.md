@@ -6,6 +6,10 @@
 
 # Introduction | 前言
 
+```
+System = Backend + Frontend + Architecture + Engineering
+```
+
 过去数十年间，信息技术的浪潮深刻地改变了这个社会的通信、交流与协作模式，我们熟知的互联网也经历了基于流量点击赢利的单方面信息发布的 Web 1.0 业务模式，转变为由用户主导而生成内容的 Web 2.0 业务模式；在可见的将来随着 3D 相关技术的落地，互联网应用系统所需处理的访问量和数据量必然会再次爆发性增长。
 
 ![服务衍化](https://i.postimg.cc/YS9Y9xYy/image.png)
