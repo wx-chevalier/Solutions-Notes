@@ -1,4 +1,4 @@
-![](https://i.postimg.cc/4xhqKLQj/image.png)
+![题图](https://pic.imgdb.cn/item/638b122516f2c2beb1b3717a.jpg)
 
 # 服务端开发实践与工程架构
 
