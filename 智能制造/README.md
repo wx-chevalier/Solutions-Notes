@@ -1,4 +1,4 @@
-![](https://i.postimg.cc/qvzwGwhg/image.png)
+![](https://ngte-superbed.oss-cn-beijing.aliyuncs.com/item/202212251522800.png)
 
 # 智能制造
 
