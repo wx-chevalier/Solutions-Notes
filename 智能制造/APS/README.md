@@ -10,4 +10,4 @@ APS 是高级计划与排程系统的简称。总体来说，APS 系统包含以
 - APS 系统从第三方系统或者 EXCEL 导入计划的目标和条件：订单、工单、库存、物料、供应商和仓库等，APS 与 ERP 系统进行数据交换最多
 - 根据生产日报表、现场实际进度，进行滚动计划排程和各种调整
 
-![APS 流程](https://ngte-superbed.oss-cn-beijing.aliyuncs.com/item/20221224222622.png)
+![APS 流程](https://assets.ng-tech.icu/item/20221224222622.png)
