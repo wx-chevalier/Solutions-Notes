@@ -18,7 +18,7 @@ System = Backend + Frontend + Architecture + Engineering
 
 本系列着眼于服务端应用层的相关内容，包含了服务端基础、微服务与云原生、DevOps、测试与高可用保障等内容。
 
-[![image.png](https://i.postimg.cc/Y2vPQ05k/image.png)](https://postimg.cc/G91zCL3S)
+![image.png](https://i.postimg.cc/Y2vPQ05k/image.png)
 
 - UI 交互层：Windows UI、PC Web UI、移动 App UI、微信小程序 UI、摄像头视觉识别人机界面、语音交互人机界面；
 
