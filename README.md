@@ -12,13 +12,13 @@ System = Backend + Frontend + Architecture + Engineering
 
 过去数十年间，信息技术的浪潮深刻地改变了这个社会的通信、交流与协作模式，我们熟知的互联网也经历了基于流量点击赢利的单方面信息发布的 Web 1.0 业务模式，转变为由用户主导而生成内容的 Web 2.0 业务模式；在可见的将来随着 3D 相关技术的落地，互联网应用系统所需处理的访问量和数据量必然会再次爆发性增长。
 
-![服务衍化](https://i.postimg.cc/YS9Y9xYy/image.png)
+![服务衍化](https://assets.ng-tech.icu/item/20230417205745.png)
 
 在分布式系统的背景下，企业架构也由早期的单体式应用架构渐渐转为更加灵活的分布式应用架构，经历了单体分层架构、SOA 服务化架构、微服务架构、云原生架构等不同架构模式的变迁。后端开发不再局限于单一技术栈，并且为了应对更加庞大的集群规模，单纯的分布式系统已经难于驾驭，因此技术圈开启了一个概念爆发的时代：SOA、DevOps、容器、CI/CD、微服务、Service Mesh 等概念层出不穷，而 Docker、Kubernetes、Mesos、Spring Cloud、gRPC、Istio 等一系列产品的出现，标志着云时代已真正到来。
 
 本系列着眼于服务端应用层的相关内容，包含了服务端基础、微服务与云原生、DevOps、测试与高可用保障等内容。
 
-![image.png](https://i.postimg.cc/Y2vPQ05k/image.png)
+![image.png](https://assets.ng-tech.icu/item/20230417205728.png)
 
 - UI 交互层：Windows UI、PC Web UI、移动 App UI、微信小程序 UI、摄像头视觉识别人机界面、语音交互人机界面；
 
@@ -32,7 +32,7 @@ System = Backend + Frontend + Architecture + Engineering
 
 - 基础设施层：云计算 IaaS（服务器、存储、网络、文件系统）、云 IaaS 平台；
 
-![mindmap](https://i.postimg.cc/VvfCTYff/image.png)
+![mindmap](https://assets.ng-tech.icu/item/20230417205616.png)
 
 # Nav | 关联导航
 
