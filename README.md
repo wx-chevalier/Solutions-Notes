@@ -2,7 +2,7 @@
 
 # 服务端开发实践与工程架构
 
-在[某熊的技术之路指北 ☯](https://github.com/wx-chevalier/Developer-Zero-To-Mastery)中我们介绍过，本系列[服务端架构与实践](https://github.com/wx-chevalier/Backend-Series)与[深入浅出分布式基础架构](https://github.com/wx-chevalier/Distributed-Infrastructure-Series)这两个系列承载了笔者在泛服务端开发、运维相关工作中的知识沉淀。
+在[某熊的技术之路指北 ☯](https://github.com/wx-chevalier/Developer-Zero-To-Mastery)中我们介绍过，本系列[服务端架构与实践](https://github.com/wx-chevalier/Backend-Notes)与[深入浅出分布式基础架构](https://github.com/wx-chevalier/Distributed-Infrastructure-Notes)这两个系列承载了笔者在泛服务端开发、运维相关工作中的知识沉淀。
 
 # Introduction | 前言
 
@@ -36,9 +36,9 @@ System = Backend + Frontend + Architecture + Engineering
 
 # Nav | 关联导航
 
-- 如果你想了解具体的开发框架，可以参阅 [Spring Series](https://ng-tech.icu/books/Spring-Series/#/)、[Node Series](https://ng-tech.icu/books/Node-Series/#/)。
+- 如果你想了解具体的开发框架，可以参阅 [Spring Series](https://ng-tech.icu/books/Spring-Notes/#/)、[Node Series](https://ng-tech.icu/books/Node-Notes/#/)。
 
-- 如果你想了解微服务架构相关，请参阅 [MicroService-Series](https://github.com/wx-chevalier/MicroService-Series)。
+- 如果你想了解微服务架构相关，请参阅 [MicroService-Notes](https://github.com/wx-chevalier/MicroService-Notes)。
 
 # About
 
