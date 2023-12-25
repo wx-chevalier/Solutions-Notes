@@ -1,5 +1,7 @@
 # 3D 打印成型工艺
 
+![3D Hub 3D 打印工艺](https://assets.ng-tech.icu/item/20231129141901.png)
+
 按照材料形式与工艺实现方法，可将打印机工艺分为如下五大类：
 
 - 粉末或丝状材料高能束烧结、熔化成型，如选择性激光烧结（Selective Laser Sintering，简称 SLS），选择性激光熔化（Selective Laser Melting，简称 SLM）。
