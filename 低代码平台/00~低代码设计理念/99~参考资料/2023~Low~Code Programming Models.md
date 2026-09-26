@@ -123,8 +123,6 @@ The most successful NLP technology applied to PBNL is semantic parsers, which ar
 
 Another approach to PBNL is program synthesis, which typically searches a space of possible programs.[2](https://cacm.acm.org/magazines/2023/10/276633-low-code-programming-models/fulltext#R2) Desai et al. describe a meta-synthesizer that, given a DSL grammar and an aligned corpus, creates a synthesizer from natural language to programs in the DSL.[12](https://cacm.acm.org/magazines/2023/10/276633-low-code-programming-models/fulltext#R12) PBNL is not limited to domain-specific languages for citizen developers. Yin and Neubig describe a semantic parser that uses deep learning to encode a sequence of natural-language tokens, then decodes that into a Python AST.[39](https://cacm.acm.org/magazines/2023/10/276633-low-code-programming-models/fulltext#R39) Codex is a pre-trained large language model for natural language first fine-tuned on unlabeled code, then fine-tuned again on an aligned corpus of utterances and programs.[11](https://cacm.acm.org/magazines/2023/10/276633-low-code-programming-models/fulltext#R11)
 
-[Back to Top](https://cacm.acm.org/magazines/2023/10/276633-low-code-programming-models/fulltext#PageTop)
-
 ### Perspectives
 
 While the previous discussion covered three low-code techniques in depth, here we cover cross-cutting topics beyond any single technique. The accompanying [table](https://dl.acm.org/cms/attachment/html/10.1145/3587691/assets/html/ut1.jpg) compares the techniques discussed earlier. The Activity columns indicate how each technique supports the user in writing, reading, and executing programs. The main difference is in the Write column: users write programs mainly on the code canvas for VPLs, the stage for PBD, and a text canvas in PBNL. On the other hand, there is little difference in the Read and Execute columns: users read programs on a code canvas (if provided), and watch them executing on the stage (if visible). That hints at an opportunity for reuse across tools for different techniques.
@@ -161,13 +159,9 @@ _Low-code foundation._ In addition to meta-tools, are there other reusable modul
 
 _End-user software engineering._ Most of the discussion on low-code programming focuses on writing a program: low-code enables citizen developers to rapidly create a prototype. But what happens over time when these programs stick around, get used in new circumstances that the developer did not foresee, get modified or generalized, and proliferate? At that point, users need end-user software engineering (EUSE) for quality control, for instance, by showing test coverage, letting users add assertions, and helping them localize faults directly in their low-code programming environment.[9](https://cacm.acm.org/magazines/2023/10/276633-low-code-programming-models/fulltext#R9) Citizen developers often struggle with anticipating exceptional contexts for their programs; Pumice is a low-code tool that lets users extend programs with new branches when the unforeseen happens.[22](https://cacm.acm.org/magazines/2023/10/276633-low-code-programming-models/fulltext#R22) Another way to support EUSE is to expose the DSL, which makes it easier to adopt established software development workflows and the associated tools (such as version-controlled source code repositories, regression tests, or issue trackers) for low-code. Those tools also facilitate collaboration between citizen developers and professional software engineers.
 
-[Back to Top](https://cacm.acm.org/magazines/2023/10/276633-low-code-programming-models/fulltext#PageTop)
-
 ### Conclusion
 
 This article reviews research relevant to low-code programming models with a focus on visual programming, programming by demonstration, and programming by natural language. It maps low-code techniques to target users and discusses common building blocks, strengths, and weaknesses. This article argues that domain-specific languages and the model-view-controller pattern constitute a common backbone and unifying principle across low-code techniques.
-
-[Back to Top](https://cacm.acm.org/magazines/2023/10/276633-low-code-programming-models/fulltext#PageTop)
 
 ### References
 
